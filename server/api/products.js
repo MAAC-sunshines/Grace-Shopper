@@ -12,13 +12,3 @@ router.get('/', (req, res, next) => {
 })
 
 
-//route to get product by category
-router.get('/:category', (req, res, next) => {
-  Instrument.findBy({
-    category: req.params.category
-  })
-  .then(instruments => {
-    res.json(instruments)
-  })
-  .catch(next)
-})
