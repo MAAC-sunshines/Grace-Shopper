@@ -8,7 +8,8 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <Routes />
+      {/* <Routes /> Fill this in until we're ready to have login users?*/}
+      <AllProductsContainer />
     </div>
   )
 }
