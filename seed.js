@@ -43,7 +43,7 @@ const instruments = [
   }
 ]
 
-//Here we would have associations 
+//Here we would have associations
 
 const seed = () =>
   Promise.all(instruments.map(instrument =>
@@ -53,7 +53,7 @@ const seed = () =>
 //   Promise.all(users.map(user =>
 //     User.create(user))
 //   )
-);
+
 
 const main = () => {
   console.log('Syncing our awesome db...');
