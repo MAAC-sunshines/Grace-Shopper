@@ -10,3 +10,14 @@ router.get('/', (req, res, next) => {
     .catch(err => console.error(err))
 })
 
+router.get('/:productId', (req, res, next) => {
+  Instrument.findOne({
+    where: {
+      id: req.params.productId
+    }
+  })
+  .then(instrument => {
+    res.json(instrument)
+  })
+  .catch(next);
+})
