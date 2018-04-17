@@ -1,6 +1,6 @@
 import { fetchInstrument } from '../store';
 import { connect } from 'react-redux';
-import SingleInstrument from './SingleInstrument';
+import SingleInstrument from '../components/SingleInstrument';
 
 const mapStateToProps = state => {
     return {

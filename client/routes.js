@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import AllInstrumentsContainer from './containers/AllInstrumentsContainer';
 import {me} from './store'
-import SingleInstrumentContainer from './components/SingleInstrumentContainer';
+import SingleInstrumentContainer from './containers/SingleInstrumentContainer';
 
 /**
  * COMPONENT
