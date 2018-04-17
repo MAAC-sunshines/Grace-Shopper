@@ -1,5 +1,5 @@
 const db = require('./server/db');
-const Instrument = require('./server/db/models/instrument');
+const { Instrument, Category } = require('./server/db/models');
 
 const instruments = [
   {
@@ -7,7 +7,7 @@ const instruments = [
     type: 'guitar',
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAd7Zb9NI_Wxl02evVl23rfZXvHgzzo97rjzKqMxmq5Wxxa9JG',
     cost: 515,
-    category: 'string',
+    categoryId: 1,
     description: 'Lorem ipsum'
   },
   {
@@ -15,7 +15,7 @@ const instruments = [
     type: 'bassoon',
     imageUrl: 'https://www.forrestsmusic.com/images/V-49.jpg',
     cost: 327,
-    category: 'woodwind',
+    categoryId: 2,
     description: 'Lorem ipsum'
   },
   {
@@ -23,14 +23,14 @@ const instruments = [
     type: 'drums',
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz8n5LoSVoCrpqEuIbUE-w7cg_H6XQTdXDQJxPBTy8uceGDPNc',
     cost: 314,
-    category: 'percussion',
+    categoryId: 3,
     description: 'Lorem ipsum'
-  },{
+  }, {
     name: 'Mahia Trumpet',
     type: 'trumpet',
     imageUrl: 'https://az58332.vo.msecnd.net/e88dd2e9fff747f090c792316c22131c/Images/Products3731-1200x1200-454812.jpg',
     cost: 274,
-    category: 'brass',
+    categoryId: 4,
     description: 'Lorem ipsum'
   },
   {
@@ -38,17 +38,40 @@ const instruments = [
     type: 'accordian',
     imageUrl: 'https://www.elderly.com//media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/4/p4067329.jpg',
     cost: 666,
-    category: 'keyboard',
+    categoryId: 5,
     description: 'Lorem ipsum'
+  }
+]
+
+const categories = [
+  {
+    name: 'string'
+  },
+  {
+    name: 'woodwind'
+  },
+  {
+    name: 'percussion'
+  },
+  {
+    name: 'brass'
+  },
+  {
+    name: 'keyboard'
   }
 ]
 
 //Here we would have associations
 
 const seed = () =>
-  Promise.all(instruments.map(instrument =>
-    Instrument.create(instrument))
-  )
+  Promise.all(categories.map(category =>
+    Category.create(category)
+  ))
+    .then(() =>
+      Promise.all(instruments.map(instrument =>
+        Instrument.create(instrument)
+      ))
+    )
 //   .then(() =>
 //   Promise.all(users.map(user =>
 //     User.create(user))

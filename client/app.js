@@ -2,15 +2,14 @@ import React from 'react'
 
 import {Navbar} from './components'
 import Routes from './routes'
-import AllProductsContainer from './components/AllProductsContainer';
+// import AllInstrumentsContainer from './containers/AllInstrumentsContainer';
 
 
 const App = () => {
   return (
     <div>
       <Navbar />
-      {/* <Routes /> Fill this in until we're ready to have login users?*/}
-      <AllProductsContainer />
+      <Routes />
     </div>
   )
 }

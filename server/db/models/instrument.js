@@ -11,17 +11,12 @@ const Instrument = db.define('instrument', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  imageURL: {
+  imageUrl: {
     type: Sequelize.TEXT,
     defaultValue: 'http://airguitarcanada.org/wp-content/uploads/2017/07/AGC-Championships-15July2017-605-1024x684.jpg'
   },
   cost: {
     type: Sequelize.DECIMAL,
-    allowNull: false
-  },
-  category: {
-    type: Sequelize.ENUM,
-    values: ['string', 'woodwind', 'percussion', 'brass', 'keyboard'],
     allowNull: false
   },
   description: {

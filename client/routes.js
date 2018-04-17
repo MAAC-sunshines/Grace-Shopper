@@ -3,8 +3,11 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
+import AllInstrumentsContainer from './containers/AllInstrumentsContainer';
+import SingleInstrumentContainer from './components/SingleInstrumentContainer';
 import {me} from './store'
 import SingleCategoryContainer from './components/SingleCategoryContainer'
+import UpdateInstrumentContainer from './containers/UpdateInstrumentContainer';
 
 /**
  * COMPONENT
@@ -24,6 +27,9 @@ class Routes extends Component {
         <Route path="/signup" component={Signup} />
         <Route path="/products" component={AllProducts} />
         <Route path="/categories/:id" component={SingleCategoryContainer} />
+        <Route exact path="/instruments" component={AllInstrumentsContainer} />
+        <Route exact path="/instruments/:id" component={SingleInstrumentContainer} />
+        <Route path="/instruments/:id/update" component={UpdateInstrumentContainer} />
         {
           isLoggedIn &&
             <Switch>
