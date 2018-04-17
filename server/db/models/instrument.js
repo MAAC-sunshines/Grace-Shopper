@@ -19,11 +19,6 @@ const Instrument = db.define('instrument', {
     type: Sequelize.DECIMAL,
     allowNull: false
   },
-  category: {
-    type: Sequelize.ENUM,
-    values: ['string', 'woodwind', 'percussion', 'brass', 'keyboard'],
-    allowNull: false
-  },
   description: {
     type: Sequelize.TEXT
   }

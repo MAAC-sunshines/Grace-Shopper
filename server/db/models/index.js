@@ -18,7 +18,10 @@
 // }
 
 const Instrument = require('./instrument');
-
+const Category = require('./category');
+Instrument.belongsTo(Category);
+Category.hasMany(Instrument);
 module.exports = {
-  Instrument
+  Instrument,
+  Category
 };
