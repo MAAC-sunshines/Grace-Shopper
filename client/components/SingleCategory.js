@@ -8,8 +8,7 @@ export default class SingleCategory extends Component {
   }
 
   render() {
-    const instruments = this.props.selectedCategory;
-    const instrument = this.props.selectedInstrument;
+    const {instruments = []} = this.props;
     return (
       <div>
         <h2>CATEGORIES</h2>
@@ -20,7 +19,7 @@ export default class SingleCategory extends Component {
                   <div key = {singleInstrument.id}>
                   <h2>{singleInstrument.name}</h2>
                   <Link to={`/instruments/${singleInstrument.id}`}>
-                  <img src={singleInstrument.imageUrl}/>
+                  <img src={singleInstrument.imageUrl} />
                   </Link>
                   <h4>{singleInstrument.description}</h4>
                   <h6>${singleInstrument.cost}</h6>

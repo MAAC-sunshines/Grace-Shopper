@@ -15,7 +15,8 @@ export function fetchCategory(categoryId) {
     return axios.get(`/api/categories/${categoryId}`)
       .then(res => res.data)
       .then(category => {
-        const action = getCategory(category.id);
+        console.log('instruments', category);
+        const action = getCategory(category);
         dispatch(action);
     });
   };
@@ -23,7 +24,7 @@ export function fetchCategory(categoryId) {
 
 
 //REDUCER
-export default function reducer(state = {}, action) {
+export default function reducer(state = [], action) {
   switch (action.type) {
   case GET_CATEGORY:
     return action.selectedCategory;

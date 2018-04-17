@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
 })
 
 //get a single category by id
-router.get('/categories/:id', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   Instrument.findAll({
     where: {
       categoryId: req.params.id
@@ -34,7 +34,7 @@ router.post('/', (req, res, next) => {
 })
 
 //delete a category
-router.delete('/categories/:id', (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
   Category.destroy({
     where: {
       id: req.params.id
@@ -47,7 +47,7 @@ router.delete('/categories/:id', (req, res, next) => {
 })
 
 //update an existing category
-router.put('/categories/:id', (req, res, next) => {
+router.put('/:id', (req, res, next) => {
   const categoryId = req.params.id;
   Category.findById(categoryId)
         .then(category => category.update(req.body))
