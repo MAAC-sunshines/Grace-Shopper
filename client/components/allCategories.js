@@ -17,10 +17,13 @@ export default class AllCategories extends Component {
           {
             allCategories && allCategories.map(category => {
               return (
-                <li key={category.id}>
-                  <h2>{category.name}</h2>
-
-                </li>
+                <div key={category.id}>
+                  <Link to={`/categories/${category.id}`}>
+                    <img src={category.imageUrl} />
+                    <h2>{category.name}</h2>
+                    <p>{category.description}</p>
+                  </Link>
+                </div>
               )
             })
           }
