@@ -1,4 +1,4 @@
-import { fetchInstrument, deleteInstrument, getInstrument } from '../store';
+import { fetchInstrument, putInstrument, getInstrument } from '../store';
 import { connect } from 'react-redux';
 import SingleInstrument from '../components/SingleInstrument';
 
@@ -14,14 +14,15 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             const instrumentId = ownProps.match.params.id;
             return dispatch(fetchInstrument(instrumentId));
         },
-        handleDelete(event, id){
-			event.preventDefault();
-			dispatch(deleteInstrument(id, ownProps.history));
+        handleSubmit(event){
+            event.preventDefault();
+            
+			dispatch(putInstrument(id, ownProps.history));
 			dispatch(getInstrument(''));
 		}
     };
 };
 
-const SingleInstrumentContainer = connect(mapStateToProps, mapDispatchToProps)(SingleInstrument);
+const UpdateInstrumentContainer = connect(mapStateToProps, mapDispatchToProps)(SingleInstrument);
 
-export default SingleInstrumentContainer;
+export default UpdateInstrumentContainer;
