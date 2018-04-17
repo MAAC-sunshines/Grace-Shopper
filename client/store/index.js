@@ -5,11 +5,14 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 import user from './user'
 import allInstruments from '../reducers/instruments';
 import selectedInstrument from '../reducers/selectedInstrument';
+import selectedCategory from '../reducers/singleCategory';
 
 const reducer = combineReducers({
   user,
+  instruments,
+  selectedInstrument,
+  selectedCategory,
   allInstruments,
-  selectedInstrument
 })
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
@@ -19,4 +22,5 @@ const store = createStore(reducer, middleware)
 
 export default store
 export * from './user'
+export * from '../reducers/singleCategory'
 export * from '../reducers/selectedInstrument'

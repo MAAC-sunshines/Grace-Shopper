@@ -6,6 +6,7 @@ import {Login, Signup, UserHome} from './components'
 import AllInstrumentsContainer from './containers/AllInstrumentsContainer';
 import SingleInstrumentContainer from './components/SingleInstrumentContainer';
 import {me} from './store'
+import SingleCategoryContainer from './components/SingleCategoryContainer'
 import UpdateInstrumentContainer from './containers/UpdateInstrumentContainer';
 
 /**
@@ -24,6 +25,8 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route path="/products" component={AllProducts} />
+        <Route path="/categories/:id" component={SingleCategoryContainer} />
         <Route exact path="/instruments" component={AllInstrumentsContainer} />
         <Route exact path="/instruments/:id" component={SingleInstrumentContainer} />
         <Route path="/instruments/:id/update" component={UpdateInstrumentContainer} />
