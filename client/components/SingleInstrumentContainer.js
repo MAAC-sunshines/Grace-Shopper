@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         loadInstrument: function(){
-            const instrumentId = ownProps.match.params.instrumentId;
+            const instrumentId = ownProps.match.params.id;
             return dispatch(fetchInstrument(instrumentId));
         }
     };
