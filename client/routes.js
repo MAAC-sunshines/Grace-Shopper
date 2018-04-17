@@ -28,7 +28,7 @@ class Routes extends Component {
         <Route path="/categories/:id" component={SingleCategoryContainer} />
         <Route exact path="/instruments" component={AllInstrumentsContainer} />
         <Route exact path="/instruments/:id" component={SingleInstrumentContainer} />
-        <Route path="/instruments/:id/update" component={UpdateInstrumentContainer} />
+        <Route path="/instruments/:id/edit" component={UpdateInstrumentContainer} />
         {
           isLoggedIn &&
             <Switch>

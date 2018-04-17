@@ -26,6 +26,17 @@ export function deleteInstrument(instrumentId, history){
 			});
 	};
 }
+export function putInstrument(instrumentInfo, id, history){
+	return function thunk(dispatch){
+		return axios.put(`/instruments/${id}`, instrumentInfo)
+			.then(res => res.data)
+			.then(updatedInstrument => {
+				const action = getInstrument(updatedInstrument);
+				dispatch(action);
+				history.push(`/instruments/${id}`);
+			});
+	};
+}
 export default function reducer(state = {}, action) {
 	switch (action.type) {
 	case GET_INSTRUMENT:

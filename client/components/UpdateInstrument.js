@@ -9,18 +9,35 @@ export default class SingleProduct extends Component {
         const instrument = this.props.selectedInstrument;
         return (
             <div>
-                <h2>{instrument.name}</h2>
-                <img src={instrument.imageUrl} />
-                <h3>Price: {instrument.cost}</h3>
-                <h4>Category: {instrument.category}</h4>
-                <h4>Description: </h4>
-                <p>{instrument.description}</p>
-                <Link to={`/instruments/${instrument.id}/update`} >
-                    Update Instrument Info
-                </Link>
-                <button onClick={
-                    (event) => this.props.handleSubmit(event, instrument.id)}>
-                    Update</button>
+                <h2>Edit {instrument.name}</h2>
+                <form onSubmit>
+                    <h2>
+                        <label>Instrument Name: </label>
+                        <input type="text" name="name" placeholder={instrument.name} />
+                    </h2>
+                    <img src={instrument.imageUrl} />
+                    <h3>
+                        <label>Image url: </label>
+                        <input type="text" name="imageUrl" placeholder={instrument.imageUrl} />
+                    </h3>
+                    <h3>
+                        <label>Price: </label>
+                        <input type="number" name="cost" placeholder={instrument.cost} />
+                    </h3>
+                    <h4>
+                        <label>Category: </label>
+                        <input type="text" name="category" placeholder={instrument.category} />
+                    </h4>
+                    <h4>
+                        <label>Description: </label>
+                    </h4>
+                    <p>
+                        <input type="text" name="description" placeholder={instrument.description} />
+                    </p>
+                    <button onClick={
+                        (event) => this.props.handleSubmit(event, instrument.id)}>
+                        Update</button>
+                </form>
             </div>
         )
     }
