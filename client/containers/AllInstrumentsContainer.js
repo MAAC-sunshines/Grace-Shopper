@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import AllInstruments from '../components/AllInstruments';
-import { fetchInstruments } from '../reducers/instruments';
+import { fetchInstruments, fetchAddInstrument } from '../reducers/instruments';
 
 
 const mapStateToProps = function(state) {
@@ -9,10 +9,14 @@ const mapStateToProps = function(state) {
   }
 }
 
-const mapDispatchToProps = function(dispatch) {
+const mapDispatchToProps = function(dispatch, ownProps) {
+  console.log('OWN PROPS', ownProps)
   return {
     loadAllInstruments: function() {
       dispatch(fetchInstruments())
+    },
+    addNewInstrument: function () {
+      dispatch(fetchAddInstrument())
     }
   }
 }

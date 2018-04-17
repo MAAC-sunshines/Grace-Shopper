@@ -4,7 +4,6 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import AllInstrumentsContainer from './containers/AllInstrumentsContainer';
-import SingleInstrumentContainer from './components/SingleInstrumentContainer';
 import {me} from './store'
 import SingleInstrumentContainer from './containers/SingleInstrumentContainer';
 
