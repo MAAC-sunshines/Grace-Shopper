@@ -26,13 +26,13 @@ export default class SingleProduct extends Component {
                     </h3>
                     <h4>
                         <label>Category: </label>
-                        <input type="text" name="category" placeholder={instrument.category} />
+                        <input type="text" name="category" placeholder={instrument.categoryId} />
                     </h4>
                     <h4>
                         <label>Description: </label>
                     </h4>
                     <p>
-                        <input type="text" name="description" placeholder={instrument.description} />
+                        <textarea type="text" name="description" placeholder={instrument.description} />
                     </p>
                     <button onClick={
                         (event) => this.props.handleSubmit(event, instrument.id)}>

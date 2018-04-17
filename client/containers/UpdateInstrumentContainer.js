@@ -1,6 +1,6 @@
 import { fetchInstrument, putInstrument, getInstrument } from '../store';
 import { connect } from 'react-redux';
-import SingleInstrument from '../components/SingleInstrument';
+import UpdateInstrument from '../components/UpdateInstrument';
 
 const mapStateToProps = state => {
     return {
@@ -23,6 +23,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     };
 };
 
-const UpdateInstrumentContainer = connect(mapStateToProps, mapDispatchToProps)(SingleInstrument);
+const UpdateInstrumentContainer = connect(mapStateToProps, mapDispatchToProps)(UpdateInstrument);
 
 export default UpdateInstrumentContainer;

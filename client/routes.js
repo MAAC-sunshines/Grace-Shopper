@@ -7,7 +7,6 @@ import AllInstrumentsContainer from './containers/AllInstrumentsContainer';
 import AllCategoriesContainer from './containers/AllCategoriesContainer';
 import {me} from './store'
 import SingleInstrumentContainer from './containers/SingleInstrumentContainer';
-import {me} from './store'
 import SingleCategoryContainer from './containers/SingleCategoryContainer';
 import UpdateInstrumentContainer from './containers/UpdateInstrumentContainer';
 

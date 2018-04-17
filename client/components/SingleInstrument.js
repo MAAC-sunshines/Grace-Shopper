@@ -14,7 +14,7 @@ export default class SingleProduct extends Component {
                 <h4>Category: {instrument.category}</h4>
                 <h4>Description: </h4>
                 <p>{instrument.description}</p>
-                <Link to={`/instruments/${instrument.id}/update`} >
+                <Link to={`/instruments/${instrument.id}/edit`} >
                     Update Instrument Info
                 </Link>
                 <button onClick={
