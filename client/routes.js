@@ -4,6 +4,7 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome} from './components'
 import AllInstrumentsContainer from './containers/AllInstrumentsContainer';
+import AllCategoriesContainer from './containers/AllCategoriesContainer';
 import {me} from './store'
 import SingleInstrumentContainer from './containers/SingleInstrumentContainer';
 import {me} from './store'
@@ -24,6 +25,7 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
+        <Route exact path="/" component={AllCategoriesContainer} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/categories/:id" component={SingleCategoryContainer} />
