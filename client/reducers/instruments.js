@@ -2,7 +2,7 @@ import axios from 'axios';
 
 //action type
 export const GET_ALL_INSTRUMENTS = 'ALL_INSTRUMENTS';
-
+export const ADD_INSTRUMENT = 'ADD_INSTRUMENT';
 
 //action creator
 export const getAllInstruments = function(allInstruments) {
@@ -12,15 +12,25 @@ export const getAllInstruments = function(allInstruments) {
   }
 }
 
+export const addInstrument = function(instrument) {
+  return {
+    type: ADD_INSTRUMENT,
+    instrument
+  }
+}
+
 //reducer
 export default function allInstruments(state = [], action) {
   switch (action.type) {
     case GET_ALL_INSTRUMENTS:
       return [...state, action.allInstruments]
+    case ADD_INSTRUMENT:
+      return [...state, state.allInstruments = [...state.allInstruments, action.instrument]]
     default:
       return state
   }
 }
+
 
 //thunk to get the instruments
 export function fetchInstruments () {
@@ -33,3 +43,4 @@ export function fetchInstruments () {
       .catch(err => console.error(err))
   }
 }
+

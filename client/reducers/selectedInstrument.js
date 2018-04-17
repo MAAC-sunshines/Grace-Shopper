@@ -7,7 +7,7 @@ export function getInstrument(instrument) {
     return action;
 }
 
-export function fetchProduct(instrumentId) {
+export function fetchInstrument(instrumentId) {
 	return function thunk(dispatch) {
 		return axios.get(`/api/instruments/${instrumentId}`)
 			.then(res => res.data)
@@ -17,7 +17,26 @@ export function fetchProduct(instrumentId) {
 			});
 	};
 }
-
+export function deleteInstrument(instrumentId, history){
+	return function thunk(){
+		return axios.delete(`/api/instruments/${instrumentId}`)
+			.then(res => res.data)
+			.then(() => {
+				history.push('/instruments');
+			});
+	};
+}
+export function putInstrument(instrumentInfo, id, history){
+	return function thunk(dispatch){
+		return axios.put(`/instruments/${id}`, instrumentInfo)
+			.then(res => res.data)
+			.then(updatedInstrument => {
+				const action = getInstrument(updatedInstrument);
+				dispatch(action);
+				history.push(`/instruments/${id}`);
+			});
+	};
+}
 export default function reducer(state = {}, action) {
 	switch (action.type) {
 	case GET_INSTRUMENT:

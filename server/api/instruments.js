@@ -2,7 +2,7 @@ const router = require('express').Router()
 const { Instrument } = require('../db/models')
 module.exports = router
 
-//route to get ALL INSTRUMETNS on single page
+//route to get ALL INSTRUMENTS on single page
 router.get('/', (req, res, next) => {
   Instrument.findAll()
     .then(instruments => {
@@ -23,14 +23,27 @@ router.get('/:id', (req, res, next) => {
   .catch(next);
 })
 
+//add a new instrument
+router.post('/', (req, res, next) => {
+  Instrument.create(req.body)
+    .then(instrument => {
+      res.json()
+    })
+    .catch(next);
+})
+
+//delete an instrument
+
 router.delete('/:id', (req, res, next) => {
   Instrument.destroy({
     where: {
       id: req.params.id
     }
   })
-  .then(() => res.status(204).end())
-  .catch(next);
+  .then(() => {
+    res.status(204).end()
+  })
+  .catch(next)
 })
 
 router.put('/:id', (req, res, next) => {

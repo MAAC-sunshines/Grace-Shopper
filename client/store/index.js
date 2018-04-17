@@ -6,11 +6,13 @@ import user from './user'
 import allInstruments from '../reducers/instruments';
 import selectedInstrument from '../reducers/selectedInstrument';
 import allCategories from '../reducers/allCategories';
+import selectedCategory from '../reducers/singleCategory';
 
 const reducer = combineReducers({
   user,
-  allInstruments,
   selectedInstrument,
+  selectedCategory,
+  allInstruments,
   allCategories
 })
 const middleware = composeWithDevTools(applyMiddleware(
@@ -20,4 +22,8 @@ const middleware = composeWithDevTools(applyMiddleware(
 const store = createStore(reducer, middleware)
 
 export default store
-export * from './user'
+export * from './user';
+export * from '../reducers/singleCategory';
+export * from '../reducers/selectedInstrument';
+export * from '../reducers/instruments';
+export * from '../reducers/allCategories';
