@@ -7,7 +7,7 @@ export function getInstrument(instrument) {
     return action;
 }
 
-export function fetchProduct(instrumentId) {
+export function fetchInstrument(instrumentId) {
 	return function thunk(dispatch) {
 		return axios.get(`/api/instruments/${instrumentId}`)
 			.then(res => res.data)
