@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
 export default class SingleProduct extends Component {
     componentDidMount() {
         this.props.loadInstrument();
@@ -18,8 +19,8 @@ export default class SingleProduct extends Component {
                     Update Instrument Info
                 </Link>
                 <button onClick={
-                    (event) => this.props.handleDelete(event, instrument.id)}>
-                    Delete Instrument</button>
+                    (event) => this.props.handleSubmit(event, instrument.id)}>
+                    Update</button>
             </div>
         )
     }

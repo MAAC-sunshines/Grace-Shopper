@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             const instrumentId = ownProps.match.params.id;
             return dispatch(fetchInstrument(instrumentId));
         },
-        handleDelete(event, id){
+        handleSubmit(event, id){
 			event.preventDefault();
 			dispatch(deleteInstrument(id, ownProps.history));
 			dispatch(getInstrument(''));
@@ -22,6 +22,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     };
 };
 
-const SingleInstrumentContainer = connect(mapStateToProps, mapDispatchToProps)(SingleInstrument);
+const UpdateInstrumentContainer = connect(mapStateToProps, mapDispatchToProps)(SingleInstrument);
 
-export default SingleInstrumentContainer;
+export default UpdateInstrumentContainer;
