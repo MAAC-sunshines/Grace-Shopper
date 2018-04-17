@@ -6,7 +6,7 @@ import {Login, Signup, UserHome} from './components'
 import AllInstrumentsContainer from './containers/AllInstrumentsContainer';
 import SingleInstrumentContainer from './components/SingleInstrumentContainer';
 import {me} from './store'
-import SingleInstrumentContainer from './containers/SingleInstrumentContainer';
+import UpdateInstrumentContainer from './containers/UpdateInstrumentContainer';
 
 /**
  * COMPONENT
@@ -25,8 +25,8 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/instruments" component={AllInstrumentsContainer} />
-        <Route path="/instruments/:id" component={SingleInstrumentContainer} />
-
+        <Route exact path="/instruments/:id" component={SingleInstrumentContainer} />
+        <Route path="/instruments/:id/update" component={UpdateInstrumentContainer} />
         {
           isLoggedIn &&
             <Switch>

@@ -17,7 +17,15 @@ export function fetchInstrument(instrumentId) {
 			});
 	};
 }
-
+export function deleteInstrument(instrumentId, history){
+	return function thunk(){
+		return axios.delete(`/api/instruments/${instrumentId}`)
+			.then(res => res.data)
+			.then(() => {
+				history.push('/instruments');
+			});
+	};
+}
 export default function reducer(state = {}, action) {
 	switch (action.type) {
 	case GET_INSTRUMENT:
