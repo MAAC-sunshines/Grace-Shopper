@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-export default class AllProducts extends Component {
+export default class AllInstruments extends Component {
 
   componentDidMount() {
-
+    this.props.loadAllInstruments();
   }
 
   render() {
