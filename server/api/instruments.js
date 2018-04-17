@@ -11,14 +11,31 @@ router.get('/', (req, res, next) => {
     .catch(err => console.error(err))
 })
 
-router.get('/:instrumentId', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   Instrument.findOne({
     where: {
-      id: req.params.productId
+      id: req.params.id
     }
   })
   .then(instrument => {
     res.json(instrument)
   })
   .catch(next);
+})
+
+router.delete('/:id', (req, res, next) => {
+  Instrument.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(() => res.status(204).end())
+  .catch(next);
+})
+
+router.put('/:id', (req, res, next) => {
+  const instrumentId = req.params.id;
+  Instrument.findById(instrumentId)
+        .then(instrument => instrument.update(req.body))
+        .catch(next);
 })
