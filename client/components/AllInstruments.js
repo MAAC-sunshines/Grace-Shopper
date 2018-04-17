@@ -11,11 +11,18 @@ export default class AllInstruments extends Component {
     const allInstruments = this.props.allInstruments;
     return (
       <div>
-        <h2>Instruments</h2>
+        <h2>All Instruments</h2>
         <ul>
           {
             allInstruments && allInstruments.map(single => {
-              return <li key={single.id}>{single.name}</li>
+              return (
+              <div key={single.id}>
+                <Link to={`/instruments/${single.id}`}>
+                  <li>{single.name}</li>
+                  <img src={single.imageURL} height="100" width="150"/>
+                </Link>
+              </div>
+              )
             })
           }
         </ul>
