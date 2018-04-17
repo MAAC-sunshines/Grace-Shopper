@@ -27,8 +27,10 @@ export default class AllInstruments extends Component {
               return (
               <div key={single.id}>
                 <Link to={`/instruments/${single.id}`}>
-                  <li>{single.name}</li>
-                  <img src={single.imageUrl} height="100" width="150"/>
+                  <li>{single.name}
+                    <p>Price: ${single.cost}</p>
+                    <img src={single.imageUrl} height="100" width="150"/>
+                  </li>
                 </Link>
               </div>
               )
