@@ -23,5 +23,6 @@ Instrument.belongsTo(Category);
 Category.hasMany(Instrument);
 module.exports = {
   Instrument,
-  Category
+  Category,
+  User: require('./user')
 };
