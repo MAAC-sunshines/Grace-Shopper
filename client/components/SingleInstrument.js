@@ -15,6 +15,7 @@ export default class SingleProduct extends Component {
     }
     componentDidMount() {
         this.props.loadInstrument();
+        this.props.loadAllCategories();
     }
     showForm(){
         this.setState({
@@ -23,12 +24,15 @@ export default class SingleProduct extends Component {
     }
     render() {
         const instrument = this.props.selectedInstrument;
+        const categoryId = instrument.categoryId;
+        const categories = this.props.allCategories;
+        const categoryName = categories && categories[categoryId].name;
         return (
             <div>
                 <h2>{instrument.name}</h2>
-                <Image src={instrument.imageUrl} rounded/>
+                <Image src={instrument.imageUrl} rounded />
                 <h3>Price: ${instrument.cost}</h3>
-                <h4>Category: {instrument.category}</h4>
+                <h4>Category: {categoryName}</h4>
                 <h4>Description: </h4>
                 <p>{instrument.description}</p>
                 <Button bsStyle="primary" bsSize="xsmall" onClick={

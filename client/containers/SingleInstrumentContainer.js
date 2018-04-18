@@ -1,4 +1,4 @@
-import { fetchInstrument, deleteInstrument, getInstrument, putInstrument } from '../store';
+import { fetchInstrument, deleteInstrument, getInstrument, putInstrument, fetchAllCategories } from '../store';
 import React from 'react';
 import { connect } from 'react-redux';
 import SingleInstrument from '../components/SingleInstrument';
@@ -6,7 +6,8 @@ import UpdateInstrument from '../components/UpdateInstrument';
 
 const mapStateToProps = state => {
     return {
-        selectedInstrument: state.selectedInstrument
+        selectedInstrument: state.selectedInstrument,
+        allCategories: state.allCategories[0]
     };
 };
 
@@ -15,6 +16,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         loadInstrument: function () {
             const instrumentId = ownProps.match.params.id;
             return dispatch(fetchInstrument(instrumentId));
+        },
+        loadAllCategories: function(){
+            return dispatch(fetchAllCategories());
         },
         handleDelete(event, id) {
             event.preventDefault();
