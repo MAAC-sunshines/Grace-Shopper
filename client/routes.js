@@ -8,7 +8,6 @@ import AllCategoriesContainer from './containers/AllCategoriesContainer';
 import {me} from './store'
 import SingleInstrumentContainer from './containers/SingleInstrumentContainer';
 import SingleCategoryContainer from './containers/SingleCategoryContainer';
-import UpdateInstrumentContainer from './containers/UpdateInstrumentContainer';
 
 /**
  * COMPONENT
@@ -30,7 +29,6 @@ class Routes extends Component {
         <Route path="/categories/:id" component={SingleCategoryContainer} />
         <Route exact path="/instruments" component={AllInstrumentsContainer} />
         <Route exact path="/instruments/:id" component={SingleInstrumentContainer} />
-        <Route path="/instruments/:id/edit" component={UpdateInstrumentContainer} />
         {
           isLoggedIn &&
             <Switch>
