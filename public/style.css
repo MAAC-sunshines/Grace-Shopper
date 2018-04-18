@@ -1,5 +1,6 @@
-body {
+/* body {
   font-family: sans-serif;
+
 }
 
 a {
@@ -18,4 +19,23 @@ nav a {
 form div {
   margin: 1em;
   display: inline-block;
+} */
+
+img {
+  width: 250px;
+  height: 200px;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  background-color: #f2f2f2;
+}
+
+.nav-bar-item {
+  order: 1
+}
+
+.all-categories-box {
+  padding-top: 3em;
 }

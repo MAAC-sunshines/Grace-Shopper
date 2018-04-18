@@ -10,7 +10,6 @@ const mapStateToProps = function(state) {
 }
 
 const mapDispatchToProps = function(dispatch, ownProps) {
-  console.log('OWN PROPS', ownProps)
   return {
     loadAllInstruments: function() {
       dispatch(fetchInstruments())

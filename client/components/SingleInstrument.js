@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Button, Image } from 'react-bootstrap';
 import UpdateInstrument from '../components/UpdateInstrument';
 
 export default class SingleProduct extends Component {
@@ -22,15 +24,15 @@ export default class SingleProduct extends Component {
         return (
             <div>
                 <h2>{instrument.name}</h2>
-                <img src={instrument.imageUrl} />
-                <h3>Price: {instrument.cost}</h3>
+                <Image src={instrument.imageUrl} rounded/>
+                <h3>Price: ${instrument.cost}</h3>
                 <h4>Category: {instrument.category}</h4>
                 <h4>Description: </h4>
                 <p>{instrument.description}</p>
-                <button onClick={
+                <Button bsStyle="primary" bsSize="xsmall" onClick={
                     (event) => this.props.handleDelete(event, instrument.id)}>
-                    Delete Instrument</button>
-                <button onClick={this.showForm}>Edit Instrument</button>
+                    Delete Instrument</Button>
+                <Button bsStyle="primary" bsSize="xsmall" onClick={this.showForm}>Edit Instrument</Button>
                 <div>
                 {
                     this.state.showForm && <UpdateInstrument selectedInstrument={instrument} handleSubmit={this.props.handleSubmit.bind(this, instrument)} />
