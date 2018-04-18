@@ -32,14 +32,14 @@ export default class AllInstruments extends Component {
             allInstruments && allInstruments.map(single => {
               return (
                 <Col sm={3} key={single.id} className="category-box">
-                <Link to={`/instruments/${single.id}`}>
-                <Image src={single.imageUrl} rounded/>
-                  <li>
-                    <h2>{single.name}</h2>
-                    <p>Price: ${single.cost}</p>
-                  </li>
-                  </Link>
-              </Col>
+                  <Link to={`/instruments/${single.id}`}>
+                  <Image src={single.imageUrl} rounded className="thumbnail-photo"/>
+                    <li>
+                      <h2>{single.name}</h2>
+                      <p>Price: ${single.cost}</p>
+                    </li>
+                    </Link>
+                </Col>
               )
             })
           }

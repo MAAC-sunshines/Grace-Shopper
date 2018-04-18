@@ -15,7 +15,7 @@ export default class SingleProduct extends Component {
                         <label>Instrument Name: </label>
                         <input type="text" name="name" placeholder={instrument.name} />
                     </h2>
-                    <img src={instrument.imageUrl} />
+                    <img src={instrument.imageUrl} className="single-product-img" />
                     <h3>
                         <label>Image url: </label>
                         <input type="text" name="imageUrl" placeholder={instrument.imageUrl} />

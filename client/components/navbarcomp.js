@@ -11,7 +11,7 @@ const NavbarComp = ({ handleClick, isLoggedIn }) => (
       <Navbar.Header>
         <Navbar.Brand>
           <Link to="/">
-            <h1>AIRPLAY</h1>
+            <h1 className="navbar-logo">AirPlay</h1>
           </Link>
         </Navbar.Brand>
       </Navbar.Header>

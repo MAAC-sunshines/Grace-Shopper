@@ -21,9 +21,9 @@ export default class AllCategories extends Component {
             {
               allCategories && allCategories.map(category => {
                 return (
-                  <Col sm={3} key={category.id} className="category-box">
+                  <Col md={3} key={category.id} className="category-box">
                       <Link to={`/categories/${category.id}`}>
-                        <Image src={category.imageUrl} circle/>
+                        <Image src={category.imageUrl} className="thumbnail-photo"/>
                         <h2>{category.name}</h2>
                         </Link>
                         <div className="category-description">{category.description}</div>
