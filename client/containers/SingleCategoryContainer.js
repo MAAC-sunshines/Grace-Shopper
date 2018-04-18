@@ -4,7 +4,8 @@ import SingleCategory from '../components/SingleCategory';
 
 const mapStateToProps = state => {
   return {
-    instruments: state.selectedCategory
+    instruments: state.selectedCategory,
+    categories: state.allCategories
   }
 }
 
