@@ -24,6 +24,7 @@ form div {
 img {
   width: 250px;
   height: 200px;
+  border-radius: 5%;
 }
 
 .nav-bar {
@@ -33,9 +34,38 @@ img {
 }
 
 .nav-bar-item {
-  order: 1
+  padding-left: 3em;
+}
+
+.row-mapping {
+  overflow: auto;
 }
 
 .all-categories-box {
   padding-top: 3em;
+}
+
+.category-box {
+  margin: 4px;
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, .2);
+  border: .5px solid white;
+}
+
+.category-description {
+  width: 275px;
+  text-align: center;
+  padding: .4em;
+  padding-bottom: 1em;
+}
+
+.subheader {
+  display: inline-block;
+}
+
+ul {
+  list-style-type: none;
 }
