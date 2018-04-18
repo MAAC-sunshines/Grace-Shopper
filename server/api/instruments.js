@@ -48,6 +48,7 @@ router.delete('/:id', (req, res, next) => {
 
 router.put('/:id', (req, res, next) => {
   const instrumentId = req.params.id;
+  console.log('body',req.params.id);
   Instrument.findById(instrumentId)
         .then(instrument => instrument.update(req.body))
         .catch(next);
