@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Button, Image } from 'react-bootstrap';
 
 export default class AllInstruments extends Component {
   constructor() {
@@ -12,7 +13,7 @@ export default class AllInstruments extends Component {
   }
 
   onClickHandler() {
-    //render the findOrCreate form
+    //render the findOrCreate form from Alexa
   }
 
   render() {
@@ -20,16 +21,17 @@ export default class AllInstruments extends Component {
     return (
       <div>
         <h2>All Instruments</h2>
-        <button>ADD NEW INSTRUMENT</button>
+        <Button bsStyle="primary" bsSize="xsmall">ADD NEW INSTRUMENT</Button>
         <ul>
           {
             allInstruments && allInstruments.map(single => {
               return (
               <div key={single.id}>
                 <Link to={`/instruments/${single.id}`}>
-                  <li>{single.name}
+                  <li>
+                    <h3>{single.name}</h3>
                     <p>Price: ${single.cost}</p>
-                    <img src={single.imageUrl} height="100" width="150"/>
+                    <Image src={single.imageUrl} rounded/>
                   </li>
                 </Link>
               </div>
