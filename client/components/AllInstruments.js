@@ -1,62 +1,54 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import store from '../store';
 
 export default class AllInstruments extends Component {
-  constructor() {
-    super();
-    this.onClickHandler = this.onClickHandler.bind(this);
-    this.state = store.getState()
-    this.handleChange = this.handleChange.bind(this)
-  }
+  state = { query: '' }
 
   componentDidMount() {
     this.props.loadAllInstruments();
   }
 
-  onClickHandler() {
-    //render the findOrCreate form
-  }
-
-  handleChange(event){
+  handleChange = (event) => {
     this.setState({
-      inputValue: event.target.value
+      query: event.target.value.toLocaleLowerCase()
     })
   }
 
+  get instruments() {
+    const {allInstruments=[]} = this.props
+    return allInstruments
+      .filter(instrument => instrument.name
+        .toLocaleLowerCase()
+        .indexOf(this.state.query) !== -1)
+  }
+
   render() {
-    const allInstruments = this.props.allInstruments;
-    let dirty = false;
-    if (this.state.searchInput.length > 1) dirty = true
-    const instruments = dirty && allInstruments.filter(instrument => instrument.name.match(this.state.inputValue))
     return (
       <div>
         <h2>All Instruments</h2>
-        <h2>HIIIIII</h2>
-        <form>
-          <input
-            placeholder = "Enter instrument name"
-            onChange={this.handleChange}
-          />
-        </form>
+        <input
+          placeholder = "Enter instrument name"
+          onChange={this.handleChange}
+        />
         <button>ADD NEW INSTRUMENT</button>
-        <ul>
-          {
-            instruments && instruments.map(single => {
-              return (
-              <div key={single.id}>
-                <Link to={`/instruments/${single.id}`}>
-                  <li>{single.name}
-                    <p>Price: ${single.cost}</p>
-                    <img src={single.imageUrl} height="100" width="150"/>
-                  </li>
-                </Link>
-              </div>
-              )
-            })
-          }
-        </ul>
+        <Instruments instruments={this.instruments} />
       </div>
     )
   }
 }
+
+const Instruments = ({instruments=[]}) =>
+  <ul>{
+    instruments.map(single => {
+      return (
+      <div key={single.id}>
+        <Link to={`/instruments/${single.id}`}>
+          <li>{single.name}
+            <p>Price: ${single.cost}</p>
+            <img src={single.imageUrl} height="100" width="150"/>
+          </li>
+        </Link>
+      </div>
+      )
+    })
+  }</ul>
