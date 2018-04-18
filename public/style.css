@@ -21,9 +21,17 @@ form div {
   display: inline-block;
 } */
 
-img {
+.thumbnail-photo {
   width: 250px;
   height: 200px;
+  border-radius: 5%;
+}
+
+.thumbnail-photo:hover {
+  width: 250px;
+  height: 200px;
+  border-radius: 5%;
+  box-shadow: 5px 5px 30px gray;
 }
 
 .nav-bar {
@@ -32,10 +40,87 @@ img {
   background-color: #f2f2f2;
 }
 
+.navbar-logo {
+  font-family: 'Mrs Sheppards', cursive;
+}
+
 .nav-bar-item {
-  order: 1
+  padding-left: 3em;
+}
+
+.row-mapping {
+  overflow: auto;
 }
 
 .all-categories-box {
   padding-top: 3em;
+}
+
+.category-box {
+  margin: 4px;
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, .2);
+  border: .5px solid white;
+  border-radius: 2%;
+}
+
+.category-box:hover {
+  margin: 4px;
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, .6);
+  border: .5px solid white;
+  border-radius: 2%;
+  color:black;
+  position: relative;
+  top: -5px;
+}
+
+.category-description {
+  width: 275px;
+  text-align: center;
+  padding: .4em;
+  padding-bottom: 1em;
+}
+
+.subheader {
+  display: inline-block;
+}
+
+li {
+  list-style-type: none;
+}
+
+.single-product-box {
+  padding-top: 3em;
+}
+
+.single-product-img {
+  width: 500px;
+  border: 4px solid gray;
+}
+
+.single-product-img:hover {
+  width: 500px;
+  border: 4px solid gray;
+  box-shadow: 4px 4px 50px gray;
+  position: relative;
+  top: -5px;
+}
+
+.single-product-description {
+  padding-top: 100px;
+  margin-left: 0;
+  padding-left: 20px;
+
+}
+
+.single-product-btns {
+  padding: 0;
+  margin: 0;
 }

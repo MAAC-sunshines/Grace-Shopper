@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Image } from 'react-bootstrap';
-import UpdateInstrument from '../components/UpdateInstrument';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
 
 export default class SingleProduct extends Component {
     constructor(props){

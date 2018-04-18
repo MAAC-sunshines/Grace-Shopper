@@ -17,17 +17,16 @@ export default class AllCategories extends Component {
       <Grid className="all-categories-box">
           <h2>Categories</h2>
 
-            <Row>
-
+            <Row className="row-mapping">
             {
               allCategories && allCategories.map(category => {
                 return (
-                  <Col md={4} key={category.id} className="category-box">
+                  <Col md={3} key={category.id} className="category-box">
                       <Link to={`/categories/${category.id}`}>
-                        <Image src={category.imageUrl} rounded/>
+                        <Image src={category.imageUrl} className="thumbnail-photo"/>
                         <h2>{category.name}</h2>
                         </Link>
-                        <p>{category.description}</p>
+                        <div className="category-description">{category.description}</div>
                   </Col>
                 )
               })

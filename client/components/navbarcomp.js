@@ -11,7 +11,7 @@ const NavbarComp = ({ handleClick, isLoggedIn }) => (
       <Navbar.Header>
         <Navbar.Brand>
           <Link to="/">
-            <h1>AIRPLAY</h1>
+            <h1 className="navbar-logo">AirPlay</h1>
           </Link>
         </Navbar.Brand>
       </Navbar.Header>
@@ -27,9 +27,10 @@ const NavbarComp = ({ handleClick, isLoggedIn }) => (
         ) : (
             <div>
               {/* The navbar will show these links before you log in */}
-              <NavBar<Link to="/login" className="nav-bar-item">Login</Link>
-              <Link to="/signup" className="nav-bar-item">Sign Up</Link>
-              <Link to="/instruments" className="nav-bar-item">All Instruments</Link>
+                <Link to="/instruments" className="nav-bar-item">All Instruments</Link>
+                <Link to="/login" className="nav-bar-item">Login</Link>
+                <Link to="/signup" className="nav-bar-item">Sign Up</Link>
+
             </div>
           )}
       </Nav>
