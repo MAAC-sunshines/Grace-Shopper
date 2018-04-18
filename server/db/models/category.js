@@ -4,7 +4,7 @@ const db = require('../db');
 const Category = db.define('category', {
     name: {
         type: Sequelize.ENUM,
-        values: ['string', 'woodwind', 'percussion', 'brass', 'keyboard'],
+        values: ['String', 'Woodwind', 'Percussion', 'Brass', 'Keyboard'],
         allowNull: false
     },
     imageUrl: {
