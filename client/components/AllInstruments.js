@@ -41,6 +41,7 @@ export default class AllInstruments extends Component {
                 .indexOf(this.state.query) !== -1)
     }
     render() {
+        const {isLoggedIn} = this.props;
         return (
             <Grid className="all-categories-box">
                 <div className="subheader">
@@ -49,16 +50,18 @@ export default class AllInstruments extends Component {
                         placeholder="Enter instrument name"
                         onChange={this.handleChange}
                     />
-                    <div className="add-instrument">
-                        <Button bsStyle="primary" bsSize="xsmall" onClick={this.showForm}>ADD NEW INSTRUMENT</Button>
-                        {
-                            this.state.showForm ? <AddInstrumentsForm handleSubmit={(event) => this.props.addNewInstrument(event)} cancelClick={this.cancelForm} /> : null
-                        }
-                    </div>
+                    {
+                        isLoggedIn &&
+                        <div className="add-instrument">
+                            <Button bsStyle="primary" bsSize="xsmall" onClick={this.showForm}>ADD NEW INSTRUMENT</Button>
+                            {
+                                this.state.showForm ? <AddInstrumentsForm handleSubmit={(event) => this.props.addNewInstrument(event)} cancelClick={this.cancelForm} /> : null
+                            }
+                        </div>
+                    }
                 </div>
                 <Instruments instruments={this.instruments} />
             </Grid>
         )
     }
 }
-
