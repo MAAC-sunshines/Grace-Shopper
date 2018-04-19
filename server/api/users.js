@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
+const {User, Order, OrderInstrument} = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
@@ -11,4 +11,36 @@ router.get('/', (req, res, next) => {
   })
     .then(users => res.json(users))
     .catch(next)
+})
+
+router.get('/:id', (req, res, next) => {
+  User.findById(req.params.id)
+    .then(user => res.json(user))
+    .catch(next)
+})
+
+//route to get ALL PREVIOUS ORDERS on ORDER HISTORY PAGE
+router.get('/:id/order-history', (req, res, next) => {
+  Order.findAll({
+    where: {
+      userId: req.params.id
+      }
+    })
+    .then(allOrders => {
+      res.json(allOrders)
+    })
+    .catch(err => console.error(err))
+})
+
+//route to get a SINGLE ORDER
+router.get('/:id/order-history/:orderId', (req, res, next) => {
+  OrderInstrument.findAll({
+    where: {
+      orderId: req.params.orderId
+      }
+    })
+    .then(singleOrder => {
+      res.json(singleOrder)
+    })
+    .catch(err => console.error(err))
 })
