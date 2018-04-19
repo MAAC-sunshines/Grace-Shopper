@@ -126,3 +126,6 @@ li {
   padding: 0;
   margin: 0;
 }
+#cart-icon {
+  width: 2em;
+}
