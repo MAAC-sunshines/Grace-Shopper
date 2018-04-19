@@ -1,12 +1,14 @@
-import { fetchInstrument, deleteInstrument, getInstrument, putInstrument } from '../store';
+import { fetchInstrument, deleteInstrument, getInstrument, putInstrument, updateCart } from '../store';
 import React from 'react';
 import { connect } from 'react-redux';
 import SingleInstrument from '../components/SingleInstrument';
 import UpdateInstrument from '../components/UpdateInstrument';
+import Cart from '../components/Cart';
 
 const mapStateToProps = state => {
     return {
-        selectedInstrument: state.selectedInstrument
+        selectedInstrument: state.selectedInstrument,
+        cart: state.cart
     };
 };
 
@@ -46,6 +48,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             }
             dispatch(putInstrument(instrument, ownProps.history));
             dispatch(getInstrument(''));
+        },
+        addToCart(event, instrument) {
+            event.preventDefault();
+            return dispatch(updateCart(instrument));
         }
     };
 };

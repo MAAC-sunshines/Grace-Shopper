@@ -8,6 +8,7 @@ import AllCategoriesContainer from './containers/AllCategoriesContainer';
 import {me} from './store'
 import SingleInstrumentContainer from './containers/SingleInstrumentContainer';
 import SingleCategoryContainer from './containers/SingleCategoryContainer';
+import Cart from './components/Cart';
 
 /**
  * COMPONENT
@@ -26,6 +27,7 @@ class Routes extends Component {
         <Route exact path="/" component={AllCategoriesContainer} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
+        <Route path="/cart" component={Cart} />
         <Route path="/categories/:id" component={SingleCategoryContainer} />
         <Route exact path="/instruments" component={AllInstrumentsContainer} />
         <Route exact path="/instruments/:id" component={SingleInstrumentContainer} />

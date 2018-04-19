@@ -30,7 +30,9 @@ const NavbarComp = ({ handleClick, isLoggedIn }) => (
                 <Link to="/instruments" className="nav-bar-item">All Instruments</Link>
                 <Link to="/login" className="nav-bar-item">Login</Link>
                 <Link to="/signup" className="nav-bar-item">Sign Up</Link>
-
+                <Link to="/cart" className="nav-bar-item">
+                  <img id="cart-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Shopping_cart_icon.svg/2000px-Shopping_cart_icon.svg.png" />
+                </Link>
             </div>
           )}
       </Nav>

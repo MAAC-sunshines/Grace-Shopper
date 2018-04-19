@@ -5,6 +5,9 @@ import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import UpdateInstrument from './UpdateInstrument';
+import { CartContainer } from '../containers/SingleInstrumentContainer';
+
+
 export default class SingleProduct extends Component {
     constructor(props){
         super(props);
@@ -28,6 +31,10 @@ export default class SingleProduct extends Component {
                 <h2>{instrument.name}</h2>
                 <Image src={instrument.imageUrl} rounded/>
                 <h3>Price: ${instrument.cost}</h3>
+                <Button bsStyle="primary" bsSize="xsmall" onClick={
+                    (event) => this.props.addToCart(event, instrument)}>
+                    Add To Cart
+                </Button>
                 <h4>Category: {instrument.category}</h4>
                 <h4>Description: </h4>
                 <p>{instrument.description}</p>
