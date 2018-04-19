@@ -24,23 +24,29 @@ export default class SingleProduct extends Component {
     render() {
         const instrument = this.props.selectedInstrument;
         return (
-            <div>
-                <h2>{instrument.name}</h2>
-                <Image src={instrument.imageUrl} rounded/>
-                <h3>Price: ${instrument.cost}</h3>
-                <h4>Category: {instrument.category}</h4>
-                <h4>Description: </h4>
-                <p>{instrument.description}</p>
-                <Button bsStyle="primary" bsSize="xsmall" onClick={
-                    (event) => this.props.handleDelete(event, instrument.id)}>
-                    Delete Instrument</Button>
-                <Button bsStyle="primary" bsSize="xsmall" onClick={this.showForm}>Edit Instrument</Button>
-                <div>
-                {
-                    this.state.showForm && <UpdateInstrument selectedInstrument={instrument} handleSubmit={this.props.handleSubmit.bind(this, instrument)} />
-                }
-                </div>
-            </div>
+            <Grid>
+              <Row>
+                <Col md={8}>
+                  <h2>{instrument.name}</h2>
+                  <Image src={instrument.imageUrl} className="single-product-img"/>
+                </Col>
+                <Col md={4}>
+                  <h3>Price: ${instrument.cost}</h3>
+                  <h4>Category: {instrument.category}</h4>
+                  <h4>Description: </h4>
+                  <p>{instrument.description}</p>
+                  <Button bsStyle="primary" bsSize="xsmall" onClick={
+                      (event) => this.props.handleDelete(event, instrument.id)}>
+                      Delete Instrument</Button>
+                  <Button bsStyle="primary" bsSize="xsmall" onClick={this.showForm}>Edit Instrument</Button>
+                  <div>
+                  {
+                      this.state.showForm && <UpdateInstrument selectedInstrument={instrument} handleSubmit={this.props.handleSubmit.bind(this, instrument)} />
+                  }
+                  </div>
+                </Col>
+              </Row>
+            </Grid>
         )
     }
 }

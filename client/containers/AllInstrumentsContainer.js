@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import AllInstruments from '../components/AllInstruments';
-import { fetchInstruments, fetchAddInstrument } from '../reducers/instruments';
+import { fetchInstruments, addInstrumentsPost } from '../reducers/instruments';
 
 
 const mapStateToProps = function(state) {
@@ -14,8 +14,17 @@ const mapDispatchToProps = function(dispatch, ownProps) {
     loadAllInstruments: function() {
       dispatch(fetchInstruments())
     },
-    addNewInstrument: function () {
-      dispatch(fetchAddInstrument())
+    addNewInstrument: function(event) {
+      event.preventDefault();
+      console.log('EVENT', event.target.name.value)
+      const body = {
+        name: event.target.name.value,
+        type: event.target.categoryId.value,
+        imageUrl: event.target.imageUrl.value,
+        cost: event.target.cost.value,
+        description: event.target.description.value
+      }
+      dispatch(addInstrumentsPost(body))
     }
   }
 }

@@ -36,8 +36,6 @@ const NavbarComp = ({ handleClick, isLoggedIn }) => (
       </Nav>
       <hr />
     </Navbar>
-
-
 )
 
 /**
