@@ -102,11 +102,13 @@ li {
 
 .single-product-img {
   width: 500px;
+  height: 450px;
   border: 4px solid gray;
 }
 
 .single-product-img:hover {
   width: 500px;
+  height: 450px;
   border: 4px solid gray;
   box-shadow: 4px 4px 50px gray;
   position: relative;
@@ -123,4 +125,7 @@ li {
 .single-product-btns {
   padding: 0;
   margin: 0;
+}
+#cart-icon {
+  width: 2em;
 }
