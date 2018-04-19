@@ -13,6 +13,7 @@ export default class AllInstruments extends Component {
         }
         this.showForm = this.showForm.bind(this);
         this.cancelForm = this.cancelForm.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
     componentDidMount() {
         this.props.loadAllInstruments();
