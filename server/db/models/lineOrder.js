@@ -1,20 +1,24 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const OrderInstrument = db.define('orderInstrument', {
+const LineOrder = db.define('lineOrder', {
     quantity: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    purchasePrice: {
+    itemPrice: {
         type: Sequelize.INTEGER,
         validate: {
             notEmpty: true
         }
     },
-    purchaseDate: {
-        type: Sequelize.STRING
+    totalPrice: {
+      type: Sequelize.VIRTUAL,
+      get: function() {
+        return this.getDataValue('itemPrice') * this.getDataValue('quantity')
+      }
     }
+
 })
 
-module.exports = OrderInstrument;
+module.exports = LineOrder;
