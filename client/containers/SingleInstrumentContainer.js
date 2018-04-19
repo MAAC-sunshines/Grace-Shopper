@@ -3,11 +3,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import SingleInstrument from '../components/SingleInstrument';
 import UpdateInstrument from '../components/UpdateInstrument';
+import PropTypes from 'prop-types'; 
 
 const mapStateToProps = state => {
     return {
         selectedInstrument: state.selectedInstrument,
-        allCategories: state.allCategories[0]
+        allCategories: state.allCategories[0],
+        isLoggedIn: !!state.user.id
     };
 };
 
@@ -57,3 +59,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const SingleInstrumentContainer = connect(mapStateToProps, mapDispatchToProps)(SingleInstrument);
 
 export default SingleInstrumentContainer;
+
+SingleInstrument.propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired
+}

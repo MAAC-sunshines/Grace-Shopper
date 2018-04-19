@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
 import AllInstruments from '../components/AllInstruments';
 import { fetchInstruments, addInstrumentsPost } from '../reducers/instruments';
-
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const mapStateToProps = function(state) {
   return {
-    allInstruments: state.allInstruments[0]
+    allInstruments: state.allInstruments[0],
+    isLoggedIn: !!state.user.id
   }
 }
 
@@ -29,6 +31,11 @@ const mapDispatchToProps = function(dispatch, ownProps) {
   }
 }
 
-const AllInstrumentsContainer = connect(mapStateToProps, mapDispatchToProps)(AllInstruments);
+const AllInstrumentsContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(AllInstruments));
 
 export default AllInstrumentsContainer;
+
+AllInstruments.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired
+}
+
