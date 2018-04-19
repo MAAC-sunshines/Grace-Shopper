@@ -15,6 +15,7 @@ export default class SingleProduct extends Component {
     }
     componentDidMount() {
         this.props.loadInstrument();
+        this.props.loadAllCategories();
     }
     showForm(){
         this.setState({
@@ -23,6 +24,9 @@ export default class SingleProduct extends Component {
     }
     render() {
         const instrument = this.props.selectedInstrument;
+        const categoryId = instrument.categoryId;
+        const categories = this.props.allCategories;
+        const categoryName = categories && categories[categoryId].name;
         return (
             <Grid>
               <Row>
