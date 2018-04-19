@@ -19,10 +19,11 @@ const NavbarComp = ({ handleClick, isLoggedIn }) => (
         {isLoggedIn ? (
           <div>
             {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
-            <button onClick={handleClick}>
+            <Link to="/home" className="nav-bar-item">Home</Link>
+            <Link to="/instruments" className="nav-bar-item">All Instruments</Link>
+            <Link to="/" className="nav-bar-item" onClick={handleClick}>
               Logout
-            </button>
+            </Link>
           </div>
         ) : (
             <div>
