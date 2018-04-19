@@ -26,6 +26,12 @@ const User = db.define('user', {
   },
   googleId: {
     type: Sequelize.STRING
+  },
+  firstName: {
+    type: Sequelize.STRING
+  },
+  lastName: {
+    type: Sequelize.STRING
   }
 })
 
@@ -41,7 +47,7 @@ User.prototype.correctPassword = function (candidatePwd) {
 /**
  * classMethods
  */
-User.generateSalt = function () {
+User.generateSalt = function () {   // Salt is an extra unique key during hashing
   return crypto.randomBytes(16).toString('base64')
 }
 
