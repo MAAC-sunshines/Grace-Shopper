@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 //ACTION TYPES
-const ADD_TO_CART = 'UPDATE_CART';
+const ADD_TO_CART = 'ADD_TO_CART';
 const GET_CART = 'GET_CART';
 
 //ACTION CREATORS
@@ -29,7 +29,10 @@ export default function reducer(state = [], action) {
 }
 
 //thunk
-export function fetchUpdateCart() {
+export function postCart(instrument,userId,itemPrice) {
+  console.log('ITEM!!!', instrument, userId, itemPrice)
+  const instrumentId = instrument.id;
+  const item = {instrumentId, userId, itemPrice}
   return function (dispatch) {
     axios.post('/api/cart', item)
       .then(res => res.data)

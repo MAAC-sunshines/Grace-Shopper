@@ -28,7 +28,7 @@ const Order = db.define('order', {
         .then(orders => {
           if (orders) {
             const total = orders.reduce(function (sum, line) {
-              sum + line.totalPrice
+              sum + line.itemPrice
             }, 0)
             return total
           }

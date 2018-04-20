@@ -24,11 +24,11 @@ export default class SingleProduct extends Component {
     }
     render() {
         const instrument = this.props.selectedInstrument;
-        const {isAdmin} = this.props;
+        const {isAdmin, user} = this.props;
         const categories = this.props.allCategories;
         const category = categories && categories[instrument.categoryId];
         const categoryName = category && category.name;
-
+        const userId = user && user.id;
         return (
             <Grid>
                 <Row>
@@ -41,6 +41,11 @@ export default class SingleProduct extends Component {
                         <h4>Category: {categoryName}</h4>
                         <h4>Description: </h4>
                         <p>{instrument.description}</p>
+                        <Button bsStyle="primary" bsSize="xsmall" onClick={
+                            (event) => this.props.addToCart(event, instrument, userId)}>
+                            Add To Cart
+                        </Button>
+
                         {
                             isAdmin &&
                             <div className="single-form">
