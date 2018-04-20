@@ -20,7 +20,7 @@
 const Instrument = require('./instrument');
 const Category = require('./category');
 const Order = require('./order');
-const LineOrder = require('./LineOrder');
+const LineOrder = require('./lineOrder');
 const User = require('./user');
 Instrument.belongsTo(Category);
 Category.hasMany(Instrument);
