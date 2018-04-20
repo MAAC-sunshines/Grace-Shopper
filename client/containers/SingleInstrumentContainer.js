@@ -12,7 +12,7 @@ const mapStateToProps = state => {
         cart: state.cart,
         allCategories: state.allCategories[0],
         isAdmin: !!state.user.admin,
-        userId: state.user.id
+        user: state.user
     };
 };
 
@@ -57,7 +57,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
               userId,
               itemPrice: instrument.cost
             }
-            return dispatch(postCart(body));
+            console.log('BODY', body)
+            return dispatch(postCart(instrument, body.userId, body.itemPrice));
         }
     };
 };
@@ -67,5 +68,6 @@ const SingleInstrumentContainer = connect(mapStateToProps, mapDispatchToProps)(S
 export default SingleInstrumentContainer;
 
 SingleInstrument.propTypes = {
-    isAdmin: PropTypes.bool.isRequired
+    isAdmin: PropTypes.bool.isRequired,
+    user: PropTypes.object
 }

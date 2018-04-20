@@ -2,10 +2,12 @@ const router = require('express').Router()
 const { LineOrder } = require('../db/models')
 module.exports = router
 
-router.post('/cart', (req, res, next) => {
-  LineOrder.create(req.body)
+router.post('/', (req, res, next) => {
+  console.log('req.body', req.body)
+  LineOrder.create(
+    req.body.instrument)
     .then(created => {
       res.json(created)
     })
-    .catch(next)
+    .catch(err => console.log(err))
 })
