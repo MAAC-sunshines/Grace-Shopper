@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
 import AllUsers from '../components/AllUsers';
 import { fetchUsers } from '../reducers/allUsers';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const mapStateToProps = function(state) {
   return {
-    users: state.allUsers[0],
+    users: state.allUsers,
     isAdmin: !!state.user.admin
   }
 }
@@ -19,7 +18,7 @@ const mapDispatchToProps = function(dispatch, ownProps) {
   }
 }
 
-const AllUsersContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(AllUsers));
+const AllUsersContainer = connect(mapStateToProps, mapDispatchToProps)(AllUsers);
 
 export default AllUsersContainer;
 

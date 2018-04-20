@@ -11,8 +11,8 @@ export default class AllUsers extends Component {
     }
     render() {
         const allUsers = this.props.users;
-        const { isAdmin } = this.props.isAdmin;
-        console.log('isAdmin', this.props);
+        const isAdmin = this.props.isAdmin;
+        console.log('allUsers', allUsers);
         return (
             <div>
                 {
@@ -24,12 +24,13 @@ export default class AllUsers extends Component {
                                 allUsers && allUsers.map(user => {
                                     return (
                                         <div key={user.id}>
-                                            <h4>Name: {user.firstName}</h4>
+                                            <h4>Email: {user.email}</h4>
+                                            <h5>User ID: {user.id}</h5>
                                         </div>
                                     )
                                 })
                             }
-                        </div >
+                        </div>
                     )
                 }
             </div>
