@@ -29,9 +29,9 @@ Or: Don't worry about.
 **Issue: How to structure that data in the backend?**
 
 Create an `Order` model
-  * `Order` belongsToMany `Instrument` through `OrderInstrument`
+  * `Order` belongsToMany `Instrument` through `LineOrder`
   * `Order` belongsTo `User` (allowNull: true)
-  * `OrderInstrument`...
+  * `LineOrder`...
     - qty: Int
     - purchase_price: Int
 

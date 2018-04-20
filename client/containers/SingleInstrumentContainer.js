@@ -1,13 +1,15 @@
-import { fetchInstrument, deleteInstrument, getInstrument, putInstrument, fetchAllCategories } from '../store';
+import { fetchInstrument, deleteInstrument, getInstrument, putInstrument, fetchAllCategories, updateCart } from '../store';
 import React from 'react';
 import { connect } from 'react-redux';
 import SingleInstrument from '../components/SingleInstrument';
 import UpdateInstrument from '../components/UpdateInstrument';
+import Cart from '../components/Cart';
 import PropTypes from 'prop-types'; 
 
 const mapStateToProps = state => {
     return {
         selectedInstrument: state.selectedInstrument,
+        cart: state.cart,
         allCategories: state.allCategories[0],
         isAdmin: !!state.user.admin
     };
@@ -52,6 +54,10 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             }
             dispatch(putInstrument(instrument, ownProps.history));
             dispatch(getInstrument(''));
+        },
+        addToCart(event, instrument) {
+            event.preventDefault();
+            return dispatch(updateCart(instrument));
         }
     };
 };
