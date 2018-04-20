@@ -8,6 +8,10 @@ export function getAllOrders(allOrders) {
   const action = { type: GET_ALL_ORDERS, allOrders };
   return action;
 }
+// export function getAllOrders(allOrders) {
+//   const action = { type: GET_ALLORDERS, allOrders };
+//   return action;
+// }
 
 //THUNKS
 export function fetchAllOrders(userId) {
