@@ -4,8 +4,6 @@ import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import UpdateInstrument from './UpdateInstrument';
-import { CartContainer } from '../containers/SingleInstrumentContainer';
-
 
 export default class SingleProduct extends Component {
     constructor(props) {
@@ -32,7 +30,6 @@ export default class SingleProduct extends Component {
         const categoryName = category && category.name;
 
         return (
-
             <Grid>
                 <Row>
                     <Col md={8}>
@@ -48,6 +45,7 @@ export default class SingleProduct extends Component {
                             (event) => this.props.addToCart(event, instrument, this.props.userId)}>
                             Add To Cart
                         </Button>
+
                         {
                             isAdmin &&
                             <div className="single-form">

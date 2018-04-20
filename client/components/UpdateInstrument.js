@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function InstrumentForm(props){
+export default function UpdateInstrument(props){
     const instrument = props.selectedInstrument;
     return (
         <div>

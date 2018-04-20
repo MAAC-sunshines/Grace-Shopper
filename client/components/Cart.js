@@ -40,24 +40,24 @@ export default class Cart extends Component {
                   <Col md={3} key={instrument.id} className="category-box">
                       <Link to={`/instruments/${instrument.id}`}>
                         <Image src={instrument.imageUrl} rounded className="thumbnail-photo"/>
-                        <li>
-                          <h2>{instrument.name}</h2>
-                          <p>Unit Price: ${instrument.cost}</p>
-                          <p>Quantity: {instrument.quantity}</p>
-                          {
-                            instrument.totalPricePerInstrument = instrument.cost * instrument.quantity
-                          }
-                          <p>Total Price: ${instrument.totalPricePerInstrument}</p>
-                        </li>
-                        <input
-                          placeholder = "Enter quantity"
-                          // add a handle change function that updates quantity in the cart on the backend
-                        />
-                        <Button bsStyle="primary" bsSize="xsmall">
-                            Remove From Cart
-                            {/* add an onClick */}
-                        </Button>
                       </Link>
+                      <li>
+                        <h2>{instrument.name}</h2>
+                        <p>Unit Price: ${instrument.cost}</p>
+                        <p>Quantity: {instrument.quantity}</p>
+                        {
+                          instrument.totalPricePerInstrument = instrument.cost * instrument.quantity
+                        }
+                        <p>Total Price: ${instrument.totalPricePerInstrument}</p>
+                      </li>
+                      <input
+                        placeholder = "Enter quantity"
+                        // add a handle change function that updates quantity in the cart on the backend
+                      />
+                      <Button bsStyle="primary" bsSize="xsmall">
+                          Remove From Cart
+                          {/* add an onClick */}
+                      </Button>
                   </Col>
                 )
               })
