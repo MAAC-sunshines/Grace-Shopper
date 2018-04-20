@@ -45,7 +45,7 @@ export default class SingleProduct extends Component {
                         <h4>Description: </h4>
                         <p>{instrument.description}</p>
                         <Button bsStyle="primary" bsSize="xsmall" onClick={
-                            (event) => this.props.addToCart(event, instrument)}>
+                            (event) => this.props.addToCart(event, instrument, this.props.userId)}>
                             Add To Cart
                         </Button>
                         {

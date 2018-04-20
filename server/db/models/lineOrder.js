@@ -4,7 +4,8 @@ const db = require('../db');
 const LineOrder = db.define('lineOrder', {
     quantity: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 1
     },
     itemPrice: {
         type: Sequelize.INTEGER,
@@ -18,7 +19,6 @@ const LineOrder = db.define('lineOrder', {
         return this.getDataValue('itemPrice') * this.getDataValue('quantity')
       }
     }
-
 })
 
 module.exports = LineOrder;
