@@ -27,10 +27,10 @@ const User = require('./user');
 Instrument.belongsTo(Category);
 Category.hasMany(Instrument);
 Order.belongsTo(User, { allowNull: true });
-Order.belongsToMany(Instrument, {
+User.belongsToMany(Instrument, {
   through: LineOrder
 });
-LineOrder.belongsTo(User);
+LineOrder.belongsTo(Order);
 User.hasMany(LineOrder);
 
 module.exports = {
