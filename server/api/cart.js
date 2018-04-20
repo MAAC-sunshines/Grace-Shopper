@@ -36,6 +36,17 @@ router.post('/', (req, res, next) => {
 
 });
 
+//updates quantity
+router.put('/', (req, res, next) => {
+  LineOrder.findOne({
+    where: {
+      instrumentId: req.body.instrumentId
+    }
+  }).then(order => order.update(req.body))
+  .then(updatedOrder => res.status(201).json(updatedOrder))
+  .catch(err => console.log(err));
+});
+
 //deletes a single instrument from the cart (lineOrder)
 router.delete('/', (req, res, next) => {
   LineOrder.destroy({
@@ -44,8 +55,8 @@ router.delete('/', (req, res, next) => {
       instrumentId: req.body.instrumentId
     }
   }).then(res.sendStatus(204))
-  .catch(err => console.log(err))
-})
+  .catch(err => console.log(err));
+});
 
 //clears cart completely
 router.delete('/', (req, res, next) => {
@@ -55,5 +66,5 @@ router.delete('/', (req, res, next) => {
       orderId: null
     }
   }).then(res.sendStatus(204))
-  .catch(err => console.log(err))
-})
+  .catch(err => console.log(err));
+});
