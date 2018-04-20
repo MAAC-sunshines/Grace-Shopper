@@ -11,7 +11,7 @@
  */
 const {Promise} = require('sequelize')
 const db = require('../server/db')
-// const {User} = require('../server/db/models')
+const {User} = require('../server/db/models')
 
 const { Instrument, Category } = require('../server/db/models');
 
@@ -85,6 +85,16 @@ const categories = [
   }
 ]
 
+const users = [
+  {
+    email: 's.alexa.moy@gmail.com',
+    password: '123',
+    firstName: 'Alexa',
+    lastName: 'Moy',
+    admin: true
+  }
+]
+
 //Here we would have associations
 
 const seed = () =>
@@ -104,10 +114,10 @@ const seed = () =>
       Instrument.create(instrument)
     ))
   )
-//   .then(() =>
-//   Promise.all(users.map(user =>
-//     User.create(user))
-//   )
+  .then(() =>
+  Promise.all(users.map(user =>
+    User.create(user))
+  ))
 
 
 const main = () => {
@@ -128,17 +138,6 @@ const main = () => {
 };
 
 main();
-
-// {
-//     name: '',
-//     type: '',
-//     imageUrl: '',
-//     cost: ,
-//     category: '',
-//     description: 'Lorem ipsum'
-//   },
-
-
 
 // async function seed () {
 //   await db.sync({force: true})

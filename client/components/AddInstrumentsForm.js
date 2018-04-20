@@ -20,7 +20,14 @@ export default function AddInstrumentsForm(props){
                 </h3>
                 <h4>
                     <label>Category: </label>
-                    <input type="text" name="categoryId" defaultValue="Guitar"/>
+                    <select type="text" name="categoryId" defaultValue="Please Choose">
+                      <option></option>
+                      <option>Strings</option>
+                      <option>Woodwinds</option>
+                      <option>Percussions</option>
+                      <option>Brass</option>
+                      <option>Keyboards</option>
+                    </select>
                 </h4>
                 <h4>
                     <label>Description: </label>
