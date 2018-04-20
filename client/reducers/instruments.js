@@ -25,7 +25,7 @@ export default function allInstruments(state = [], action) {
     case GET_ALL_INSTRUMENTS:
       return [...state, action.allInstruments]
     case ADD_INSTRUMENT:
-      return [...state, state.allInstruments = [...state.allInstruments, action.instrument]]
+      return [...state, allInstruments = [...state.allInstruments, action.instrument]]
     default:
       return state
   }
