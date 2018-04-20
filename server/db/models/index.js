@@ -20,18 +20,13 @@
 const Instrument = require('./instrument');
 const Category = require('./category');
 const Order = require('./order');
-const LineOrder = require('./lineOrder');
+const LineOrder = require('./LineOrder');
 const User = require('./user');
-
 Instrument.belongsTo(Category);
 Category.hasMany(Instrument);
-
 Order.belongsTo(User, { allowNull: true });
-
 Order.belongsToMany(Instrument, { through: LineOrder });
-Instrument.belongsToMany(Order, { through: LineOrder})
-LineOrder.belongsTo(User, { allowNull: true });
-User.hasMany(LineOrder);
+
 
 module.exports = {
   Instrument,

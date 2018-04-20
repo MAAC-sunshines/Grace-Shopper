@@ -52,7 +52,7 @@ export default class SingleProduct extends Component {
                     this.state.showForm && <UpdateInstrument selectedInstrument={instrument} handleSubmit={this.props.handleSubmit.bind(this, instrument)} />
                 }
                 </div>
-            </div>
+
 
             <Grid>
                 <Row>
@@ -88,6 +88,7 @@ export default class SingleProduct extends Component {
                     </Col>
                 </Row>
             </Grid>
+            </div>
         )
     }
 }
