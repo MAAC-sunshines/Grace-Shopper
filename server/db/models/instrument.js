@@ -21,12 +21,12 @@ const Instrument = db.define('instrument', {
   },
   description: {
     type: Sequelize.TEXT
-  },
-  hooks: {
-    beforeCreate: function() {
-
-    }
   }
+  // hooks: {
+  //   beforeCreate: function() {
+
+  //   }
+  // }
 });
 
 

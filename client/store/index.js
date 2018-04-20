@@ -9,6 +9,7 @@ import allCategories from '../reducers/allCategories';
 import selectedCategory from '../reducers/singleCategory';
 import orderHistory from '../reducers/orderHistory';
 import cart from '../reducers/cart';
+import singleOrder from '../reducers/singleOrder';
 
 const reducer = combineReducers({
   user,
@@ -17,6 +18,7 @@ const reducer = combineReducers({
   allInstruments,
   allCategories,
   orderHistory,
+  singleOrder,
   cart
 })
 const middleware = composeWithDevTools(applyMiddleware(
