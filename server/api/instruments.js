@@ -27,7 +27,7 @@ router.get('/:id', (req, res, next) => {
 router.post('/', (req, res, next) => {
   Instrument.create(req.body)
     .then(instrument => {
-      res.json()
+      res.json(instrument)
     })
     .catch(next);
 })

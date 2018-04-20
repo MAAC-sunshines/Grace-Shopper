@@ -18,7 +18,7 @@ const mapDispatchToProps = function(dispatch, ownProps) {
     },
     addNewInstrument: function(event) {
       event.preventDefault();
-      console.log('EVENT', event.target.name.value)
+
       const body = {
         name: event.target.name.value,
         type: event.target.categoryId.value,

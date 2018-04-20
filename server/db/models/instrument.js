@@ -24,5 +24,10 @@ const Instrument = db.define('instrument', {
   }
 });
 
+
+// Instrument.beforeCreate(() => {
+//   instance.setCategory(categoryId)
+// })
+
 module.exports = Instrument;
 
