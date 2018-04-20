@@ -25,7 +25,7 @@ if (process.env.NODE_ENV !== 'production') require('../secrets')
 
 // passport registration
 passport.serializeUser((user, done) => done(null, user.id))
-passport.deserializeUser((id, done) =>
+passport.deserializeUser((id, done) => //gives us req.user!!!!!!
   db.models.user.findById(id)
     .then(user => done(null, user))
     .catch(done))
@@ -36,20 +36,26 @@ const createApp = () => {
 
   // body parsing middleware
   app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({ extended: true }))
+  app.use(bodyParser.urlencoded({ extended: true })) //this gives us req.body
 
   // compression middleware
   app.use(compression())
 
   // session middleware with passport
   app.use(session({
-    secret: process.env.SESSION_SECRET || 'my best friend is Cody',
-    store: sessionStore,
+    secret: process.env.SESSION_SECRET || 'my best friend is Cody', //unique for each consumer
+    store: sessionStore, // where is our store?
     resave: false,
     saveUninitialized: false
   }))
-  app.use(passport.initialize())
-  app.use(passport.session())
+
+  app.use(function (req, res, next) {
+    console.log('session', req.session.user);
+    next();
+  })
+
+  app.use(passport.initialize()) //registering passport
+  app.use(passport.session())  //hooks passport into our session. HAS TO COME AFTER OUR SESSION MIDDLEWARE (but passport serializeUser comes in the beginning before bodyParser)
 
   // auth and api routes
   app.use('/auth', require('./auth'))

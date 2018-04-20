@@ -11,7 +11,7 @@
  */
 const {Promise} = require('sequelize')
 const db = require('../server/db')
-// const {User} = require('../server/db/models')
+const {User} = require('../server/db/models')
 
 const { Instrument, Category } = require('../server/db/models');
 
@@ -21,7 +21,7 @@ const instruments = category => [
     type: 'guitar',
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAd7Zb9NI_Wxl02evVl23rfZXvHgzzo97rjzKqMxmq5Wxxa9JG',
     cost: 515,
-    categoryId: category.String.id,
+    categoryId: category.Strings.id,
     description: 'Lorem ipsum'
   },
   {
@@ -29,7 +29,7 @@ const instruments = category => [
     type: 'bassoon',
     imageUrl: 'https://www.forrestsmusic.com/images/V-49.jpg',
     cost: 327,
-    categoryId: category.Woodwind.id,
+    categoryId: category.Woodwinds.id,
     description: 'Lorem ipsum'
   },
   {
@@ -37,7 +37,7 @@ const instruments = category => [
     type: 'drums',
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz8n5LoSVoCrpqEuIbUE-w7cg_H6XQTdXDQJxPBTy8uceGDPNc',
     cost: 314,
-    categoryId: category.Percussion.id,
+    categoryId: category.Percussions.id,
     description: 'Lorem ipsum'
   }, {
     name: 'Mahia Trumpet',
@@ -52,24 +52,24 @@ const instruments = category => [
     type: 'accordian',
     imageUrl: 'https://www.elderly.com//media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/4/p4067329.jpg',
     cost: 666,
-    categoryId: category.Keyboard.id,
+    categoryId: category.Keyboards.id,
     description: 'Lorem ipsum'
   }
 ]
 
 const categories = [
   {
-    name: 'String',
+    name: 'Strings',
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAd7Zb9NI_Wxl02evVl23rfZXvHgzzo97rjzKqMxmq5Wxxa9JG',
     description: 'String instruments are musical instruments that produce sound from vibrating strings when the performer plays or sounds the strings in some manner.'
   },
   {
-    name: 'Woodwind',
+    name: 'Woodwinds',
     imageUrl: 'https://www.forrestsmusic.com/images/V-49.jpg',
     description: 'Woodwind instruments are a family of musical instruments within the more general category of wind instruments. There are two main types of woodwind instruments: flutes and reed instruments (otherwise called reed pipes). Woodwinds produce sound by splitting an exhaled air stream on a sharp edge, such as a reed or a fipple.'
   },
   {
-    name: 'Percussion',
+    name: 'Percussions',
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz8n5LoSVoCrpqEuIbUE-w7cg_H6XQTdXDQJxPBTy8uceGDPNc',
     description: 'A percussion instrument is a musical instrument that is sounded by being struck or scraped by a beater; struck, scraped or rubbed by hand; or struck against another similar instrument.'
   },
@@ -79,9 +79,19 @@ const categories = [
     description: `A brass instrument is a musical instrument that produces sound by sympathetic vibration of air in a tubular resonator in sympathy with the vibration of the player's lips. Brass instruments are also called labrosones, literally meaning "lip-vibrated instruments".`
   },
   {
-    name: 'Keyboard',
+    name: 'Keyboards',
     imageUrl: 'https://www.elderly.com//media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/p/4/p4067329.jpg',
     description: 'A keyboard instrument is a musical instrument played using a keyboard, a row of levers which are pressed by the fingers. The most common of these are the piano, organ, and various electronic keyboards, including synthesizers and digital pianos.'
+  }
+]
+
+const users = [
+  {
+    email: 's.alexa.moy@gmail.com',
+    password: '123',
+    firstName: 'Alexa',
+    lastName: 'Moy',
+    admin: true
   }
 ]
 
@@ -104,10 +114,10 @@ const seed = () =>
       Instrument.create(instrument)
     ))
   )
-//   .then(() =>
-//   Promise.all(users.map(user =>
-//     User.create(user))
-//   )
+  .then(() =>
+  Promise.all(users.map(user =>
+    User.create(user))
+  ))
 
 
 const main = () => {
@@ -128,17 +138,6 @@ const main = () => {
 };
 
 main();
-
-// {
-//     name: '',
-//     type: '',
-//     imageUrl: '',
-//     cost: ,
-//     category: '',
-//     description: 'Lorem ipsum'
-//   },
-
-
 
 // async function seed () {
 //   await db.sync({force: true})

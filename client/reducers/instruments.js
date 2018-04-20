@@ -44,3 +44,15 @@ export function fetchInstruments () {
   }
 }
 
+//thunk to add an instrument
+export function addInstrumentsPost (body) {
+  return function (dispatch) {
+    axios.post('/api/instruments', body)
+      .then(res => res.data)
+      .then(created => {
+        dispatch(addInstrument(created))
+      })
+      .catch(err => console.error(err))
+  }
+}
+
