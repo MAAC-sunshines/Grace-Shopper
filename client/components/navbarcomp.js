@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { logout } from '../store'
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 
-const NavbarComp = ({ handleClick, isLoggedIn }) => (
+const NavbarComp = ({ handleClick, isLoggedIn, isAdmin }) => (
 
   <Navbar className="nav-bar" fixedTop>
     <Navbar.Header>
@@ -21,6 +21,10 @@ const NavbarComp = ({ handleClick, isLoggedIn }) => (
           {/* The navbar will show these links after you log in */}
           <Link to="/home" className="nav-bar-item">Home</Link>
           <Link to="/instruments" className="nav-bar-item">All Instruments</Link>
+          {
+            isAdmin &&
+            <Link to="/users" className="nav-bar-item">Users</Link>
+          }
           <Link to="/" className="nav-bar-item" onClick={handleClick}>
           Logout
           </Link>
@@ -49,7 +53,8 @@ const NavbarComp = ({ handleClick, isLoggedIn }) => (
  */
 const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
+    isAdmin: !!state.user.admin
   }
 }
 
@@ -68,5 +73,6 @@ export default connect(mapState, mapDispatch)(NavbarComp)
  */
 NavbarComp.propTypes = {
   handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
+  isAdmin: PropTypes.bool.isRequired
 }
