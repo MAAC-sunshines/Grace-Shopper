@@ -21,13 +21,14 @@ const Instrument = db.define('instrument', {
   },
   description: {
     type: Sequelize.TEXT
+  },
+  hooks: {
+    beforeCreate: function() {
+
+    }
   }
 });
 
-
-// Instrument.beforeCreate(() => {
-//   instance.setCategory(categoryId)
-// })
 
 module.exports = Instrument;
 
