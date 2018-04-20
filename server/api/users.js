@@ -34,7 +34,7 @@ router.get('/:id/order-history', (req, res, next) => {
 
 //route to get a SINGLE ORDER
 router.get('/:id/order-history/:orderId', (req, res, next) => {
-  OrderInstrument.findAll({
+  OrderInstrument.findOne({
     where: {
       orderId: req.params.orderId
       }
@@ -44,3 +44,4 @@ router.get('/:id/order-history/:orderId', (req, res, next) => {
     })
     .catch(err => console.error(err))
 })
+
