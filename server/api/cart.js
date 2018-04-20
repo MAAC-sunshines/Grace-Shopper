@@ -36,3 +36,24 @@ router.post('/', (req, res, next) => {
 
 });
 
+//deletes a single instrument from the cart (lineOrder)
+router.delete('/', (req, res, next) => {
+  LineOrder.destroy({
+    where: {
+      userId: req.body.userId,
+      instrumentId: req.body.instrumentId
+    }
+  }).then(res.sendStatus(204))
+  .catch(err => console.log(err))
+})
+
+//clears cart completely
+router.delete('/', (req, res, next) => {
+  LineOrder.destroy({
+    where: {
+      userId: req.body.userId,
+      orderId: null
+    }
+  }).then(res.sendStatus(204))
+  .catch(err => console.log(err))
+})
