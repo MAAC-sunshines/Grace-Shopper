@@ -4,10 +4,15 @@ import axios from 'axios';
 const GET_ALLORDERS = 'GET_ALLORDERS';
 
 //ACTION CREATORS
-export function getAllOrders(allOrders) {
-  const action = { type: GET_ALLORDERS, allOrders };
-  return action;
+export const getAllOrders = function(allOrders) {
+  return { 
+    type: GET_ALLORDERS,
+    allOrders
 }
+// export function getAllOrders(allOrders) {
+//   const action = { type: GET_ALLORDERS, allOrders };
+//   return action;
+// }
 
 //THUNKS
 export function fetchAllOrders(categoryId) {
@@ -26,7 +31,7 @@ export function fetchAllOrders(categoryId) {
 export default function reducer(state = [], action) {
   switch (action.type) {
   case GET_ALLORDERS:
-    return action.selectedCategory;
+    return [...state, action.allOrders]
   default:
     return state;
   }

@@ -7,13 +7,15 @@ import allInstruments from '../reducers/instruments';
 import selectedInstrument from '../reducers/selectedInstrument';
 import allCategories from '../reducers/allCategories';
 import selectedCategory from '../reducers/singleCategory';
+import orderHistory from '../reducers/orderHistory';
 
 const reducer = combineReducers({
   user,
   selectedInstrument,
   selectedCategory,
   allInstruments,
-  allCategories
+  allCategories,
+  orderHistory
 })
 const middleware = composeWithDevTools(applyMiddleware(
   thunkMiddleware,
@@ -27,3 +29,4 @@ export * from '../reducers/singleCategory';
 export * from '../reducers/selectedInstrument';
 export * from '../reducers/instruments';
 export * from '../reducers/allCategories';
+export * from '../reducers/orderHistory';
