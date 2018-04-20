@@ -2,7 +2,7 @@ import { fetchInstrument, deleteInstrument, getInstrument, putInstrument, fetchA
 import React from 'react';
 import { connect } from 'react-redux';
 import SingleInstrument from '../components/SingleInstrument';
-import UpdateInstrument from '../components/UpdateInstrument';
+//import UpdateInstrument from '../components/UpdateInstrument';
 import Cart from '../components/Cart';
 import PropTypes from 'prop-types'; 
 
@@ -28,12 +28,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             event.preventDefault();
             dispatch(deleteInstrument(id, ownProps.history));
             dispatch(getInstrument(''));
-        },
-        handleClick(event) {
-            event.preventDefault();
-            return (
-                <UpdateInstrument />
-            )
         },
         handleSubmit(instrument, event) {
             event.preventDefault();
