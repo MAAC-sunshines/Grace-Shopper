@@ -9,7 +9,7 @@ const mapStateToProps = state => {
     return {
         selectedInstrument: state.selectedInstrument,
         allCategories: state.allCategories[0],
-        isLoggedIn: !!state.user.id
+        isAdmin: !!state.user.admin
     };
 };
 
@@ -61,5 +61,5 @@ const SingleInstrumentContainer = connect(mapStateToProps, mapDispatchToProps)(S
 export default SingleInstrumentContainer;
 
 SingleInstrument.propTypes = {
-    isLoggedIn: PropTypes.bool.isRequired
+    isAdmin: PropTypes.bool.isRequired
 }

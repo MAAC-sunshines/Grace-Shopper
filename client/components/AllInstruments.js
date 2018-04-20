@@ -41,7 +41,7 @@ export default class AllInstruments extends Component {
                 .indexOf(this.state.query) !== -1)
     }
     render() {
-        const {isLoggedIn} = this.props;
+        const {isAdmin} = this.props;
         return (
             <Grid className="all-categories-box">
                 <div className="subheader">
@@ -51,7 +51,7 @@ export default class AllInstruments extends Component {
                         onChange={this.handleChange}
                     />
                     {
-                        isLoggedIn &&
+                        isAdmin &&
                         <div className="add-instrument">
                             <Button bsStyle="primary" bsSize="xsmall" onClick={this.showForm}>ADD NEW INSTRUMENT</Button>
                             {
