@@ -38,7 +38,6 @@ export default class Cart extends Component {
               this.state && this.state.map(instrument => {
                 return (
                   <Col md={3} key={instrument.id} className="category-box">
-                      <Link to={`/instruments/${instrument.id}`}>
                         <Image src={instrument.imageUrl} rounded className="thumbnail-photo"/>
                         <li>
                           <h2>{instrument.name}</h2>
@@ -57,7 +56,6 @@ export default class Cart extends Component {
                             Remove From Cart
                             {/* add an onClick */}
                         </Button>
-                      </Link>
                   </Col>
                 )
               })
