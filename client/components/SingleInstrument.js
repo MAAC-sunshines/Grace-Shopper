@@ -23,7 +23,7 @@ export default class SingleProduct extends Component {
     }
     render() {
         const instrument = this.props.selectedInstrument;
-        const {isLoggedIn} = this.props;
+        const {isAdmin} = this.props;
         const categories = this.props.allCategories;
         const category = categories && categories[instrument.categoryId];
         const categoryName = category && category.name;
@@ -41,7 +41,7 @@ export default class SingleProduct extends Component {
                         <h4>Description: </h4>
                         <p>{instrument.description}</p>
                         {
-                            isLoggedIn &&
+                            isAdmin &&
                             <div className="single-form">
                                 <div clsasName="edit-delete">
                                     <Button bsStyle="primary" bsSize="xsmall" onClick={

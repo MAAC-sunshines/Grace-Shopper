@@ -50,7 +50,7 @@ const createApp = () => {
   }))
 
   app.use(function (req, res, next) {
-    console.log('session', req.session);
+    console.log('session', req.session.user);
     next();
   })
 

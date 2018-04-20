@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 const mapStateToProps = function(state) {
   return {
     allInstruments: state.allInstruments[0],
-    isLoggedIn: !!state.user.id
+    isAdmin: !!state.user.admin
   }
 }
 
@@ -36,6 +36,6 @@ const AllInstrumentsContainer = withRouter(connect(mapStateToProps, mapDispatchT
 export default AllInstrumentsContainer;
 
 AllInstruments.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired
+  isAdmin: PropTypes.bool.isRequired
 }
 
