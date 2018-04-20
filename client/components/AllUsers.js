@@ -14,26 +14,28 @@ export default class AllUsers extends Component {
         const isAdmin = this.props.isAdmin;
         console.log('allUsers', allUsers);
         return (
-            <div>
-                {
-                    isAdmin && (
-                        <div>
-                            <h2>Users</h2>
-                            <h3>Users will show up here</h3>
-                            {
-                                allUsers && allUsers.map(user => {
-                                    return (
-                                        <div key={user.id}>
-                                            <h4>Email: {user.email}</h4>
-                                            <h5>User ID: {user.id}</h5>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </div>
-                    )
-                }
-            </div>
+            <Grid className="all-categories-box">
+                <div>
+                    {
+                        isAdmin && (
+                            <div className="subheader">
+                                <h2>Users</h2>
+                                {
+                                    allUsers && allUsers.map(user => {
+
+                                        return (
+                                            <div key={user.id}>
+                                                <h4>Email: {user.email}</h4>
+                                                <h5>User ID: {user.id}</h5>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </div>
+                        )
+                    }
+                </div>
+            </Grid>
         )
     }
 }
