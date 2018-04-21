@@ -37,6 +37,7 @@ const NavbarComp = ({ handleClick, isLoggedIn, isAdmin }) => (
           <div>
             {/* The navbar will show these links before you log in */}
             <Link to="/instruments" className="nav-bar-item">All Instruments</Link>
+            <Link to="/categories" className="nav-bar-item">Categories</Link>
             <Link to="/login" className="nav-bar-item">Login</Link>
             <Link to="/signup" className="nav-bar-item">Sign Up</Link>
             <Link to="/cart" className="nav-bar-item">
