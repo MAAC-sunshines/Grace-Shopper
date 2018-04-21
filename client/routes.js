@@ -29,6 +29,7 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/cart" component={Cart} />
+        <Route exact path="/categories" component={AllCategoriesContainer} />
         <Route path="/categories/:id" component={SingleCategoryContainer} />
         <Route exact path="/instruments" component={AllInstrumentsContainer} />
         <Route exact path="/instruments/:id" component={SingleInstrumentContainer} />

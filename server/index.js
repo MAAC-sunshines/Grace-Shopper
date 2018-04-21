@@ -11,6 +11,7 @@ const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
+
 module.exports = app
 
 /**
@@ -50,7 +51,7 @@ const createApp = () => {
   }))
 
   app.use(function (req, res, next) {
-    console.log('session', req.session.user);
+    req.session.userId = 1
     next();
   })
 
