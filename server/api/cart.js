@@ -19,13 +19,13 @@ module.exports = router
 
 //   next();
 // });
-router.use((req, res, next) => {
-  if (req.user) return next();
-  if (req.session.userId) {
-    console.log('req.session.userId', req.session.userId)
-    }
-  req.session.userId = req.user.id
-})
+// router.use((req, res, next) => {
+//   if (req.user) return next();
+//   if (req.session.userId) {
+//     console.log('req.session.userId', req.session.userId)
+//     }
+//   req.session.userId = req.user.id
+// })
 router.get('/', (req, res, next) => {
   LineOrder.findAll()
   .then(orders => res.json(orders));
