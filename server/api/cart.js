@@ -2,8 +2,50 @@ const router = require('express').Router()
 const { LineOrder } = require('../db/models')
 module.exports = router
 
+// router.use( async (req, res, next) => {
+//   //if there is already a req.cart and exit
+//   if (req.cart) return next();
+
+//   //if there is a cartId on req.session, set req.cart to a new instance of order and exit
+//   if (req.session.cartId) {
+//     req.cart = await Order.findById(req.session.cartId).catch(next);
+//     return next();
+//   }
+
+//   //if neither of those two things happened, set req.cart to a new instance of Order, set the cartId to req.cart.id
+//   req.cart = await Order.create().catch(next);
+//   req.session.cartId = req.cart.id;
+//   console.log('req.session in cart.js', req.session);
+
+//   next();
+// });
+router.use((req, res, next) => {
+  if (req.user) return next();
+  if (req.session.userId) {
+    console.log('req.session.userId', req.session.userId)
+    }
+  req.session.userId = req.user.id
+})
+router.get('/', (req, res, next) => {
+  LineOrder.findAll()
+  .then(orders => res.json(orders));
+})
+router.get('/:id', (req, res, next) => {
+  LineOrder.findAll({
+    where: {
+      userId: req.params.id,
+      orderId: null
+    }
+  })
+  .then(orders => res.json(orders))
+  .catch(err => console.log(err));
+})
 router.post('/', (req, res, next) => {
-  console.log('req.body', req.body)
+  // console.log('req.session', req.sessionID)
+  // if (!req.body.userId){
+  //   req.body.userId = req.sessionID
+  // }
+  console.log('req.body.userId', req.body.userId);
   LineOrder.findOrCreate({
     where: {
       instrumentId: req.body.instrumentId,

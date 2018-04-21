@@ -130,3 +130,14 @@ li {
 #cart-icon {
   width: 2em;
 }
+
+.home-welcome {
+  text-align: center;
+  margin: 5px;
+}
+.nav-home {
+  background-color: rgba(230, 228, 228, 0.3);
+  border-style: solid;
+  border-color: #f2f2f2;
+  border-width: 5px;
+}

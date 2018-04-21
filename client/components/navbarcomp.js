@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../store'
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, SplitButton, MenuItem } from 'react-bootstrap';
 
 const NavbarComp = ({ handleClick, isLoggedIn, isAdmin }) => (
 
@@ -20,6 +20,7 @@ const NavbarComp = ({ handleClick, isLoggedIn, isAdmin }) => (
         <div>
           {/* The navbar will show these links after you log in */}
           <Link to="/home" className="nav-bar-item">Home</Link>
+          <Link to="/categories" className="nav-bar-item">Categories</Link>
           <Link to="/instruments" className="nav-bar-item">All Instruments</Link>
           {
             isAdmin &&
