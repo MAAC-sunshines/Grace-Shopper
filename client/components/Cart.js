@@ -5,28 +5,28 @@ import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 
-import CartContainer from '../containers/CartContainer';
+
 
 export default class Cart extends Component {
   constructor(props){
     super(props);
 
-    this.state = [
-      {
-        id: 1,
-        name: 'allaDrum',
-        imageUrl: 'allaDrum.com',
-        cost: 500,
-        quantity: 1
-      },
-      {
-        id: 2,
-        name: 'mahiaTrumpet',
-        imageUrl: 'mahiaTrumpet.com',
-        cost: 200,
-        quantity: 2
-      }
-    ];
+    // this.state = [
+    //   {
+    //     id: 1,
+    //     name: 'allaDrum',
+    //     imageUrl: 'allaDrum.com',
+    //     cost: 500,
+    //     quantity: 1
+    //   },
+    //   {
+    //     id: 2,
+    //     name: 'mahiaTrumpet',
+    //     imageUrl: 'mahiaTrumpet.com',
+    //     cost: 200,
+    //     quantity: 2
+    //   }
+    // ];
   }
   render(){
     console.log('PROPS', this.props)
@@ -70,3 +70,58 @@ export default class Cart extends Component {
 
   }
 }
+
+
+// const Cart = ({ cart = [] }) => {
+//     console.log('Cart has', cart)
+//     return (
+//    <div>
+//           <h2>Your Shopping Cart</h2>
+//           <h3>Cart Total:</h3>
+//       </div>
+//     )
+// }
+
+// export default Cart;
+
+// export default class Cart extends Component {
+//   render() {
+//     console.log('Our props are', this.props)
+//     return (
+//       <div> 
+//         <h2>Your Shopping Cart:</h2>
+//       </div>
+//     )
+//   }
+// }
+
+// const Cart = ({ cart }) => {
+//   return (
+//       <div>
+//           <div>
+//               <h4>Your Cart</h4>
+//                 {
+//                   cart.map((singleItem) => {
+//                     return (
+//                         <div key={singleItem.id}>
+//                                 <ul className="collection">
+//                                   {
+//                                   singleItem.map((item) => (
+//                                   <li>
+//                                   <img src={item.imageUrl}/>
+//                                   <span>{item.name}</span>
+//                                   <p>Quantity: {item.quantity} <br />
+//                                       Price: {item.price}
+//                                   </p>
+//                                   </li>
+//                                   ))
+//                                   }
+//                                     </ul>   
+//                             </div>
+//                         );
+//                     })
+//                 }
+//           </div>
+//       </div>
+//   );
+// };

@@ -19,10 +19,10 @@ export default function reducer(state = [], action) {
   console.log('action', action)
   switch (action.type) {
     // update_cart needs to add a new instrument to the array of instruments on cart
-    case ADD_TO_CART:
-      return [...state, cart = [...state.cart, action.cart]]
     case GET_CART:
       return [...state, action.cart]
+    case ADD_TO_CART:
+      return [...state, cart = [...state.cart, action.cart]]
     default:
       return state;
   }
@@ -40,5 +40,18 @@ export function postCart(instrument,userId,itemPrice) {
         dispatch(addToCart(cartItem))
       })
       .catch(err => console.error(err))
+  }
+}
+
+//thunk to get cart
+export function fetchCart(){
+  console.log("this cart has", cart )
+  return function(dispatch){
+    axios.get(`/api/cart`)
+    .then(res => res.data)
+    .then(cart => {
+      dispatch(getCart(cart))
+    })
+    .catch(err => console.error(err))
   }
 }

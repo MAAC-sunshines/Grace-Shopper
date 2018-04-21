@@ -68,3 +68,20 @@ router.delete('/', (req, res, next) => {
   }).then(res.sendStatus(204))
   .catch(err => console.log(err));
 });
+
+//get cart 
+router.get('/', (req, res, next) => {
+  LineOrder.findAllById({
+    where: {
+      userId: req.body.userId,
+      orderId: null
+    },
+    include: {
+      all: true
+    }
+  })
+  .then(cart => {
+    res.json(cart)
+  })
+  .catch(next);
+})
