@@ -10,7 +10,7 @@ import SingleInstrumentContainer from './containers/SingleInstrumentContainer';
 import SingleCategoryContainer from './containers/SingleCategoryContainer';
 import AllUsersContainer from './containers/AllUsersContainer';
 import Cart from './components/Cart';
-
+import AccountInfo from './components/AccountInfo';
 /**
  * COMPONENT
  */
@@ -38,6 +38,7 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
+            <Route path="/account" component={AccountInfo} />
             {
               isAdmin &&
               <Route path="/users" component={AllUsersContainer} />

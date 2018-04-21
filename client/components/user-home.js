@@ -27,7 +27,7 @@ export const UserHome = (props) => {
             </Link>
           </Col>
           <Col md={3} className="category-box">
-            <Link to="/acount">
+            <Link to="/account">
               <img className="thumbnail-photo" src="https://cdn0.iconfinder.com/data/icons/metro-style-people-svg-icons/48/User_info-512.png" />
               <h4>Edit Account Information</h4>
             </Link>
