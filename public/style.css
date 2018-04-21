@@ -141,3 +141,9 @@ li {
   border-color: #f2f2f2;
   border-width: 5px;
 }
+
+.login-form {
+  margin: 10px;
+  padding-left: 10px;
+  align-content: center;
+}
