@@ -31,6 +31,8 @@ User.belongsToMany(Instrument, {
   through: LineOrder
 });
 LineOrder.belongsTo(Order);
+LineOrder.belongsTo(Instrument);
+Instrument.hasMany(LineOrder);
 User.hasMany(LineOrder);
 
 module.exports = {

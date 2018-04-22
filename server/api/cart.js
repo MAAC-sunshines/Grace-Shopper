@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { LineOrder } = require('../db/models')
+const { LineOrder, Instrument } = require('../db/models')
 module.exports = router
 
 router.post('/', (req, res, next) => {
@@ -71,15 +71,8 @@ router.delete('/', (req, res, next) => {
 
 //get cart 
 router.get('/', (req, res, next) => {
-  LineOrder.findAllById({
-    where: {
-      userId: req.body.userId,
-      orderId: null
-    },
-    include: {
-      all: true
-    }
-  })
+  console.log('res', req.user.id)
+  LineOrder.findAll({where: {userId: req.user.id, orderId: null}, include: [Instrument]})
   .then(cart => {
     res.json(cart)
   })
