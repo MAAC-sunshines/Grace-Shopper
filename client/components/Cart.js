@@ -11,20 +11,26 @@ export default class Cart extends Component {
   }
 
   render(){
-    console.log('STATE BE', this.props.cart)
+    console.log('STATE BE', this.props.cart[0])
+    const cart = this.props.cart[0];
+    let total = cart && cart.reduce((sum, item) => {
+      item && (sum += item.totalPrice);
+      return sum;
+    }, 0);
+    console.log('total', total);
     return (
       <Grid className="all-categories-box">
           <h2>Your Shopping Cart</h2>
             <Row className="row-mapping">
             {
-              this.props.cart[0] && this.props.cart[0].map(instrument => {
+              cart && cart.map(instrument => {
                 return (
                   <Col md={3} key={instrument.instrumentId} className="category-box">
                      <Link to={`/instruments/${instrument.instrumentId}`}>
                         <Image src={instrument.instrument.imageUrl} rounded className="thumbnail-photo"/>
                       </Link>
                       <li>
-                        <h2>{instrument.instrument.name}</h2>
+                        <h3>{instrument.instrument.name}</h3>
                         <p>Unit Price: ${instrument.itemPrice}</p>
                         <p>Quantity: {instrument.quantity}</p>
                         <p>Total Price: ${instrument.totalPrice}</p>
@@ -45,14 +51,7 @@ export default class Cart extends Component {
               })
             }
             </Row>
-          <h3>Cart Total: {
-            this.props.cart[0] && this.props.cart[0].map(instrument => {
-              let total = 0;
-              total += Number(instrument.totalPrice)
-              return (total)
-          })
-        }
-            </h3>
+          <h3>Cart Total: ${total}</h3>
             {/* write a reducer */}
             <button OnClick={() => this.props.emptyCart()}className='btn clear-btn'>Clear Cart</button>
             <button className='btn checkout-btn'>Checkout</button>
