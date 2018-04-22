@@ -1,25 +1,26 @@
 const router = require('express').Router()
 const { LineOrder } = require('../db/models')
-module.exports = router
+const stripe = require('../constants/stripe');
 
-router.get('/', (req, res, next) => {
-  res.send(keyPublishable)
-});
 
-router.post('/charge', (req, res, next) => {
-  let amount = 500; //stripe charges by cents, multiply any $ amounts by 100;
+const postStripeCharge = res => (stripeErr, stripeRes) => {
+  if (stripeErr) {
+    res.status(500).send({ error: stripeErr });
+  } else {
+    res.status(200).send({ success: stripeRes });
+  }
+}
 
-  stripe.customers.create({
-    email: req.body.stripeEmail,
-    source: req.body.stripeToken
-  })
-  .then(customer => {
-    stripe.charges.create({
-      amount,
-      description: "Sample Charge",
-      currency: "usd",
-      customer: customer.id
-    })
-  })
-  .then(charge => res.render("charge.pug"));
-});
+const paymentApi = app => {
+  router.get('/', (req, res) => {
+    res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
+  });
+
+  router.post('/', (req, res) => {
+    stripe.charges.create(req.body, postStripeCharge(res));
+  });
+
+  return router;
+};
+
+module.exports = paymentApi;

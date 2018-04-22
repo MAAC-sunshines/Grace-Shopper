@@ -13,9 +13,16 @@ const app = express()
 const socketio = require('socket.io')
 
 //stripe payment requirements
-const keyPublishable = process.env.PUBLISHABLE_KEY;
-const keySecret = process.env.SECRET_KEY;
-const stripe = require("stripe")(keySecret);
+const cors = require('cors');
+const SERVER_CONFIGS = require('./constants/server');
+const CORS_WHITELIST = require('./constants/frontend');
+const corsOptions = {
+  origin: (origin, callback) => {
+    (CORS_WHITELIST.indexOf(origin) !== -1)
+      ? callback(null, true)
+      : callback(new Error('Not allowed by CORS'))
+  }
+};
 
 module.exports = app
 
@@ -39,6 +46,9 @@ passport.deserializeUser((id, done) => //gives us req.user!!!!!!
 const createApp = () => {
   // logging middleware
   app.use(morgan('dev'))
+
+  //STRIPE config
+  // app.use(cors(corsOptions));
 
   // body parsing middleware
   app.use(bodyParser.json())
