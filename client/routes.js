@@ -11,6 +11,7 @@ import SingleCategoryContainer from './containers/SingleCategoryContainer';
 import AllUsersContainer from './containers/AllUsersContainer';
 import Cart from './components/Cart';
 import AccountInfo from './components/AccountInfo';
+import Checkout from './components/Checkout';
 /**
  * COMPONENT
  */
@@ -39,6 +40,11 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
             <Route path="/account" component={AccountInfo} />
+            <Route path="/checkout" render={() => <Checkout
+              name={'Checkout'}
+              description={'Payment for Air'}
+              amount={5}
+              /> } />
             {
               isAdmin &&
               <Route path="/users" component={AllUsersContainer} />

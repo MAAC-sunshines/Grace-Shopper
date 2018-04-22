@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Button, Image } from 'react-bootstrap';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
@@ -65,7 +65,11 @@ export default class Cart extends Component {
             </Row>
           <h3>Cart Total:</h3>
             {/* write a reducer */}
+
+            {/* //CHECKOUT STUFF */}
+         <Link to='/checkout'> <h3>Checkout</h3></Link>
       </Grid>
+
     )
 
   }
