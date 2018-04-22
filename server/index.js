@@ -12,6 +12,11 @@ const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
 
+//stripe payment requirements
+const keyPublishable = process.env.PUBLISHABLE_KEY;
+const keySecret = process.env.SECRET_KEY;
+const stripe = require("stripe")(keySecret);
+
 module.exports = app
 
 /**
