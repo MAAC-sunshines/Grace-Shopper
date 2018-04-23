@@ -45,9 +45,9 @@ class AccountInfo extends Component {
                                                 <h4><input name="email" defaultValue={user.email} type="string" /></h4>
                                                 <h3>Password: </h3>
                                                 <h4><input name="password" placeholder="Change Password" /></h4>
-                                                <Button bsStyle="primary" bsSize="xsmall" type="submit">Update Account</Button>
+                                                <Button bsStyle="success" bsSize="xsmall" type="submit">Update Account</Button>
                                             </form>
-                                            <Button bsStyle="primary" bsSize="xsmall" onClick={this.showForm}>Cancel</Button>
+                                            <Button bsStyle="danger" bsSize="xsmall" onClick={this.showForm}>Cancel</Button>
                                         </div>
                                     )
                                     :

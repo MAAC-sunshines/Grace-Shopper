@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { authLogin, authSignup } from '../store'
 import AuthLogin_form from './AuthLogin_form';
 import AuthSignup_form from './AuthSignup_form';
-
+import { Button } from 'react-bootstrap';
 /**
  * COMPONENT
  */
@@ -21,7 +21,8 @@ const AuthForm = (props) => {
         }
         <div className="login-form" >
           <div>
-            <button type="submit">{displayName}</button>
+          <Button bsStyle="primary" bsSize="xsmall" type="submit">{displayName}</Button>
+            
           </div>
         </div>
         {error && error.response && <div> {error.response.data} </div>}
