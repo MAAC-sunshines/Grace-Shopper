@@ -54,6 +54,46 @@ const instruments = category => [
     cost: 666,
     categoryId: category.Keyboards.id,
     description: 'Lorem ipsum'
+  },
+  {
+    name: 'Selmer Prelude FL711 Student Flute',
+    type: 'flute',
+    imageUrl: 'https://media.musicarts.com/is/image/MMGS7/Replacement-Cases-Flute-or-Piccolo-Plastic-Case-B-Foot-Flute/471814000901000-00-250x250.jpg',
+    cost: 16,
+    categoryId: category.Woodwinds.id,
+    description: 'Lorem ipsum'
+  },
+  {
+    name: 'Hohner Hohnica 1303 Piano Accordion',
+    type: 'accordian',
+    imageUrl: 'https://www.musicjunction.com.au/wp-content/uploads/2015/09/Accordion-Case-2.jpg',
+    cost: 1300,
+    categoryId: category.Keyboards.id,
+    description: 'Lorem ipsum'
+  },
+  {
+    name: 'Ludwig 5-Piece Evolution Drum Set w/ 22" Bass Drum',
+    type: 'drums',
+    imageUrl: 'https://media.musiciansfriend.com/is/image/MMGS7/6-Piece-Fiber-Drum-Case-Set-Rock/543547000000036-00-500x500.jpg',
+    cost: 3132,
+    categoryId: category.Percussions.id,
+    description: 'Lorem ipsum'
+  },
+  {
+    name: 'Fender Deluxe Strat Electric Guitar',
+    type: 'guitar',
+    imageUrl: 'https://media.guitarcenter.com/is/image/MMGS7/GC-SGS-Deluxe-ABS-Electric-Guitar-Case/545881000000000-00-500x500.jpg',
+    cost: 1300,
+    categoryId: category.Strings.id,
+    description: 'Lorem ipsum'
+  },
+  {
+    name: 'Yamaha Custom G CSG-IIIHL Bb Clarinet',
+    type: 'clarinet',
+    imageUrl: 'https://media.musicarts.com/is/image/MMGS7/Replacement-Cases-Plastic-Clarinet-Case-Standard/471811000000000-00-250x250.jpg',
+    cost: 2,
+    categoryId: category.Woodwinds.id,
+    description: 'Lorem ipsum'
   }
 ]
 
