@@ -27,7 +27,6 @@ export function deleteInstrument(instrumentId, history){
 	};
 }
 export function putInstrument(instrument, history){
-	console.log('instrument', instrument);
 	return function thunk(dispatch){
 		return axios.put(`/api/instruments/${instrument.id}`, instrument)
 			.then(res => res.data)

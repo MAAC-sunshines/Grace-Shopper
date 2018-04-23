@@ -147,3 +147,11 @@ li {
   padding-left: 10px;
   align-content: center;
 }
+
+.home-boxes {
+  text-align: center;
+}
+.edit-profile {
+  display: inline-block;
+  align-items: center;
+}

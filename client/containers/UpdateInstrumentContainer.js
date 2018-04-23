@@ -12,7 +12,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         handleSubmit(event, id){
             event.preventDefault();
-            console.log('event', event);
             const name = event.target.name.value;
             const imageUrl = event.target.imageUrl.value;
             const cost = event.target.cost.value;
