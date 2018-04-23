@@ -4,7 +4,7 @@ export default function UpdateInstrument(props){
     const instrument = props.selectedInstrument;
     return (
         <div>
-            <h2>Edit Account Info</h2>
+            <h2>Edit {instrument.name}</h2>
             <form onSubmit={props.handleSubmit}>
                 <h2>
                     <label>Instrument Name: </label>

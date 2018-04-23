@@ -32,6 +32,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         handleSubmit(instrument, event) {
             event.preventDefault();
+            console.log('instrument event', event)
             if (event.target.name.value){
                 instrument.name = event.target.name.value;
             }
