@@ -37,10 +37,11 @@ export default class SingleCategory extends Component {
       instrument.categoryId;
     const { categories } = this.props;
     const category = categories && categories.filter(topic => topic.id === categoryId)
+    const theCategory = category && category[0];
     return (
       <Grid className="all-categories-box">
         <div className="subheader">
-          <h2>{category && category[0].name}</h2>
+          <h2>{theCategory && theCategory.name}</h2>
           <input
             placeholder="Enter category name"
             onChange={this.handleChange}
