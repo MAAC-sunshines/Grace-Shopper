@@ -11,6 +11,18 @@ const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
+
+//stripe payment requirements
+const cors = require('cors');
+const CORS_WHITELIST = require('./constants/frontend');
+const corsOptions = {
+  origin: (origin, callback) => { //letting origin === undefined be allowed (because frontend is same as backend i.e. both are on localhost8080 for dev mode )
+    (CORS_WHITELIST.indexOf(origin) !== -1 || !origin)
+      ? callback(null, true)
+      : callback(new Error('Not allowed by CORS'))
+  }
+};
+
 module.exports = app
 
 /**
@@ -34,6 +46,9 @@ const createApp = () => {
   // logging middleware
   app.use(morgan('dev'))
 
+  //STRIPE config
+  app.use(cors(corsOptions));
+
   // body parsing middleware
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: true })) //this gives us req.body
@@ -50,7 +65,7 @@ const createApp = () => {
   }))
 
   app.use(function (req, res, next) {
-    console.log('session', req.session.user);
+    req.session.userId = 1
     next();
   })
 

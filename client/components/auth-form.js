@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { authLogin, authSignup } from '../store'
 import AuthLogin_form from './AuthLogin_form';
@@ -9,22 +9,24 @@ import AuthSignup_form from './AuthSignup_form';
  * COMPONENT
  */
 const AuthForm = (props) => {
-  const {name, displayName, handleSubmitSignup, handleSubmitLogin, error} = props
+  const { name, displayName, handleSubmitSignup, handleSubmitLogin, error } = props
   const method = props.name;
   console.log('METHOD', method)
   return (
     <div>
-    <form onSubmit={method === 'login' ? handleSubmitLogin : handleSubmitSignup} name={name}>
-    { method === 'login'
-      ? <AuthLogin_form />
-      : <AuthSignup_form />
-    }
-      <div>
-        <button type="submit">{displayName}</button>
-      </div>
+      <form onSubmit={method === 'login' ? handleSubmitLogin : handleSubmitSignup} name={name}>
+        {method === 'login'
+          ? <AuthLogin_form />
+          : <AuthSignup_form />
+        }
+        <div className="login-form" >
+          <div>
+            <button type="submit">{displayName}</button>
+          </div>
+        </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
-      <a target="_self" href="/auth/google">{displayName} with Google</a>
+      <a className="login-form" target="_self" href="/auth/google">{displayName} with Google</a>
     </div>
   )
 }
@@ -55,7 +57,7 @@ const mapSignup = (state) => {
 const mapDispatch = (dispatch) => {
 
   return {
-    handleSubmitSignup (evt) {
+    handleSubmitSignup(evt) {
       evt.preventDefault()
       const formName = evt.target.name
       const email = evt.target.email.value
@@ -64,7 +66,7 @@ const mapDispatch = (dispatch) => {
       const lastName = evt.target.lastName.value || null
       dispatch(authSignup(email, password, formName, firstName, lastName)) //for signup
     },
-    handleSubmitLogin (evt) {
+    handleSubmitLogin(evt) {
       evt.preventDefault()
       const formName = evt.target.name
       const email = evt.target.email.value

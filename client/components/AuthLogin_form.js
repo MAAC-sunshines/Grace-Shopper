@@ -1,16 +1,22 @@
 import React from 'react';
 
-export default function AuthLogin_form () {
+export default function AuthLogin_form() {
   return (
     <div>
+      <div className="login-form">
         <div>
-          <label htmlFor="email"><small>Email</small></label>
-          <input name="email" type="text" />
+          <label htmlFor="email"><medium>Email: </medium></label>
+          <div>
+            <input name="email" type="text" />
+          </div>
         </div>
         <div>
-          <label htmlFor="password"><small>Password</small></label>
-          <input name="password" type="password" />
+          <label htmlFor="password"><medium>Password: </medium></label>
+          <div>
+            <input name="password" type="password" />
+          </div>
         </div>
+      </div>
     </div>
   )
 }

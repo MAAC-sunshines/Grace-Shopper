@@ -10,6 +10,8 @@ import SingleInstrumentContainer from './containers/SingleInstrumentContainer';
 import SingleCategoryContainer from './containers/SingleCategoryContainer';
 import AllUsersContainer from './containers/AllUsersContainer';
 import CartContainer from './containers/CartContainer';
+import AccountInfo from './components/AccountInfo';
+import Checkout from './components/Checkout';
 
 /**
  * COMPONENT
@@ -29,6 +31,7 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/cart" component={CartContainer} />
+        <Route exact path="/categories" component={AllCategoriesContainer} />
         <Route path="/categories/:id" component={SingleCategoryContainer} />
         <Route exact path="/instruments" component={AllInstrumentsContainer} />
         <Route exact path="/instruments/:id" component={SingleInstrumentContainer} />
@@ -37,6 +40,12 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
+            <Route path="/account" component={AccountInfo} />
+            <Route path="/checkout" render={() => <Checkout
+              name={'Checkout'}
+              description={'Payment for Air'}
+              amount={5}
+              /> } />
             {
               isAdmin &&
               <Route path="/users" component={AllUsersContainer} />

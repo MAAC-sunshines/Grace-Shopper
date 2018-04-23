@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Button, Image } from 'react-bootstrap';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
@@ -54,8 +54,11 @@ export default class Cart extends Component {
           <h3>Cart Total: ${total}</h3>
             {/* write a reducer */}
             <button OnClick={() => this.props.emptyCart()}className='btn clear-btn'>Clear Cart</button>
-            <button className='btn checkout-btn'>Checkout</button>
+            {/* //CHECKOUT STUFF */}
+         <Link to='/checkout'> <h3>Checkout</h3></Link>
+
       </Grid>
+
     )
 }
 }

@@ -130,3 +130,28 @@ li {
 #cart-icon {
   width: 2em;
 }
+
+.home-welcome {
+  text-align: center;
+  margin: 5px;
+}
+.nav-home {
+  background-color: rgba(230, 228, 228, 0.3);
+  border-style: solid;
+  border-color: #f2f2f2;
+  border-width: 5px;
+}
+
+.login-form {
+  margin: 10px;
+  padding-left: 10px;
+  align-content: center;
+}
+
+.home-boxes {
+  text-align: center;
+}
+.edit-profile {
+  display: inline-block;
+  align-items: center;
+}

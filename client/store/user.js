@@ -15,8 +15,8 @@ const defaultUser = {}
 /**
  * ACTION CREATORS
  */
-const getUser = user => ({type: GET_USER, user})
-const removeUser = () => ({type: REMOVE_USER})
+const getUser = user => ({ type: GET_USER, user })
+const removeUser = () => ({ type: REMOVE_USER })
 
 /**
  * THUNK CREATORS
@@ -30,23 +30,23 @@ export const me = () =>
 
 export const authSignup = (email, password, method, firstName, lastName) => // signup
   dispatch =>
-    axios.post(`/auth/${method}`, { email, password, firstName, lastName})
+    axios.post(`/auth/${method}`, { email, password, firstName, lastName })
       .then(res => {
         dispatch(getUser(res.data))
         history.push('/home')
       }, authError => { // rare example: a good use case for parallel (non-catch) error handler
-        dispatch(getUser({error: authError}))
+        dispatch(getUser({ error: authError }))
       })
       .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
 
 export const authLogin = (email, password, method) => // login
   dispatch =>
-    axios.post(`/auth/${method}`, { email, password})
+    axios.post(`/auth/${method}`, { email, password })
       .then(res => {
         dispatch(getUser(res.data))
         history.push('/home')
       }, authError => { // rare example: a good use case for parallel (non-catch) error handler
-        dispatch(getUser({error: authError}))
+        dispatch(getUser({ error: authError }))
       })
       .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
 
@@ -59,6 +59,16 @@ export const logout = () =>
       })
       .catch(err => console.log(err))
 
+export function putUser(user, history) {
+  return function thunk(dispatch) {
+    return axios.put(`/api/users/${user.id}`, user)
+      .then(res => res.data)
+      .then(updatedUser => {
+        dispatch(getUser(updatedUser));
+        history.push('/account');
+      });
+  };
+}
 /**
  * REDUCER
  */

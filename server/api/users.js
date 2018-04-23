@@ -3,7 +3,6 @@ const {User, Order, OrderInstrument} = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
-  console.log('in users get')
   User.findAll({
     // explicitly select only the id and email fields - even though
     // users' passwords are encrypted, it won't help if we just
@@ -30,7 +29,7 @@ router.get('/:id/order-history', (req, res, next) => {
     .then(allOrders => {
       res.json(allOrders)
     })
-    .catch(err => console.error(err))
+    .catch(next)
 })
 
 //route to get a SINGLE ORDER
@@ -43,6 +42,11 @@ router.get('/:id/order-history/:orderId', (req, res, next) => {
     .then(singleOrder => {
       res.json(singleOrder)
     })
-    .catch(err => console.error(err))
+    .catch(next)
 })
 
+router.put('/:id', (req, res, next) => {
+  User.findById(req.params.id)
+    .then(user => user.update(req.body))
+    .catch(next);
+})
