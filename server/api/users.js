@@ -60,7 +60,7 @@ router.delete('/:id/:instrumentId?', (req, res, next) => {
         orderId: null,
         instrumentId: req.params.instrumentId
       }
-    }).then(res.sentStatus(204))
+    }).then(res.sendStatus(204))
       .catch(next)
   } else {
     LineOrder.destroy({
