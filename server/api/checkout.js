@@ -6,9 +6,9 @@ const { LineOrder } = require('../db/models');
 
 const postStripeCharge = res => (stripeErr, stripeRes) => {
   if (stripeErr) {
-    res.status(500).send({ error: stripeErr });
+    res.status(500).send({ error: stripeErr }); // use error handling middleware? -- KHHW
   } else {
-    res.status(200).send({ success: stripeRes });
+    res.status(200).send({ success: stripeRes }); // 200 is default status -- KHHW
   }
 }
 

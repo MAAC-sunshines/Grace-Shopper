@@ -5,7 +5,7 @@ const LineOrder = db.define('lineOrder', {
     quantity: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        defaultValue: 1
+        defaultValue: 1 // min -- KHHW
     },
     itemPrice: {
         type: Sequelize.INTEGER,

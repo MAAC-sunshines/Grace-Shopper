@@ -22,6 +22,7 @@ export function deleteInstrument(instrumentId, history){
 		return axios.delete(`/api/instruments/${instrumentId}`)
 			.then(res => res.data)
 			.then(() => {
+				// if delete the run through reducer so we don't have this one selected. Also run through allInstruments reducer to remove this instrument -- KHHW
 				history.push('/instruments');
 			});
 	};

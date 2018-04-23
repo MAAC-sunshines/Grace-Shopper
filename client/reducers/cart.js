@@ -16,7 +16,7 @@ export function getCart(cart) {
   return action;
 }
 export function deleteFromCart(instrument){
-  const action = { type: DELETE_FROM_CART, item: instrument.id}
+  const action = { type: DELETE_FROM_CART, instrumentId: instrument.id}
   return action;
 }
 export function deleteCart() {
@@ -32,9 +32,9 @@ export default function reducer(state = [], action) {
     case GET_CART:
       return [...state, action.cart]
     case ADD_TO_CART:
-      return [...state, cart = [...state.cart, action.cart]]
+      return [...state, cart = [...state, action.cart]] // take away state.cart -- KHHW
     case DELETE_FROM_CART:
-      return state.cart.filter(instrument => instrument.id !== action.item )
+      return state.filter(instrument => instrument.id !== action.instrumentId )
     case DELETE_CART:
     return action.cart
     default: 
@@ -83,10 +83,11 @@ export function emptyCart(user){
 
 export function clearItem(user, id){
 	return function thunk(dispatch){
-		return axios.delete(`/api/users/${user.id}/${id}`)
+		return axios.delete(`/api/users/${user.id}/${id}`) // `/api/users/userId/item/itemId` -- KHHW
 			.then(res => res.data)
 			.then(() => {
-				dispatch(getCart());
+        // you go through the instruments and filter out the one you deleted -- KHHW
+				dispatch(deleteFromCart(id)); // filter out don't reset -- KHHW
       })
       .catch(err => console.error(err))
 	};

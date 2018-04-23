@@ -15,7 +15,7 @@ import singleOrder from '../reducers/singleOrder';
 const reducer = combineReducers({
   user,
   allUsers,
-  selectedInstrument,
+  selectedInstrument, 
   selectedCategory,
   allInstruments,
   allCategories,

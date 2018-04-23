@@ -13,6 +13,8 @@ import CartContainer from './containers/CartContainer';
 import AccountInfo from './components/AccountInfo';
 import Checkout from './components/Checkout';
 
+// this should be like your other code (split into container and component) -- KHHW
+
 /**
  * COMPONENT
  */

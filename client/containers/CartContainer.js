@@ -18,9 +18,9 @@ const mapDispatchToProps = function (dispatch) {
       console.log('user', user);
       dispatch(emptyCart(user))
     },
-    deleteCartItem: function(event, user, id) {
+    deleteCartItem: function(event, user, id) { // why bring in event? -- kHHW
       console.log('id', id);
-      dispatch(clearItem(user, id));
+      dispatch(clearItem(user, id)); // instrumentId -- KHHW
     }
   }
 }

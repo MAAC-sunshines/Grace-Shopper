@@ -8,11 +8,12 @@ router.get('/', (req, res, next) => {
     .then(categories => {
       res.json(categories)
     })
-    .catch(err => console.error(err))
+    .catch(err => console.error(err)) // NOO you have to send a response. use error handling middleware with next -- KHHW
 })
 
 //get a single category by id
 router.get('/:id', (req, res, next) => {
+  // consider Category.findById(id, {include: [Instrument]}) -- KHHW
   Instrument.findAll({
     where: {
       categoryId: req.params.id
@@ -41,7 +42,7 @@ router.delete('/:id', (req, res, next) => {
     }
   })
   .then(() => {
-    res.status(204).end()
+    res.status(204).end() // status or sendStatus? -- kHHW
   })
   .catch(next)
 })
@@ -51,5 +52,6 @@ router.put('/:id', (req, res, next) => {
   const categoryId = req.params.id;
   Category.findById(categoryId)
         .then(category => category.update(req.body))
+        // where is my response?! -- KHHW
         .catch(next);
 })

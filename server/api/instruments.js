@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.get('/:id', (req, res, next) => {
-  Instrument.findOne({
+  Instrument.findOne({ // findbyid -- KHHW
     where: {
       id: req.params.id
     }
@@ -41,7 +41,7 @@ router.delete('/:id', (req, res, next) => {
     }
   })
   .then(() => {
-    res.status(204).end()
+    res.status(204).end() // sendstatus in other places  -- KHHW
   })
   .catch(next)
 })
@@ -49,6 +49,7 @@ router.delete('/:id', (req, res, next) => {
 router.put('/:id', (req, res, next) => {
   const instrumentId = req.params.id;
   Instrument.findById(instrumentId)
-        .then(instrument => instrument.update(req.body))
+        .then(instrument => instrument.update(req.body)) // spacing?!?! -- KHHW
+        // where is the response!? -- KHHW
         .catch(next);
 })

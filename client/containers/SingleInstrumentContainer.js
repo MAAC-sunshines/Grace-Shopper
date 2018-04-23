@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         loadInstrument: function () {
             const instrumentId = ownProps.match.params.id;
-            return dispatch(fetchInstrument(instrumentId));
+            return dispatch(fetchInstrument(instrumentId)); // pros and cons. Con - you are going to the backend. Theoretically you are already asking for all instruments already so you could just move that fetch up a level and then do a find. Pro - if instruments change often you are up to date. Theoretically you wouldn't be doing a fetch all instruments, so doing this is where I would expect you to go if you were making amazon -- KHHW 
         },
         loadAllCategories: function(){
             return dispatch(fetchAllCategories());

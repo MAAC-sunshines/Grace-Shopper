@@ -1,3 +1,4 @@
+// move all of these files into store directory theoretically. -- KHHW
 import axios from 'axios';
 
 //action type
