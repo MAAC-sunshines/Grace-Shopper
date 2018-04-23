@@ -10,21 +10,24 @@ export default class Cart extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.loadCart();
+  }
+
   render(){
-    console.log('STATE BE', this.props.cart[0])
+    const { user } = this.props;
     const cart = this.props.cart[0];
+    console.log('props', this.props);
     let total = cart && cart.reduce((sum, item) => {
       item && (sum += item.totalPrice);
       return sum;
     }, 0);
-    console.log('total', total);
     return (
       <Grid className="all-categories-box">
           <h2>Your Shopping Cart</h2>
             <Row className="row-mapping">
             {
               cart && cart.map(instrument => {
-                console.log('instrument', instrument)
                 return (
                   <Col md={3} key={instrument.instrumentId} className="category-box">
                      <Link to={`/instruments/${instrument.instrumentId}`}>
@@ -43,7 +46,7 @@ export default class Cart extends Component {
                       />
                       <button type='submit'>Submit</button>
                       </form>
-                      <Button bsStyle="primary" bsSize="xsmall">
+                      <Button bsStyle="primary" bsSize="xsmall" onClick={(event) => this.props.deleteCartItem(event, user, instrument.instrumentId)}>
                           Remove From Cart
                           {/* add an onClick */}
                       </Button>
@@ -53,9 +56,7 @@ export default class Cart extends Component {
             }
             </Row>
           <h3>Cart Total: ${total}</h3>
-            {/* write a reducer */}
-            <button OnClick={() => this.props.emptyCart()}className='btn clear-btn'>Clear Cart</button>
-            {/* //CHECKOUT STUFF */}
+            <button onClick={(event) => this.props.deleteCart(event, user)} className='btn clear-btn'>Clear Cart</button>
          <Link to='/checkout'> <h3>Checkout</h3></Link>
 
       </Grid>

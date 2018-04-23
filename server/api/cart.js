@@ -40,6 +40,7 @@ router.get('/:id', (req, res, next) => {
   .then(orders => res.json(orders))
   .catch(err => console.log(err));
 })
+
 router.post('/', (req, res, next) => {
   // console.log('req.session', req.sessionID)
   // if (!req.body.userId){
@@ -78,6 +79,7 @@ router.post('/', (req, res, next) => {
 
 });
 
+
 //updates quantity
 router.put('/', (req, res, next) => {
   LineOrder.findOne({
@@ -90,26 +92,7 @@ router.put('/', (req, res, next) => {
 });
 
 //deletes a single instrument from the cart (lineOrder)
-router.delete('/', (req, res, next) => {
-  LineOrder.destroy({
-    where: {
-      userId: req.body.userId,
-      instrumentId: req.body.instrumentId
-    }
-  }).then(res.sendStatus(204))
-  .catch(err => console.log(err));
-});
 
-//clears cart completely
-router.delete('/', (req, res, next) => {
-  LineOrder.destroy({
-    where: {
-      userId: req.body.userId,
-      orderId: null
-    }
-  }).then(res.sendStatus(204))
-  .catch(err => console.log(err));
-});
 
 //get cart 
 router.get('/', (req, res, next) => {
