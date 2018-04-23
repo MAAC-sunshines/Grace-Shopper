@@ -4,45 +4,59 @@ import { Button, Image } from 'react-bootstrap';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
-
+import Instruments from './Instruments';
 export default class SingleCategory extends Component {
-  componentDidMount() {
-      this.props.loadCategory();
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: ''
+    }
+    this.handleChange = this.handleChange.bind(this);
   }
-
+  componentDidMount() {
+    this.props.loadCategory();
+    this.props.loadCategories();
+  }
+  handleChange(event) {
+    this.setState({
+      query: event.target.value.toLocaleLowerCase()
+    })
+  }
+  get instruments() {
+    const { allInstruments = [] } = this.props
+    return allInstruments
+      .filter(instrument => instrument.name
+        .toLocaleLowerCase()
+        .indexOf(this.state.query) !== -1)
+  }
   render() {
-    const {instruments = []} = this.props;
-    const instrument = instruments[0];
-    const category = instrument && instrument.categoryId;
+    const { allInstruments = [] } = this.props;
+    const isAdmin = this.props.isAdmin;
+    const instrument = allInstruments[0];
+    const categoryId = instrument &&
+      instrument.categoryId;
+    const { categories } = this.props;
+    const category = categories && categories.filter(topic => topic.id === categoryId)
     return (
-      <Grid className="single-product-box">
-        <h2>CATEGORY</h2>
-        <Row>
+      <Grid className="all-categories-box">
+        <div className="subheader">
+          <h2>{category && category[0].name}</h2>
+          <input
+            placeholder="Enter category name"
+            onChange={this.handleChange}
+          />
           {
-            instruments && instruments.map(singleInstrument => {
-              return (
-                <Grid>
-                  <Row>
-                    <Col sm={6} key={singleInstrument.id}>
-                      <h2>{singleInstrument.name}</h2>
-                      <Link to={`/instruments/${singleInstrument.id}`}>
-                          <img src={singleInstrument.imageUrl} className="single-product-img"/>
-                      </Link>
-                      <h6>***Case not included***</h6>
-                    </Col>
-
-                    <Col sm={6}>
-
-                      <h4>{singleInstrument.description}</h4>
-                      <h5>${singleInstrument.cost}</h5>
-                  </Col>
-                </Row>
-               </Grid>
-                )
-            })
+            // isAdmin &&
+            // <div className="add-instrument">
+            //     <Button bsStyle="primary" bsSize="xsmall" onClick={this.showForm}>ADD NEW INSTRUMENT</Button>
+            //     {
+            //         this.state.showForm ? <AddInstrumentsForm handleSubmit={(event) => this.props.addNewInstrument(event)} cancelClick={this.cancelForm} /> : null
+            //     }
+            // </div>
           }
-       </Row>
-     </Grid>
+        </div>
+        <Instruments instruments={this.instruments} />
+      </Grid>
     )
   }
 }
