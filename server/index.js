@@ -14,11 +14,10 @@ const socketio = require('socket.io')
 
 //stripe payment requirements
 const cors = require('cors');
-const SERVER_CONFIGS = require('./constants/server');
 const CORS_WHITELIST = require('./constants/frontend');
 const corsOptions = {
-  origin: (origin, callback) => {
-    (CORS_WHITELIST.indexOf(origin) !== -1)
+  origin: (origin, callback) => { //letting origin === undefined be allowed (because frontend is same as backend i.e. both are on localhost8080 for dev mode )
+    (CORS_WHITELIST.indexOf(origin) !== -1 || !origin)
       ? callback(null, true)
       : callback(new Error('Not allowed by CORS'))
   }
@@ -48,7 +47,7 @@ const createApp = () => {
   app.use(morgan('dev'))
 
   //STRIPE config
-  // app.use(cors(corsOptions));
+  app.use(cors(corsOptions));
 
   // body parsing middleware
   app.use(bodyParser.json())
