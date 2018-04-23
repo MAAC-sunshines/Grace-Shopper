@@ -51,12 +51,24 @@ router.put('/:id', (req, res, next) => {
     .catch(next);
 })
 
-router.delete('/:id', (req, res, next) => {
-  LineOrder.destroy({
-    where: {
-      userId: req.params.id,
-      orderId: null
-    }
-  }).then(res.sendStatus(204))
-  .catch(err => console.log(err));
+router.delete('/:id/:instrumentId?', (req, res, next) => {
+  console.log('hi');
+  if (req.params.instrumentId) {
+    LineOrder.destroy({
+      where: {
+        userId: req.params.id,
+        orderId: null,
+        instrumentId: req.params.instrumentId
+      }
+    }).then(res.sentStatus(204))
+      .catch(next)
+  } else {
+    LineOrder.destroy({
+      where: {
+        userId: req.params.id,
+        orderId: null
+      }
+    }).then(res.sendStatus(204))
+      .catch(err => console.log(err));
+  }
 });

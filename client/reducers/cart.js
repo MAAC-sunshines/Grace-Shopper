@@ -81,13 +81,13 @@ export function emptyCart(user){
 	};
 }
 
-// export function clearItem(user, id){
-// 	return function thunk(dispatch){
-// 		return axios.delete(`/api/users/${user.id}/cart`, id)
-// 			.then(res => res.data)
-// 			.then(() => {
-// 				dispatch(getCart());
-//       })
-//       .catch(err => console.error(err))
-// 	};
-// }
+export function clearItem(user, id){
+	return function thunk(dispatch){
+		return axios.delete(`/api/users/${user.id}/${id}`)
+			.then(res => res.data)
+			.then(() => {
+				dispatch(getCart());
+      })
+      .catch(err => console.error(err))
+	};
+}
