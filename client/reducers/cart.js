@@ -70,13 +70,24 @@ export function fetchCart(){
 }
 
 //thunk to delete cart
-export function emptyCart(){
+export function emptyCart(user){
 	return function thunk(dispatch){
-		return axios.delete('/api/cart')
+		return axios.delete(`/api/users/${user.id}`)
 			.then(res => res.data)
 			.then(() => {
-				dispatch(deleteCart());
+				dispatch(getCart());
       })
       .catch(err => console.error(err))
 	};
 }
+
+// export function clearItem(user, id){
+// 	return function thunk(dispatch){
+// 		return axios.delete(`/api/users/${user.id}/cart`, id)
+// 			.then(res => res.data)
+// 			.then(() => {
+// 				dispatch(getCart());
+//       })
+//       .catch(err => console.error(err))
+// 	};
+// }

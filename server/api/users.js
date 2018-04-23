@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Order, OrderInstrument} = require('../db/models')
+const { User, Order, OrderInstrument, LineOrder } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
@@ -24,8 +24,8 @@ router.get('/:id/order-history', (req, res, next) => {
   Order.findAll({
     where: {
       userId: req.params.id
-      }
-    })
+    }
+  })
     .then(allOrders => {
       res.json(allOrders)
     })
@@ -37,8 +37,8 @@ router.get('/:id/order-history/:orderId', (req, res, next) => {
   OrderInstrument.findOne({
     where: {
       orderId: req.params.orderId
-      }
-    })
+    }
+  })
     .then(singleOrder => {
       res.json(singleOrder)
     })
@@ -50,3 +50,13 @@ router.put('/:id', (req, res, next) => {
     .then(user => user.update(req.body))
     .catch(next);
 })
+
+router.delete('/:id', (req, res, next) => {
+  LineOrder.destroy({
+    where: {
+      userId: req.params.id,
+      orderId: null
+    }
+  }).then(res.sendStatus(204))
+  .catch(err => console.log(err));
+});
