@@ -132,6 +132,27 @@ const users = [
     firstName: 'Alexa',
     lastName: 'Moy',
     admin: true
+  },
+  {
+    email: 'alla@alla.com',
+    password: '123',
+    firstName: 'Alla',
+    lastName: 'Yakubova',
+    admin: false
+  },
+  {
+    email: 'mahia@mahia.com',
+    password: '123',
+    firstName: 'Mahia',
+    lastName: 'Mutushy',
+    admin: false
+  },
+  {
+    email: 'cecilia@cecilia.com',
+    password: '123',
+    firstName: 'Cecilia',
+    lastName: 'Song-Avery',
+    admin: false
   }
 ]
 

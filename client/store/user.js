@@ -69,6 +69,14 @@ export function putUser(user, history) {
       });
   };
 }
+
+export function deleteUser(user, history) {
+  return function thunk() {
+    return axios.delete(`/api/users/${user.id}`)
+      .then(res => res.data)
+      .then(() => history.push('/users'))
+  }
+}
 /**
  * REDUCER
  */
