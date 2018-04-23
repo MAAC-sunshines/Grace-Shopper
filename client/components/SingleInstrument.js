@@ -19,52 +19,57 @@ export default class SingleProduct extends Component {
     }
     showForm() {
         this.setState({
-            showForm: true
+            showForm: !this.state.showForm
         })
     }
     render() {
         const instrument = this.props.selectedInstrument;
-        const {isAdmin, user} = this.props;
+        const { isAdmin, user } = this.props;
         const categories = this.props.allCategories;
         const category = categories && categories[instrument.categoryId];
         const categoryName = category && category.name;
         const userId = user && user.id;
+        console.log('category', category);
         return (
-            <Grid>
-                <Row>
-                    <Col md={8}>
-                        <h2>{instrument.name}</h2>
-                        <Image src={instrument.imageUrl} className="single-product-img" />
-                    </Col>
-                    <Col md={4}>
-                        <h3>Price: ${instrument.cost}</h3>
-                        <h4>Category: {categoryName}</h4>
-                        <h4>Description: </h4>
-                        <p>{instrument.description}</p>
-                        <Button bsStyle="primary" bsSize="xsmall" onClick={
-                            (event) => this.props.addToCart(event, instrument, userId)}>
-                            Add To Cart
-                        </Button>
+            <div>
 
-                        {
-                            isAdmin &&
-                            <div className="single-form">
-                                <div clsasName="edit-delete">
-                                    <Button bsStyle="primary" bsSize="xsmall" onClick={
-                                        (event) => this.props.handleDelete(event, instrument.id)}>
-                                        Delete Instrument</Button>
-                                    <Button bsStyle="primary" bsSize="xsmall" onClick={this.showForm}>Edit Instrument</Button>
-                                </div>
-                                <div>
+                {
+                    this.state.showForm
+                        ?
+                        (<UpdateInstrument showForm={this.showForm.bind(this)}selectedInstrument={instrument} category={categoryName} isAdmin={isAdmin} handleDelete={this.props.handleDelete.bind(this)} handleSubmit={this.props.handleSubmit.bind(this, instrument)} />)
+                        :
+                        (<Grid>
+                            <Row>
+                                <Col md={8}>
+                                    <h2>{instrument.name}</h2>
+                                    <Image src={instrument.imageUrl} className="single-product-img" />
+                                </Col>
+                                <Col md={4}>
+                                    <h3>Price: ${instrument.cost}</h3>
+                                    <h4>Category: {categoryName}</h4>
+                                    <h4>Description: </h4>
+                                    <p>{instrument.description}</p>
+                                    <Button
+                                        bsStyle="primary" bsSize="xsmall" onClick={
+                                            (event) => this.props.addToCart(event, instrument, userId)}>
+                                        Add To Cart
+                                 </Button>
                                     {
-                                        this.state.showForm && <UpdateInstrument selectedInstrument={instrument} handleSubmit={this.props.handleSubmit.bind(this, instrument)} />
+                                        isAdmin &&
+                                        <div className="single-form">
+                                            <div>
+                                                <div className="edit-update">
+                                                    <Button bsStyle="primary" bsSize="xsmall" onClick={this.showForm}>Edit Instrument</Button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     }
-                                </div>
-                            </div>
-                        }
-                    </Col>
-                </Row>
-            </Grid>
+                                </Col>
+                            </Row>
+                        </Grid>)
+                }
+
+            </div>
         )
     }
 }
