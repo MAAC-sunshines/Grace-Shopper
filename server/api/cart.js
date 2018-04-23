@@ -26,10 +26,10 @@ module.exports = router
 //     }
 //   req.session.userId = req.user.id
 // })
-router.get('/', (req, res, next) => {
-  LineOrder.findAll()
-  .then(orders => res.json(orders));
-})
+// router.get('/', (req, res, next) => {
+//   LineOrder.findAll()
+//   .then(orders => res.json(orders));
+// })
 router.get('/:id', (req, res, next) => {
   LineOrder.findAll({
     where: {

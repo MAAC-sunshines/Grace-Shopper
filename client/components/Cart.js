@@ -24,10 +24,11 @@ export default class Cart extends Component {
             <Row className="row-mapping">
             {
               cart && cart.map(instrument => {
+                console.log('instrument', instrument)
                 return (
                   <Col md={3} key={instrument.instrumentId} className="category-box">
                      <Link to={`/instruments/${instrument.instrumentId}`}>
-                        <Image src={instrument.instrument.imageUrl} rounded className="thumbnail-photo"/>
+                        <Image src={instrument.instrument.imageUrl} rounded className="thumbnail-photo" />
                       </Link>
                       <li>
                         <h3>{instrument.instrument.name}</h3>
