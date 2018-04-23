@@ -9,9 +9,10 @@ import { me } from './store'
 import SingleInstrumentContainer from './containers/SingleInstrumentContainer';
 import SingleCategoryContainer from './containers/SingleCategoryContainer';
 import AllUsersContainer from './containers/AllUsersContainer';
-import Cart from './components/Cart';
+import CartContainer from './containers/CartContainer';
 import AccountInfo from './components/AccountInfo';
 import Checkout from './components/Checkout';
+
 /**
  * COMPONENT
  */
@@ -29,7 +30,7 @@ class Routes extends Component {
         <Route exact path="/" component={AllCategoriesContainer} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/cart" component={Cart} />
+        <Route path="/cart" component={CartContainer} />
         <Route exact path="/categories" component={AllCategoriesContainer} />
         <Route path="/categories/:id" component={SingleCategoryContainer} />
         <Route exact path="/instruments" component={AllInstrumentsContainer} />
