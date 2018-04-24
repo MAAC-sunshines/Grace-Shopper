@@ -12,7 +12,7 @@ export default class AllUsers extends Component {
     render() {
         const allUsers = this.props.users;
         const isAdmin = this.props.isAdmin;
-        console.log('allUsers', allUsers);
+
         return (
             <Grid className="all-categories-box">
                 <div>

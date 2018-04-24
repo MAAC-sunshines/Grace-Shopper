@@ -19,6 +19,7 @@ export default class Cart extends Component {
     const cart = this.props.cart;
     const instruments = this.props.instruments;
     let total = 0;
+
     return (
       <Grid className="all-categories-box">
         {
@@ -32,7 +33,9 @@ export default class Cart extends Component {
           {
             cart && cart.map(lineOrder => {
               const instrumentInfo = instruments.filter(instrument => instrument.id === lineOrder.instrumentId);
+
               total += instrumentInfo[0] && instrumentInfo[0].cost * lineOrder.quantity
+
               return (
                 <Col md={3} key={lineOrder.instrumentId} className="category-box">
                   <Link to={`/instruments/${lineOrder.instrumentId}`}>

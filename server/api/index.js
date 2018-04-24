@@ -7,6 +7,7 @@ router.use('/instruments', require('./instruments'))
 router.use('/categories', require('./category'));
 router.use('/cart', require('./cart'));
 router.use('/checkout', require('./checkout'));
+router.use('/order-history', require('./order'));
 // router.use('/payment', require('./payment'));
 
 router.use((req, res, next) => {

@@ -12,7 +12,6 @@ import { Link } from 'react-router-dom';
 export const UserHome = (props) => {
   const { email, isAdmin } = props
   const { firstName } = props || email
-  console.log(firstName)
   return (
     <div className="account-page">
         <div className="nav-home">

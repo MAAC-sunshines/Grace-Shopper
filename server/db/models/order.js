@@ -20,20 +20,7 @@ const Order = db.define('order', {
       type: Sequelize.STRING
     },
     orderTotal: {
-      type: Sequelize.VIRTUAL,
-      get: function() {
-        LineOrder.findAll({
-          orderId: this.id
-        })
-        .then(orders => {
-          if (orders) {
-            const total = orders.reduce(function (sum, line) {
-              sum + line.itemPrice
-            }, 0)
-            return total
-          }
-        })
-      }
+      type: Sequelize.DECIMAL
     }
 
 })

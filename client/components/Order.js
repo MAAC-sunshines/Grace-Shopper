@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import Payment from './Payment';
 
-class Checkout extends Component {
+class Order extends Component {
   constructor() {
     super()
   }
@@ -13,14 +13,31 @@ class Checkout extends Component {
   }
 
   render() {
-    console.log('THIS IS PROPS', this.props)
+    const {allOrders = []} = this.props;
     return (
-      <div>
-      <h2>Your Current Order: </h1>
-      <Payment />
-      </div>
-    )}
+        <Grid>
+        <h2>Singler ORDER</h2>
+
+        {
+            allOrders && allOrders.map(singleOrder => {
+            return (
+                <Row key={singleOrder.id}>
+                <Link to={`/order-history/${user.id}`}>
+                    <Col sm={6}>
+                    <h2>{singleOrder.purchaseDate}</h2>
+                    </Col>
+                    <Col sm={6}>
+                      <h4>${singleOrder.totalCost}</h4>
+                    </Col>
+                </Link>
+                </Row>
+                )
+            })
+        }
+
+    </Grid>
+    )
 }
 
 
-export default Checkout;
+export default Order;

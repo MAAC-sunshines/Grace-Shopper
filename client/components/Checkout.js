@@ -6,7 +6,9 @@ import { Button, Image } from 'react-bootstrap';
 class Checkout extends Component {
 
   render () {
+
     const orders = this.props.currentOrder;
+    console.log("ORDERS", this.props)
     let total = orders && orders.reduce((sum, item) => {
       item && (sum += item.totalPrice);
       return sum;
@@ -18,7 +20,7 @@ class Checkout extends Component {
     return (
       <div>
         <h2>Total To Be Charged: ${total}</h2>
-        <form onSubmit={(event) => this.props.handleSubmit(event, this.props.user)}>
+        <form onSubmit={(event) => this.props.handleSubmit(event, this.props.user, total)}>
           <h5>Shipping Address</h5>
           <input type="text" name="email" placeholder="email" />
           <input type="text" name="firstName" placeholder="First Name" />

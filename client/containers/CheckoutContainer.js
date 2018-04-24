@@ -6,15 +6,14 @@ import { postOrder } from '../reducers/checkout';
 
 const mapStateToProps = function(state, ownProps) {
   return {
-    currentOrder: state.cart[0],
+    currentOrder: state.cart,
     user: state.user
   }
 }
 
 const mapDispatchToProps = function(dispatch, ownProps) {
-  console.log('OWN PROPS!!!!!', ownProps)
   return {
-    handleSubmit: function(event, user) {
+    handleSubmit: function(event, user, total) {
       const body = {
         email: event.target.email.value,
         firstName: event.target.firstName.value,
@@ -24,7 +23,8 @@ const mapDispatchToProps = function(dispatch, ownProps) {
         state: event.target.state.value,
         zipcode: event.target.zipcode.value,
         status: 'Processing',
-        userId: user.id
+        userId: user.id,
+        orderTotal: total
       }
       dispatch(postOrder(body))
 
