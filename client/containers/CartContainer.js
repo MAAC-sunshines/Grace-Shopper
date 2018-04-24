@@ -1,18 +1,22 @@
 import { connect } from 'react-redux';
-import { fetchCart, emptyCart, clearItem } from '../store';
+import { fetchCart, emptyCart, clearItem, fetchInstruments } from '../store';
 import Cart from '../components/Cart';
 
 const mapStateToProps = state => {
   return {
     cart: state.cart,
-    user: state.user
+    user: state.user,
+    instruments: state.allInstruments
   }
 }
 
 const mapDispatchToProps = function (dispatch) {
   return {
     loadCart: function() {
-      dispatch(fetchCart())
+      dispatch(fetchCart());
+    },
+    loadInstruments: function() {
+      dispatch(fetchInstruments());
     },
     deleteCart: function(event, user) {
       console.log('user', user);

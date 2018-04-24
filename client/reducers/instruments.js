@@ -23,9 +23,9 @@ export const addInstrument = function(instrument) {
 export default function allInstruments(state = [], action) {
   switch (action.type) {
     case GET_ALL_INSTRUMENTS:
-      return [...state, action.allInstruments]
+      return action.allInstruments
     case ADD_INSTRUMENT:
-      return [...state, allInstruments = [...state.allInstruments, action.instrument]]
+      return [...state, [...state.allInstruments, action.instrument]]
     default:
       return state
   }
