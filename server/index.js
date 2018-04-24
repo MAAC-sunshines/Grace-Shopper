@@ -64,10 +64,6 @@ const createApp = () => {
     saveUninitialized: false
   }))
 
-  app.use(function (req, res, next) {
-    req.session.userId = 1
-    next();
-  })
 
   app.use(passport.initialize()) //registering passport
   app.use(passport.session())  //hooks passport into our session. HAS TO COME AFTER OUR SESSION MIDDLEWARE (but passport serializeUser comes in the beginning before bodyParser)

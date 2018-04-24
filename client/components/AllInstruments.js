@@ -50,17 +50,17 @@ export default class AllInstruments extends Component {
                         placeholder="Enter instrument name"
                         onChange={this.handleChange}
                     />
-                    {
-                        isAdmin &&
-                        <div className="add-instrument">
-                            <Button bsStyle="primary" bsSize="xsmall" onClick={this.showForm}>ADD NEW INSTRUMENT</Button>
+                    </div>
+                    <Instruments instruments={this.instruments} />
                             {
-                                this.state.showForm ? <AddInstrumentsForm handleSubmit={(event) => this.props.addNewInstrument(event)} cancelClick={this.cancelForm} /> : null
+                                isAdmin &&
+                                <div className="add-instrument">
+                                    <Button bsStyle="primary" bsSize="xsmall" onClick={this.showForm}>ADD NEW INSTRUMENT</Button>
+                                    {
+                                        this.state.showForm ? <AddInstrumentsForm handleSubmit={(event) => this.props.addNewInstrument(event)} cancelClick={this.cancelForm} /> : null
+                                    }
+                                </div>
                             }
-                        </div>
-                    }
-                </div>
-                <Instruments instruments={this.instruments} />
             </Grid>
         )
     }
