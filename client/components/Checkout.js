@@ -18,7 +18,7 @@ class Checkout extends Component {
     return (
       <div>
         <h2>Total To Be Charged: ${total}</h2>
-        <form onSubmit={(event) => this.props.handleSubmit(event)}>
+        <form onSubmit={(event) => this.props.handleSubmit(event, this.props.user)}>
           <h5>Shipping Address</h5>
           <input type="text" name="email" placeholder="email" />
           <input type="text" name="firstName" placeholder="First Name" />

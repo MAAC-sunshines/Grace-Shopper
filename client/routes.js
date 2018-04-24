@@ -13,6 +13,7 @@ import CartContainer from './containers/CartContainer';
 import AccountInfo from './components/AccountInfo';
 import CheckoutContainer from './containers/CheckoutContainer';
 import Payment from './components/Payment';
+import OrderHistoryContainer from './containers/OrderHistoryContainer';
 
 /**
  * COMPONENT
@@ -42,9 +43,9 @@ class Routes extends Component {
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
             <Route path="/account" component={AccountInfo} />
-            <Route exact path="/checkout" component={CheckoutContainer}
-              />
+            <Route exact path="/checkout" component={CheckoutContainer} />
             <Route path="/checkout/payment" component={Payment}/>
+            <Route path="/order-history" component={OrderHistoryContainer} />
             {
               isAdmin &&
               <Route path="/users" component={AllUsersContainer} />

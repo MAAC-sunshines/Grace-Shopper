@@ -12,7 +12,7 @@ export default class Cart extends Component {
   }
 
   render(){
-
+    console.log('PROPS IN CART.JS!!!!',this.props)
     const cart = this.props.cart[0];
     let total = cart && cart.reduce((sum, item) => {
       item && (sum += item.totalPrice);
