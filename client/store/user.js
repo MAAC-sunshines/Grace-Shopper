@@ -75,6 +75,7 @@ export function deleteUser(user, history) {
     return axios.delete(`/api/users/${user.id}`)
       .then(res => res.data)
       .then(() => history.push('/users'))
+      .catch(err => console.log(err))
   }
 }
 /**
