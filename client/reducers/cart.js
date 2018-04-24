@@ -84,8 +84,10 @@ export function emptyCart(user, history){
 }
 
 export function clearItem(user, instrumentId, history){
+  const itemToDelete = {user, instrumentId};
+  console.log('delete', itemToDelete)
 	return function thunk(){
-		return axios.delete('/api/cart/', user, instrumentId)
+		return axios.put('/api/cart', itemToDelete)
 			.then(res => res.data)
 			.then(() => history.push('/cart'))
       .catch(err => console.error(err))

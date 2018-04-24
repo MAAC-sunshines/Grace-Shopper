@@ -19,13 +19,13 @@ router.get('/', (req, res, next) => {
       orderId: null
     }
   })
-  .then(lineOrders => res.json(lineOrders))
-  .catch(next);
+    .then(lineOrders => res.json(lineOrders))
+    .catch(next);
 })
 
 
 router.post('/', (req, res, next) => {
-  if (!req.user){
+  if (!req.user) {
     req.session.cart = req.session.cart || [];
     const existingInstrument = req.session.cart.filter((instrument => instrument.instrumentId === req.body.instrumentId));
     if (!existingInstrument.length) {
@@ -51,23 +51,21 @@ router.post('/', (req, res, next) => {
         itemPrice: req.body.itemPrice
       }
     })
-    .spread((order, created) => {
-      if (created) {
-        return res.json(created);
-      } else {
-        order.update({
-          quantity: order.getDataValues.quantity + 1
-        })
-        .then(updatedOrder => res.json(updatedOrder))
-      }
-    })
-    .catch(next)
+      .spread((order, created) => {
+        if (created) {
+          return res.json(created);
+        } else {
+          order.update({
+            quantity: order.getDataValues.quantity + 1
+          })
+            .then(updatedOrder => res.json(updatedOrder))
+        }
+      })
+      .catch(next)
   }
 })
 
 router.delete('/', (req, res, next) => {
-  console.log('req.body', req.body);
-  if (!req.body.instrumentId){
     if (!req.user) {
       req.session.cart = [];
       res.status(204).send('Cart cleared successfully');
@@ -78,30 +76,32 @@ router.delete('/', (req, res, next) => {
           orderId: null
         }
       })
-      .then(res.status(204).send('Cart cleared successfully!'))
-      .catch(next)
+        .then(res.status(204).send('Cart cleared successfully!'))
+        .catch(next)
     }
-  } else if (!req.user) {
-      let idx = 0;
-      for (let i = 0; i < req.session.cart.length; i++) {
-        if (req.session.cart[i].instrumentId === req.body.instrumentId){
-          idx = i;
-        }
+})
+
+router.put('/', (req, res, next) => {
+  if (!req.user) {
+    let idx = 0;
+    for (let i = 0; i < req.session.cart.length; i++) {
+      if (req.session.cart[i].instrumentId === req.body.instrumentId) {
+        idx = i;
       }
-      req.session.cart.splice(idx, 1);
-      console.log('req.session.cart', req.session.cart)
-      res.json(req.session.cart);
-    } else {
-      LineOrder.destroy({
-        where: {
-          userId: req.user.id,
-          instrumentId: req.body.instrumentId,
-          orderId: null
-        }
-      })
+    }
+    req.session.cart.splice(idx, 1);
+    res.json(req.session.cart);
+  } else {
+    LineOrder.destroy({
+      where: {
+        userId: req.user.id,
+        instrumentId: req.body.instrumentId,
+        orderId: null
+      }
+    })
       .then(cart => res.json(cart))
       .catch(next);
-    }
+  }
 })
 // router.get('/:id', (req, res, next) => {
 //   LineOrder.findAll({
