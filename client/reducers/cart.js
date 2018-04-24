@@ -84,11 +84,11 @@ export function emptyCart(user, history){
 	};
 }
 
-export function clearItem(user, instrumentId, history){
-  const itemToDelete = {user, instrumentId};
-  console.log('delete', itemToDelete)
+export function updateLineOrder(instrumentId, history, quantity){
+  const itemToUpdate = {instrumentId, quantity};
+  console.log('itemToUpdate in thunk', itemToUpdate);
 	return function thunk(){
-		return axios.put('/api/cart', itemToDelete)
+		return axios.put('/api/cart', itemToUpdate)
 			.then(res => res.data)
 			.then(() => history.push('/cart'))
       .catch(err => console.error(err))
