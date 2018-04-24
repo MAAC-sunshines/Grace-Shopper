@@ -16,7 +16,7 @@ export function getAllOrders(allOrders) {
 //THUNKS
 export function fetchAllOrders(userId) {
   return function thunk(dispatch) {
-    return axios.get(`/api/${userId}/order-history`)
+    return axios.get(`/api/order-history`)
       .then(res => res.data)
       .then(allOrders => {
         const action = getAllOrders(allOrders);

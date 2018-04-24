@@ -4,10 +4,20 @@ const stripe = require('../constants/stripe');
 // const cors = require('cors');
 
 router.post('/', (req, res, next) => {
-  console.log('REQ BODY!!!!!!', req.body)
+
   Order.create(req.body)
-    .then(created => {
-      res.json(created)
+    .then(res => {
+      LineOrder.update({
+        orderId: res.dataValues.id
+      }, {
+        where: {
+          userId: req.body.userId,
+          orderId: null
+        }
+      })
+    })
+    .then(updated => {
+      res.json(updated)
     })
     .catch(next)
 })

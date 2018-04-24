@@ -11,10 +11,13 @@ export default class Cart extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.loadCart();
-    this.props.loadInstruments();
-  }
+  render(){
+    console.log('PROPS IN CART.JS!!!!',this.props)
+    const cart = this.props.cart[0];
+    let total = cart && cart.reduce((sum, item) => {
+      item && (sum += item.totalPrice);
+      return sum;
+    }, 0);
 
   render() {
     const { user } = this.props;
