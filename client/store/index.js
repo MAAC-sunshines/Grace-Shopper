@@ -11,6 +11,7 @@ import allUsers from '../reducers/allUsers';
 import orderHistory from '../reducers/orderHistory';
 import cart from '../reducers/cart';
 import singleOrder from '../reducers/singleOrder';
+import checkout from '../reducers/checkout';
 
 const reducer = combineReducers({
   user,
@@ -21,6 +22,7 @@ const reducer = combineReducers({
   allCategories,
   orderHistory,
   singleOrder,
+  checkout,
   cart
 })
 const middleware = composeWithDevTools(applyMiddleware(
@@ -38,3 +40,4 @@ export * from '../reducers/instruments';
 export * from '../reducers/allCategories';
 export * from '../reducers/orderHistory';
 export * from '../reducers/cart';
+export * from '../reducers/checkout';

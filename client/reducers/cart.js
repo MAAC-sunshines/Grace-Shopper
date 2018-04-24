@@ -49,6 +49,7 @@ export function postCart(body) {
   const itemPrice = body.itemPrice;
   const order = {instrumentId, userId, quantity, itemPrice}
   console.log('thunk body', order);
+  
   return function (dispatch) {
     axios.post('/api/cart', order)
       .then(res => res.data)

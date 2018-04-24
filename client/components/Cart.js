@@ -4,6 +4,7 @@ import { Button, Image } from 'react-bootstrap';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
+import CheckoutContainer from '../containers/CheckoutContainer';
 
 export default class Cart extends Component {
   constructor(props) {
@@ -62,4 +63,6 @@ export default class Cart extends Component {
       </Grid>
     )
   }
-}
+
+
+
