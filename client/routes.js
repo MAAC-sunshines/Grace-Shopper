@@ -14,6 +14,7 @@ import AccountInfo from './components/AccountInfo';
 import CheckoutContainer from './containers/CheckoutContainer';
 import Payment from './components/Payment';
 import OrderHistoryContainer from './containers/OrderHistoryContainer';
+import OrderListContainer from './containers/OrderListContainer';
 
 /**
  * COMPONENT
@@ -44,11 +45,14 @@ class Routes extends Component {
             <Route path="/home" component={UserHome} />
             <Route path="/account" component={AccountInfo} />
             <Route exact path="/checkout" component={CheckoutContainer} />
-            <Route path="/checkout/payment" component={Payment}/>
+            <Route path="/checkout/payment" component={Payment} />
             <Route path="/order-history" component={OrderHistoryContainer} />
             {
               isAdmin &&
-              <Route path="/users" component={AllUsersContainer} />
+              <Switch>
+                <Route path="/users" component={AllUsersContainer} />
+                <Route path="/orderList" component={OrderListContainer} />
+              </Switch>
             }
           </Switch>
         }

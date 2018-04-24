@@ -1,20 +1,20 @@
 import { connect } from 'react-redux';
-import AllOrders from '../components/AllOrders';
-import { fetchAllOrders } from '../reducers/allOrders';
+import AllOrders from '../components/OrderList';
+import { fetchOrderList } from '../reducers/orderList';
 //import { deleteUser, putUser } from '../store';
 import PropTypes from 'prop-types';
 
 const mapStateToProps = function(state) {
   return {
-    allOrders: state.allOrders,
+    orderList: state.orderList,
     isAdmin: !!state.user.admin
   }
 }
 
 const mapDispatchToProps = function(dispatch, ownProps) {
   return {
-    loadAllOrders: function() {
-      dispatch(fetchAllOrders());
+    loadOrderList: function() {
+      dispatch(fetchOrderList());
     },
     // handleDelete: function(event, user){
     //   event.preventDefault();

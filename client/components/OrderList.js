@@ -9,11 +9,20 @@ export default class OrderList extends Component {
   componentDidMount() {
       this.props.loadOrderList();
   }
+
   render() {
+    console.log(this.props.orderList);
+    const orderList = this.props.orderList;
     return (
-      <div>
-        <h3>Order List</h3>
-      </div>
+      orderList && orderList.map(order => {
+        return (
+          <div key={order.id} >
+            <p>Status: {order.status}</p>
+            <p>Date Created: {order.createdAt}</p>
+            <p>Ordered By: {order.user.firstName} {order.user.lastName} | userId:{order.userId}</p>
+          </div>
+        )
+      })
     )
   }
 }

@@ -11,7 +11,7 @@ export const getOrderList = function (orderList) {
 
 export function fetchOrderList() {
     return function (dispatch) {
-        axios.get('/api/orderList')
+        axios.get('/api/users/orderList')
             .then(res => res.data)
             .then(orderList => {
                 dispatch(getOrderList(orderList));

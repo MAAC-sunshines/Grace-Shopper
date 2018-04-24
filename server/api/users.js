@@ -2,12 +2,36 @@ const router = require('express').Router()
 const { User, Order, OrderInstrument, LineOrder } = require('../db/models')
 module.exports = router
 
-router.get('/', (req, res, next) => {
+function throwError(status, msg) {
+  const err = new Error(msg);
+  err.status = status;
+  throw err;
+}
+
+function isLoggedIn (req, res, next) {
+  if (!req.user) throwError(401, 'Unauthorized')
+  next()
+}
+function isAdmin (req, res, next) {
+  if (!req.user.admin) throwError(401, 'Unauthorized')
+  next()
+}
+
+router.get('/', isLoggedIn, isAdmin, (req, res, next) => {
   User.findAll({
 
     attributes: ['id', 'email', 'firstName', 'lastName', 'admin']
   })
     .then(users => res.json(users))
+    .catch(next)
+})
+
+//Admin can view a list of all the orders
+router.get('/orderList', isLoggedIn, isAdmin, (req, res, next) => {
+  Order.findAll({
+    include: [{model: User}]
+  })
+    .then(orders => res.json(orders))
     .catch(next)
 })
 

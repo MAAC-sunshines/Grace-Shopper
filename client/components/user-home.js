@@ -41,6 +41,15 @@ export const UserHome = (props) => {
               </Link>
             </Col>
           }
+          {
+            isAdmin &&
+            <Col md={3} className="category-box">
+              <Link to="/orderList">
+                <img className="thumbnail-photo" src="https://cdn.iconscout.com/public/images/icon/premium/png-512/order-history-30028b0173aa6535-512x512.png" />
+                <h4 className="home-boxes">Order List</h4>
+              </Link>
+            </Col>
+          }
         </Row>
       </Grid>
     </div>
