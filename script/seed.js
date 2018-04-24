@@ -138,7 +138,7 @@ const users = [
     password: '123',
     firstName: 'Alla',
     lastName: 'Yakubova',
-    admin: false
+    admin: true
   },
   {
     email: 'mahia@mahia.com',

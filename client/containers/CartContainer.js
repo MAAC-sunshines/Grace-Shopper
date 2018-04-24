@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchCart, emptyCart, clearItem, fetchInstruments } from '../store';
+import { fetchCart, emptyCart, fetchInstruments, updateLineOrder, getCart } from '../store';
 import Cart from '../components/Cart';
 
 const mapStateToProps = state => {
@@ -19,12 +19,16 @@ const mapDispatchToProps = function (dispatch, ownProps) {
       dispatch(fetchInstruments());
     },
     deleteCart: function(event, user) {
-      console.log('event', user);
       dispatch(emptyCart(user, ownProps.history))
     },
-    deleteCartItem: function(event, user, id) {
-      console.log('id', id);
-      dispatch(clearItem(user, id, ownProps.history));
+    deleteCartItem: function(event, user, instrumentId) {
+      dispatch(updateLineOrder(instrumentId, ownProps.history));
+    },
+    handleSubmit: function(event, instrumentId) {
+      const quantity = Number(event.target.quantity.value);
+      console.log('all the things', instrumentId, quantity);
+      dispatch(updateLineOrder(instrumentId, ownProps.history, quantity));
+      dispatch(getCart());
     }
   }
 }
