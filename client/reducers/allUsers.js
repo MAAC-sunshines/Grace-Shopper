@@ -16,7 +16,7 @@ export function fetchUsers(){
             .then(users => {
                 dispatch(getUsers(users));
             })
-            .catch(err => console.log(err));
+            .catch(next);
     }
 }
 

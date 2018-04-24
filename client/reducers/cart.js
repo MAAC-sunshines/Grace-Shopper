@@ -26,7 +26,6 @@ export function deleteCart() {
 
 //REDUCER
 export default function reducer(state = [], action) {
-  console.log('action', action)
   switch (action.type) {
     // update_cart needs to add a new instrument to the array of instruments on cart
     case GET_CART:
@@ -37,14 +36,13 @@ export default function reducer(state = [], action) {
       return state.cart.filter(instrument => instrument.id !== action.item )
     case DELETE_CART:
     return action.cart
-    default: 
+    default:
       return state;
   }
 }
 
 //thunk
 export function postCart(instrument,userId,itemPrice) {
-  console.log('ITEM!!!', instrument, userId, itemPrice)
   const instrumentId = instrument.id;
   const item = {instrumentId, userId, itemPrice}
   return function (dispatch) {

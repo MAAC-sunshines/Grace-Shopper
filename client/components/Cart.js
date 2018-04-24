@@ -4,6 +4,7 @@ import { Button, Image } from 'react-bootstrap';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
+import CheckoutContainer from '../containers/CheckoutContainer';
 
 export default class Cart extends Component {
   constructor(props){
@@ -11,20 +12,20 @@ export default class Cart extends Component {
   }
 
   render(){
-    console.log('STATE BE', this.props.cart[0])
+
     const cart = this.props.cart[0];
     let total = cart && cart.reduce((sum, item) => {
       item && (sum += item.totalPrice);
       return sum;
     }, 0);
-    console.log('total', total);
+
     return (
       <Grid className="all-categories-box">
           <h2>Your Shopping Cart</h2>
             <Row className="row-mapping">
             {
               cart && cart.map(instrument => {
-                console.log('instrument', instrument)
+
                 return (
                   <Col md={3} key={instrument.instrumentId} className="category-box">
                      <Link to={`/instruments/${instrument.instrumentId}`}>
@@ -54,9 +55,11 @@ export default class Cart extends Component {
             </Row>
           <h3>Cart Total: ${total}</h3>
             {/* write a reducer */}
-            <button OnClick={() => this.props.emptyCart()}className='btn clear-btn'>Clear Cart</button>
+            <Button bsStyle="danger" onClick={() => this.props.emptyCart()}className='btn clear-btn'>Clear Cart</Button>
             {/* //CHECKOUT STUFF */}
-         <Link to='/checkout'> <h3>Checkout</h3></Link>
+         <Link to='/checkout'>
+           <Button bsStyle="success" bsSize="xsmall">Checkout</Button>
+         </Link>
 
       </Grid>
 

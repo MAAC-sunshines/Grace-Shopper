@@ -8,7 +8,7 @@ export default function AddInstrumentsForm(props){
             <form onSubmit={props.handleSubmit}>
                 <h2>
                     <label>Instrument Name: </label>
-                    <input type="text" name="name" defaultValue="Name"/>
+                    <input type="text" name="name" placeholder="Name"/>
                 </h2>
                 <h3>
                     <label>Image url: </label>
