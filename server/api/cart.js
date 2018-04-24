@@ -25,6 +25,7 @@ router.get('/', (req, res, next) => {
 
 
 router.post('/', (req, res, next) => {
+  console.log('body',req.body);
   if (!req.user) {
     req.session.cart = req.session.cart || [];
     const existingInstrument = req.session.cart.filter((instrument => instrument.instrumentId === req.body.instrumentId));
@@ -36,11 +37,10 @@ router.post('/', (req, res, next) => {
     } else {
       req.session.cart.filter(instrument => {
         if (instrument.instrumentId === req.body.instrumentId) {
-          instrument.quantity += 1;
+          instrument.quantity = instrument.quantity + req.body.quantity;
         }
       })
     }
-    console.log('session cart', req.session.cart);
     res.json(req.session.cart);
   } else {
     LineOrder.findOrCreate({
@@ -53,10 +53,22 @@ router.post('/', (req, res, next) => {
     })
       .spread((order, created) => {
         if (created) {
-          return res.json(created);
+          LineOrder.update({
+            quantity: req.body.quantity
+          },
+          {
+            where: {
+              instrumentId: req.body.instrumentId,
+              userId: req.user.id,
+              orderId: null,
+              itemPrice: req.body.itemPrice
+            },
+          })
+          .then(update => res.json(update))
+          .catch(next);
         } else {
           order.update({
-            quantity: order.getDataValues.quantity + 1
+            quantity: order.getDataValues.quantity + req.body.quantity
           })
             .then(updatedOrder => res.json(updatedOrder))
         }

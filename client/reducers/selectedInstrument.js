@@ -26,14 +26,14 @@ export function deleteInstrument(instrumentId, history){
 			});
 	};
 }
-export function putInstrument(instrument, history){
+export function putInstrument(instrument){
 	return function thunk(dispatch){
 		return axios.put(`/api/instruments/${instrument.id}`, instrument)
 			.then(res => res.data)
 			.then(updatedInstrument => {
 				const action = getInstrument(updatedInstrument);
 				dispatch(action);
-				history.push(`/instruments/${instrument.id}`);
+				dispatch(getInstrument());
 			});
 	};
 }

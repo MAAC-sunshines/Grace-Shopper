@@ -45,11 +45,9 @@ export default function reducer(state = [], action) {
 export function postCart(body) {
   const instrumentId = body.instrument.id;
   const userId = body.user.id;
-  const quantity = body.quantity;
+  const quantity = Number(body.quantity);
   const itemPrice = body.itemPrice;
   const order = {instrumentId, userId, quantity, itemPrice}
-  console.log('thunk body', order);
-  
   return function (dispatch) {
     axios.post('/api/cart', order)
       .then(res => res.data)
