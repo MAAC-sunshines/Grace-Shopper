@@ -1,12 +1,10 @@
 const router = require('express').Router()
-const { User, Order, OrderInstrument } = require('../db/models')
+const { User, Order, OrderInstrument, LineOrder } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
   User.findAll({
-    // explicitly select only the id and email fields - even though
-    // users' passwords are encrypted, it won't help if we just
-    // send everything to anyone who asks!
+
     attributes: ['id', 'email', 'firstName', 'lastName', 'admin']
   })
     .then(users => res.json(users))
@@ -51,14 +49,24 @@ router.put('/:id', (req, res, next) => {
     .catch(next);
 })
 
-router.delete('/:id', (req, res, next) => {
-  User.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(() => {
-      res.status(204).end()
-    })
-    .catch(next)
-})
+router.delete('/:id/:instrumentId?', (req, res, next) => {
+  console.log('hi');
+  if (req.params.instrumentId) {
+    LineOrder.destroy({
+      where: {
+        userId: req.params.id,
+        orderId: null,
+        instrumentId: req.params.instrumentId
+      }
+    }).then(res.sendStatus(204))
+      .catch(next)
+  } else {
+    LineOrder.destroy({
+      where: {
+        userId: req.params.id,
+        orderId: null
+      }
+    }).then(res.sendStatus(204))
+      .catch(err => console.log(err));
+  }
+});

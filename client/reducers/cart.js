@@ -29,9 +29,9 @@ export default function reducer(state = [], action) {
   switch (action.type) {
     // update_cart needs to add a new instrument to the array of instruments on cart
     case GET_CART:
-      return [...state, action.cart]
+      return action.cart
     case ADD_TO_CART:
-      return [...state, cart = [...state.cart, action.cart]]
+      return [...state, [...state.cart, action.cart]]
     case DELETE_FROM_CART:
       return state.cart.filter(instrument => instrument.id !== action.item )
     case DELETE_CART:
@@ -42,16 +42,22 @@ export default function reducer(state = [], action) {
 }
 
 //thunk
-export function postCart(instrument,userId,itemPrice) {
-  const instrumentId = instrument.id;
-  const item = {instrumentId, userId, itemPrice}
+export function postCart(body) {
+  const instrumentId = body.instrument.id;
+  const userId = body.user.id;
+  const quantity = body.quantity;
+  const itemPrice = body.itemPrice;
+  const order = {instrumentId, userId, quantity, itemPrice}
+  console.log('thunk body', order);
+  
   return function (dispatch) {
-    axios.post('/api/cart', item)
+    axios.post('/api/cart', order)
       .then(res => res.data)
       .then(cartItem => {
-        dispatch(addToCart(cartItem))
+        dispatch(addToCart(cartItem));
+        dispatch(getCart());
       })
-      .catch(err => console.error(err))
+      .catch(err => {throw Error('Add to cart unsuccessful', err)});
   }
 }
 
@@ -68,12 +74,23 @@ export function fetchCart(){
 }
 
 //thunk to delete cart
-export function emptyCart(){
+export function emptyCart(user){
 	return function thunk(dispatch){
-		return axios.delete('/api/cart')
+		return axios.delete(`/api/users/${user.id}`)
 			.then(res => res.data)
 			.then(() => {
-				dispatch(deleteCart());
+				dispatch(getCart());
+      })
+      .catch(err => console.error(err))
+	};
+}
+
+export function clearItem(user, id){
+	return function thunk(dispatch){
+		return axios.delete(`/api/users/${user.id}/${id}`)
+			.then(res => res.data)
+			.then(() => {
+				dispatch(getCart());
       })
       .catch(err => console.error(err))
 	};
