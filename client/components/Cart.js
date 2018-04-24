@@ -10,21 +10,15 @@ export default class Cart extends Component {
   constructor(props) {
     super(props);
   }
-
-  render(){
-    console.log('PROPS IN CART.JS!!!!',this.props)
-    const cart = this.props.cart[0];
-    let total = cart && cart.reduce((sum, item) => {
-      item && (sum += item.totalPrice);
-      return sum;
-    }, 0);
-
+  componentDidMount(){
+    this.props.loadCart();
+    this.props.loadInstruments();
+  }
   render() {
     const { user } = this.props;
     const cart = this.props.cart;
     const instruments = this.props.instruments;
     console.log('instruments', instruments);
-    //DONT FORGET TO DO TOTAL PRICES
     return (
       <Grid className="all-categories-box">
         <h2>Your Shopping Cart</h2>
@@ -46,14 +40,10 @@ export default class Cart extends Component {
                   <form>
                     <input
                       placeholder="Enter quantity"
-                    // add a handle change function that updates quantity in the cart on the backend
                     />
                     <button type="submit">Submit</button>
                   </form>
-                  <Button bsStyle="primary" bsSize="xsmall" onClick={(event) => this.props.deleteCartItem(event, user, lineOrder.instrumentId)}>
-                    Remove From Cart
-                          {/* add an onClick */}
-                  </Button>
+                  <Button bsStyle="primary" bsSize="xsmall" onClick={(event) => this.props.deleteCartItem(event, user, lineOrder.instrumentId)}>Remove From Cart</Button>
                 </Col>
               )
             })
@@ -62,10 +52,7 @@ export default class Cart extends Component {
         <h3>Cart Total: </h3>
         <button onClick={(event) => this.props.deleteCart(event, user)} className="btn clear-btn">Clear Cart</button>
         <Link to="/checkout"> <h3>Checkout</h3></Link>
-
       </Grid>
     )
   }
-
-
-
+}
