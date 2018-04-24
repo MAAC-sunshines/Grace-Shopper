@@ -14,6 +14,7 @@ const mapStateToProps = function(state, ownProps) {
 const mapDispatchToProps = function(dispatch, ownProps) {
   return {
     handleSubmit: function(event, user, total) {
+      event.preventDefault();
       const body = {
         email: event.target.email.value,
         firstName: event.target.firstName.value,
