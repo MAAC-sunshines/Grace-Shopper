@@ -8,15 +8,11 @@ export function getAllOrders(allOrders) {
   const action = { type: GET_ALL_ORDERS, allOrders };
   return action;
 }
-// export function getAllOrders(allOrders) {
-//   const action = { type: GET_ALLORDERS, allOrders };
-//   return action;
-// }
 
 //THUNKS
-export function fetchAllOrders(userId) {
+export function fetchAllOrders() {
   return function thunk(dispatch) {
-    return axios.get(`/api/order-history`)
+    axios.get(`/api/order-history`)
       .then(res => res.data)
       .then(allOrders => {
         const action = getAllOrders(allOrders);
@@ -30,7 +26,7 @@ export function fetchAllOrders(userId) {
 export default function reducer(state = [], action) {
   switch (action.type) {
   case GET_ALL_ORDERS:
-    return action.selectedCategory;
+    return action.allOrders;
   default:
     return state;
   }

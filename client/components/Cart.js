@@ -18,7 +18,7 @@ export default class Cart extends Component {
     const { user } = this.props;
     const cart = this.props.cart;
     const instruments = this.props.instruments;
-    console.log('instruments', instruments);
+
     return (
       <Grid className="all-categories-box">
         <h2>Your Shopping Cart</h2>
@@ -26,7 +26,7 @@ export default class Cart extends Component {
           {
             cart && cart.map(lineOrder => {
               const instrumentInfo = instruments.filter(instrument => instrument.id === lineOrder.instrumentId);
-              console.log('instrument info', instrumentInfo);
+
               return (
                 <Col md={3} key={lineOrder.instrumentId} className="category-box">
                   <Link to={`/instruments/${lineOrder.instrumentId}`}>
