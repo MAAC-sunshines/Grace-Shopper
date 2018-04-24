@@ -66,41 +66,75 @@ router.post('/', (req, res, next) => {
 })
 
 router.delete('/', (req, res, next) => {
-    if (!req.user) {
-      req.session.cart = [];
-      res.status(204).send('Cart cleared successfully');
-    } else {
-      LineOrder.destroy({
-        where: {
-          userId: req.user.id,
-          orderId: null
-        }
-      })
-        .then(res.status(204).send('Cart cleared successfully!'))
-        .catch(next)
-    }
-})
-
-router.put('/', (req, res, next) => {
   if (!req.user) {
-    let idx = 0;
-    for (let i = 0; i < req.session.cart.length; i++) {
-      if (req.session.cart[i].instrumentId === req.body.instrumentId) {
-        idx = i;
-      }
-    }
-    req.session.cart.splice(idx, 1);
-    res.json(req.session.cart);
+    req.session.cart = [];
+    res.status(204).send('Cart cleared successfully');
   } else {
     LineOrder.destroy({
       where: {
         userId: req.user.id,
-        instrumentId: req.body.instrumentId,
         orderId: null
       }
     })
-      .then(cart => res.json(cart))
-      .catch(next);
+      .then(res.status(204).send('Cart cleared successfully!'))
+      .catch(next)
+  }
+})
+
+router.put('/', (req, res, next) => {
+  //if there is no quantity, it is deleting the lineOrder
+  if (!req.body.quantity) {
+    console.log('inside delete item');
+    if (!req.user) {
+      let idx = 0;
+      for (let i = 0; i < req.session.cart.length; i++) {
+        if (req.session.cart[i].instrumentId === req.body.instrumentId) {
+          idx = i;
+        }
+      }
+      req.session.cart.splice(idx, 1);
+      res.json(req.session.cart);
+    } else {
+      LineOrder.destroy({
+        where: {
+          userId: req.user.id,
+          instrumentId: req.body.instrumentId,
+          orderId: null
+        }
+      })
+        .then(cart => res.json(cart))
+        .catch(next);
+    }
+  } else {
+    //there is quantity so we  are updating lineOrder
+    if (!req.user) {
+      let idx = 0;
+      for (let i = 0; i < req.session.cart.length; i++) {
+        if (req.session.cart[i].instrumentId === req.body.instrumentId) {
+          req.session.cart[i].quantity = req.body.quantity;
+        }
+      }
+      res.json(req.session.cart);
+    } else {
+      LineOrder.findOne({
+        where: {
+          userId: req.user.id,
+          instrumentId: req.body.instrumentId,
+          orderId: null
+        }
+      })
+        .then(lineOrder => lineOrder.update({ quantity: req.body.quantity }))
+        .then(() => {
+          return LineOrder.findAll({
+            where: {
+              userId: req.user.id,
+              orderId: null
+            }
+          })
+        })
+        .then(updatedCart => res.json(updatedCart))
+        .catch(next)
+    }
   }
 })
 // router.get('/:id', (req, res, next) => {

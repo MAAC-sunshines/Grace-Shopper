@@ -10,7 +10,7 @@ export default class Cart extends Component {
   constructor(props) {
     super(props);
   }
-  componentDidMount(){
+  componentDidMount() {
     this.props.loadCart();
     this.props.loadInstruments();
   }
@@ -18,15 +18,21 @@ export default class Cart extends Component {
     const { user } = this.props;
     const cart = this.props.cart;
     const instruments = this.props.instruments;
-    console.log('instruments', instruments);
+    let total = 0;
     return (
       <Grid className="all-categories-box">
-        <h2>Your Shopping Cart</h2>
+        {
+          !cart.length
+            ?
+            (<h2>Your Shopping Cart is Empty</h2>)
+            :
+            (<h2>Your Shopping Cart</h2>)
+        }
         <Row className="row-mapping">
           {
             cart && cart.map(lineOrder => {
               const instrumentInfo = instruments.filter(instrument => instrument.id === lineOrder.instrumentId);
-              console.log('instrument info', instrumentInfo);
+              total += instrumentInfo[0] && instrumentInfo[0].cost * lineOrder.quantity
               return (
                 <Col md={3} key={lineOrder.instrumentId} className="category-box">
                   <Link to={`/instruments/${lineOrder.instrumentId}`}>
@@ -37,21 +43,35 @@ export default class Cart extends Component {
                     <p>Unit Price: ${instrumentInfo[0] && instrumentInfo[0].cost}</p>
                     <p>Quantity: {lineOrder.quantity}</p>
                   </li>
-                  <form>
+                  <form onSubmit={(event) => this.props.handleSubmit(event, lineOrder.instrumentId)}>
                     <input
-                      placeholder="Enter quantity"
+                      placeholder="Enter quantity" name="quantity"
                     />
                     <button type="submit">Submit</button>
                   </form>
-                  <Button bsStyle="primary" bsSize="xsmall" onClick={(event) => this.props.deleteCartItem(event, user, lineOrder.instrumentId)}>Remove From Cart</Button>
+                  <Button bsStyle="danger" bsSize="xsmall" onClick={(event) => this.props.deleteCartItem(event, user, lineOrder.instrumentId)}>Remove From Cart</Button>
                 </Col>
               )
             })
           }
         </Row>
-        <h3>Cart Total: </h3>
-        <button onClick={(event) => this.props.deleteCart(event, user)} className="btn clear-btn">Clear Cart</button>
-        <Link to="/checkout"> <h3>Checkout</h3></Link>
+        {
+          !cart.length
+            ?
+            (null)
+            :
+            (
+              <div>
+                <Button bsStyle="danger" bsSize="xsmall" onClick={(event) => this.props.deleteCart(event, user)} className="btn clear-btn">Clear Cart</Button>
+                <h3>Cart Total: ${total}</h3>
+                <Link to="/checkout">
+                  <Button bsStyle="success" bsSize="xsmall">
+                    <h3>Checkout</h3>
+                  </Button>
+                </Link>
+              </div>
+            )
+        }
       </Grid>
     )
   }
