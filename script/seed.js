@@ -126,18 +126,112 @@ const instruments = category => [
     cost: 55,
     categoryId: category.Percussions.id,
     description: 'Boomwhackers Tuned Percussion Tubes are lightweight, hollow, color-coded, plastic tubes, tuned to musical pitches by length. They are used as musical instruments in the percussion family. Boomwhackers produce musical tones when struck together, on the floor, or against nearly any surface. They can also be grouped together and struck with mallets in different configurations, in specialized holders, similar to a horizontally-aligned xylophone.'
+  },
+  {
+    name: 'Epiphone Sheraton-II PRO Semi-Hollow Body Electric Guitar',
+    type: 'guitar',
+    imageUrl: 'https://www.politusic.com/wp-content/uploads/2014/06/crossrock-electric-guitar-case.jpg',
+    cost: 799,
+    categoryId: category.Strings.id,
+    description: `Epiphone takes their deluxe semi to all new heights with the release of the Sheraton-II PRO. The Sheraton-II PRO offers several upgrades to provide superior performance and enhanced aesthetics. These upgrades include a pair of Epiphone's new critically acclaimed ProBucker humbucking pickups with coil-tapping, a Graphtech NuBone XL nut, old-school "top-hat" knobs with metal inserts, an ivory toggle cap and the addition of a beautiful Wine Red finish.`
+  },
+  {
+    name: 'Martin 000X1AE Acoustic-Electric Guitar',
+    type: 'guitar',
+    imageUrl: 'https://media.guitarcenter.com/is/image/MMGS7/Dreadnought-Dreadnought-12-Flat-Top-Guitar-Case-Black/J12843000001000-00-500x500.jpg',
+    cost: 599,
+    categoryId: category.Strings.id,
+    description: `The Martin 000X1AE features a solid Sitka spruce top, mahogany pattern HPL back and sides and Martin's D1 style bracing for stability and resonance. The back and sides are constructed of patented high-pressure laminate (HPL).`
+  },
+  {
+    name: 'Fender American Professional Stratocaster Electric Guitar',
+    type: 'guitar',
+    imageUrl: 'https://www.theflightcasecompany.com/pub/media/catalog/product/cache/image/1000x1240/e9c3970ab036de70892d86c6d221abfe/e/c/ec-115gd-strat-2.jpg',
+    cost: 1549,
+    categoryId: category.Strings.id,
+    description: `Often copied, but never surpassed, the Stratocaster is arguably the world's most-loved electric guitar. Electrifying the music world since its debut in 1954, its natural, versatile sound made the Stratocaster the benchmark for exceptional guitar tones. The American Professional Stratocaster isn't a re-imagining of the classic design; it's the authentic original model, evolved.`
+  },
+  {
+    name: 'Taylor GS Mini Mahogany Top Acoustic Guitar',
+    type: 'guitar',
+    imageUrl: 'https://images.samash.com/sa/YAG/YAG3HCXXX-P.fpx?cvt=jpg',
+    cost: 459,
+    categoryId: category.Strings.id,
+    description: `The Taylor GS Mini Mahogany is the ultimate musical companion, wherever you go — or stay. Inspired by the big, bold sound of Taylor's Grand Sypmhony body shape, the Mini scales things down without skimping on sound, packing lots of tone into a comfortable size and giving you a guitar that's incredibly fun to play. `
+  },
+  {
+    name: 'Martin 0XK Soprano Ukulele',
+    type: 'guitar',
+    imageUrl: 'https://city-green.s3.amazonaws.com/17%2F17001482%2F17001482-8-150323144428.jpg',
+    cost: 239,
+    categoryId: category.Strings.id,
+    description: `Martin has long been renowned for its ukuleles, but this is the first uke we&apos;ve offered in the X-Series. The Soprano-size body is fashioned from HPL (high pressure wood laminate) in a Koa-like finish as is the one-piece top. Features include Sitka Spruce bracing, Mahogany end-blocks, Cedar ribbons, Morado fingerboard and bridge, bone nut and saddle, Grover tuning machines and a new dovetail joint similar to that used in traditional Martin uke construction. `
+  },
+  {
+    name: 'F.R. Pfretszchner Model 55 Step-up European Violin',
+    type: 'violin',
+    imageUrl: 'https://cdn.shopify.com/s/files/1/0182/0563/products/dartopen.jpg?v=1383428876',
+    cost: 578,
+    categoryId: category.Strings.id,
+    description: `Made for the advancing beginner, the F.R. Pfretszchner model 55 violins are assembled in Romania. The violin is hand rubbed with a golden brown spirit varnish.  This fully carved instrument’s spruce top as well as the maple that is on the back, sides and ribs are sourced from the Carpathian Mountains.  All F.R. Pfretszchner instruments are fully setup in a specialty workshop in the USA using only premium parts. A Deaspue bridge is cut and fitted to the violin to the proper heights.  The violin is fitted with a German-made Wittner Ultra Tailpiece, and the pegs, fingerboard, and chinrest are all made of fine ebony. When testing the instrument, our technicians found that it sounded best with the new Thomastik Alphayue strings, a new synthetic-core set made by the company that produces the ever-popular Dominant professional line. The outfit includes a lightweight shaped violin case, a fiberglass bow, and American-made rosin.`
+  },
+  {
+    name: 'Benjamin Adams VN100 Student Violin ',
+    type: 'violin',
+    imageUrl: 'https://cdn.shopify.com/s/files/1/1099/2996/products/gewa_oxford_black_interior_1024x1024.jpg?v=1511331469',
+    cost: 169,
+    categoryId: category.Strings.id,
+    description: `The BAVN100 model is a limited edition Full Size (4/4) violin that includes a case and bow at an unbeatable price for the quality, available while supplies last.  It has a solid spruce top, maple back and sides, four fine tuners, an ebony fingerboard, and hardwood chinrest and pegs.`
+  },
+  {
+    name: 'Bach TB200B Intermediate Tenor Trombone',
+    type: 'trombone',
+    imageUrl: 'https://assets.bigcartel.com/product_images/185737523/3k_case_open.jpg?auto=format&fit=max&h=1000&w=1000',
+    cost: 2409,
+    categoryId: category.Brass.id,
+    description: `Key of Bb/F, .525" medium-large bore, 8" two-piece yellow brass bell with engraving, F rotor mechanism, ball bearing rotor linkage, traditional wrap, chrome-plated nickel silver seamless inner slide, brass outer slide, chrome-plated handgrip, tubular brass body braces, genuine Vincent Bach mouthpiece, wood shell case.`
+  },
+  {
+    name: 'Hans Hoyer G10A-L2 "Geyer" Double F/Bb French Horn',
+    type: 'horn',
+    imageUrl: 'https://media.musiciansfriend.com/is/image/MMGS7/JW-2081-ABS-Series-Fixed-Bell-French-Horn-Case/H75528000000000-00-500x500.jpg',
+    cost: 5999,
+    categoryId: category.Brass.id,
+    description: `The G10A-L2 "Geyer" Double F/Bb French Horn features  four in-line valves allow for optimum air flow and thus allow the player flexible and unimpeded fluidity throughout the entire range. The well balanced design is very similar to the originals of the 1950’s with rich tone colors and similar resistance. Careful attention is given to the positioning of the braces as well as the ergonomic arrangement of the valve and thumb levers. `
+  },
+  {
+    name: 'Selmer Paris Selmer Reference 54 Model 74 Tenor Saxophone',
+    type: 'saxophone',
+    imageUrl: 'https://www.thomann.de/pics/bdb/163405/452700_800.jpg',
+    cost: 9429,
+    categoryId: category.Brass.id,
+    description: `Based on the legendary design of the Mark VI, the 54 Tenor is an exceptional performer. It has the dark, rich sound you expect plus a wide open tone reminiscent of the Mark VI. The low end is absolutely effortless and the tone remains consistent even in the upper register.`
+  },
+  {
+    name: 'Casio CTK2550 Portable Keyboard',
+    type: 'keyboard',
+    imageUrl: 'https://static.keymusic.com/products/133383/XL/gator-gk-76-keyboard-case-6.jpg',
+    cost: 111,
+    categoryId: category.Keyboards.id,
+    description: `Whether you're just starting out, or using batteries to write your next hit on a tour bus, the CTK-2550 delivers hundreds of Tones and Rhythms to jump-start your creativity. It's a perfect introduction to music-making, and a great-sounding way to have fun.`
+  },
+  {
+    name: 'Schumann Piano, Model G80A',
+    type: 'keyboard',
+    imageUrl: 'https://s-media-cache-ak0.pinimg.com/originals/0f/a3/c1/0fa3c19cf927536457c3ee610319cbff.jpg',
+    cost: 4900,
+    categoryId: category.Keyboards.id,
+    description: `Serial #867001 This Schumann baby grand is an excellent starter piano. Enjoy it as your permanent home piano or trade it up to a higher grade instrument, perhaps a Yamaha or Hoffmann baby grand. You’ll have a full ten years in which to decide. So long as the trade up piano is at least twice the price of this one, you’ll get your full purchase price credited in the trade.`
+  },
+  {
+    name: 'Pearl Flutes PFP165E Piccolo with Grenadilla Head',
+    type: 'piccolo',
+    imageUrl: 'http://mouthpieceexpress.com/catalog/images/m_yamaha/YACPCC32II.jpg',
+    cost: 1496,
+    categoryId: category.Woodwinds.id,
+    description: `The PFP-165 Piccolo is the next generation in world renown Pearl piccolos. Using the same Grenaditte body as the PFP105 that users have come to embrace as a free blowing 'easy to play' piccolo, Pearl has added a Grenadilla head to the new 165. While Grenaditte has many of the tonal qualities of Grenadilla, the addition of the genuine wood head joint greatly improves the warmth and tonal quality. The Grenadilla head also works wonders for intonation and blending into an orchestral environment.`
   }
 ]
-
-// ,
-//   {
-//     name: '',
-//     type: '',
-//     imageUrl: '',
-//     cost: ,
-//     categoryId: category..id,
-//     description: ''
-//   }
 
 const categories = [
   {
