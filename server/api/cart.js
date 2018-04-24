@@ -19,16 +19,14 @@ router.get('/', (req, res, next) => {
       orderId: null
     }
   })
-  .then(lineOrders => res.json(lineOrders))
-  .catch(next);
+    .then(lineOrders => res.json(lineOrders))
+    .catch(next);
 })
 
 
 router.post('/', (req, res, next) => {
-  if (!req.user){
-
+  if (!req.user) {
     req.session.cart = req.session.cart || [];
-
     const existingInstrument = req.session.cart.filter((instrument => instrument.instrumentId === req.body.instrumentId));
     if (!existingInstrument.length) {
       req.session.cart.push({
@@ -53,20 +51,58 @@ router.post('/', (req, res, next) => {
         itemPrice: req.body.itemPrice
       }
     })
-    .spread((order, created) => {
-      if (created) {
-        return res.json(created);
-      } else {
-        order.update({
-          quantity: order.getDataValues.quantity + 1
-        })
-        .then(updatedOrder => res.json(updatedOrder))
-      }
-    })
-    .catch(next)
+      .spread((order, created) => {
+        if (created) {
+          return res.json(created);
+        } else {
+          order.update({
+            quantity: order.getDataValues.quantity + 1
+          })
+            .then(updatedOrder => res.json(updatedOrder))
+        }
+      })
+      .catch(next)
   }
 })
 
+router.delete('/', (req, res, next) => {
+    if (!req.user) {
+      req.session.cart = [];
+      res.status(204).send('Cart cleared successfully');
+    } else {
+      LineOrder.destroy({
+        where: {
+          userId: req.user.id,
+          orderId: null
+        }
+      })
+        .then(res.status(204).send('Cart cleared successfully!'))
+        .catch(next)
+    }
+})
+
+router.put('/', (req, res, next) => {
+  if (!req.user) {
+    let idx = 0;
+    for (let i = 0; i < req.session.cart.length; i++) {
+      if (req.session.cart[i].instrumentId === req.body.instrumentId) {
+        idx = i;
+      }
+    }
+    req.session.cart.splice(idx, 1);
+    res.json(req.session.cart);
+  } else {
+    LineOrder.destroy({
+      where: {
+        userId: req.user.id,
+        instrumentId: req.body.instrumentId,
+        orderId: null
+      }
+    })
+      .then(cart => res.json(cart))
+      .catch(next);
+  }
+})
 // router.get('/:id', (req, res, next) => {
 //   LineOrder.findAll({
 //     where: {
@@ -77,44 +113,6 @@ router.post('/', (req, res, next) => {
 //   .then(orders => res.json(orders))
 //   .catch(err => console.log(err));
 // })
-
-// router.post('/', (req, res, next) => {
-//   // console.log('req.session', req.sessionID)
-//   // if (!req.body.userId){
-//   //   req.body.userId = req.sessionID
-//   // }
-//   console.log('req.body.userId', req.body.userId);
-//   LineOrder.findOrCreate({
-//     where: {
-//       instrumentId: req.body.instrumentId,
-//       userId: req.body.userId,
-//       orderId: null,
-//       itemPrice: req.body.itemPrice
-//     }
-//   }
-//   )
-//     .spread((order, created) => {
-//       if (created) {
-//         return res.json(created);
-//       } else {
-//         LineOrder.update({
-//           quantity: order.dataValues.quantity + 1
-//         },
-//           {
-//             where: {
-//               instrumentId: req.body.instrumentId,
-//               userId: req.body.userId,
-//               orderId: null,
-//               itemPrice: req.body.itemPrice
-//             }
-//           })
-//           .then(res => res.json)
-//           .catch(err => console.log(err));
-//       }
-//     })
-//     .catch(err => console.log(err));
-
-// });
 
 
 // //updates quantity

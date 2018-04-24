@@ -74,24 +74,23 @@ export function fetchCart(){
 }
 
 //thunk to delete cart
-export function emptyCart(user){
-	return function thunk(dispatch){
-		return axios.delete(`/api/users/${user.id}`)
+export function emptyCart(user, history){
+  console.log('user', user);
+	return function thunk(){
+		return axios.delete('/api/cart', user)
 			.then(res => res.data)
-			.then(() => {
-				dispatch(getCart());
-      })
+			.then(() => history.push('/cart'))
       .catch(err => console.error(err))
 	};
 }
 
-export function clearItem(user, id){
-	return function thunk(dispatch){
-		return axios.delete(`/api/users/${user.id}/${id}`)
+export function clearItem(user, instrumentId, history){
+  const itemToDelete = {user, instrumentId};
+  console.log('delete', itemToDelete)
+	return function thunk(){
+		return axios.put('/api/cart', itemToDelete)
 			.then(res => res.data)
-			.then(() => {
-				dispatch(getCart());
-      })
+			.then(() => history.push('/cart'))
       .catch(err => console.error(err))
 	};
 }

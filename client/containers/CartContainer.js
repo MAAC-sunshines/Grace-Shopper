@@ -10,7 +10,7 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = function (dispatch) {
+const mapDispatchToProps = function (dispatch, ownProps) {
   return {
     loadCart: function() {
       dispatch(fetchCart());
@@ -19,22 +19,15 @@ const mapDispatchToProps = function (dispatch) {
       dispatch(fetchInstruments());
     },
     deleteCart: function(event, user) {
-      console.log('user', user);
-      dispatch(emptyCart(user))
+      console.log('event', user);
+      dispatch(emptyCart(user, ownProps.history))
     },
     deleteCartItem: function(event, user, id) {
       console.log('id', id);
-      dispatch(clearItem(user, id));
+      dispatch(clearItem(user, id, ownProps.history));
     }
   }
 }
-
-// const mapDispatchToProps = function (dispatch) {
-//   return {
-//     loadCart: dispatch(fetchCart()),
-//     deleteCart: dispatch(emptyCart())
-//   }
-// }
 
 const CartContainer = connect(mapStateToProps, mapDispatchToProps)(Cart);
 
