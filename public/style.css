@@ -156,6 +156,9 @@ li {
   align-items: center;
 }
 
+.quantity-input {
+  width: 40px;
+}
 /* .users-list {
   padding-top: 3em;
 } */

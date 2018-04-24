@@ -51,16 +51,15 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(putInstrument(instrument, ownProps.history));
             dispatch(getInstrument(''));
         },
-        addToCart(event, instrument, user, quantity) {
+        addToCart(event, instrument, user) {
             event.preventDefault();
             const body = {
               instrument,
               user,
-              quantity,
+              quantity: event.target.quantity.value,
               itemPrice: instrument.cost
             }
-            console.log('BODY', body)
-            return dispatch(postCart(body));
+            dispatch(postCart(body));
         }
     };
 };

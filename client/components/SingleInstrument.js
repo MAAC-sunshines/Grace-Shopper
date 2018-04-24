@@ -4,6 +4,7 @@ import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import UpdateInstrument from './UpdateInstrument';
+import { Link } from 'react-router-dom';
 
 export default class SingleProduct extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ export default class SingleProduct extends Component {
                 {
                     this.state.showForm
                         ?
-                        (<UpdateInstrument showForm={this.showForm.bind(this)}selectedInstrument={instrument} category={categoryName} isAdmin={isAdmin} handleDelete={this.props.handleDelete.bind(this)} handleSubmit={this.props.handleSubmit.bind(this, instrument)} />)
+                        (<UpdateInstrument showForm={this.showForm.bind(this)} selectedInstrument={instrument} category={categoryName} isAdmin={isAdmin} handleDelete={this.props.handleDelete.bind(this)} handleSubmit={this.props.handleSubmit.bind(this, instrument)} />)
                         :
                         (<Grid>
                             <Row>
@@ -48,11 +49,18 @@ export default class SingleProduct extends Component {
                                     <h4>Category: {categoryName}</h4>
                                     <h4>Description: </h4>
                                     <p>{instrument.description}</p>
+                                    <form onSubmit={
+                                        (event) => this.props.addToCart(event, instrument, user)}>
+                                    <div className="col-xs-1">
+                                        <label>Quantity: </label>
+                                        <input name="quantity" defaultValue="1" type="number" className="quantity-input" />
+                                    </div>
                                     <Button
-                                        bsStyle="primary" bsSize="xsmall" onClick={
-                                            (event) => this.props.addToCart(event, instrument, user, 1)}>
+                                        bsStyle="primary" bsSize="xsmall" type="submit" >
                                         Add To Cart
                                  </Button>
+                                 </form>
+
                                     {
                                         isAdmin &&
                                         <div className="single-form">
