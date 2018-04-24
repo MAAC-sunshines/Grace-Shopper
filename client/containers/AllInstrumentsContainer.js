@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const mapStateToProps = function(state) {
   return {
-    allInstruments: state.allInstruments[0],
+    allInstruments: state.allInstruments,
     isAdmin: !!state.user.admin
   }
 }

@@ -28,7 +28,6 @@ export default class SingleProduct extends Component {
         const categories = this.props.allCategories;
         const category = categories && categories[instrument.categoryId];
         const categoryName = category && category.name;
-        const userId = user && user.id;
         console.log('category', category);
         return (
             <div>
@@ -51,7 +50,7 @@ export default class SingleProduct extends Component {
                                     <p>{instrument.description}</p>
                                     <Button
                                         bsStyle="primary" bsSize="xsmall" onClick={
-                                            (event) => this.props.addToCart(event, instrument, userId)}>
+                                            (event) => this.props.addToCart(event, instrument, user, 1)}>
                                         Add To Cart
                                  </Button>
                                     {
