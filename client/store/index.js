@@ -10,7 +10,7 @@ import selectedCategory from '../reducers/singleCategory';
 import allUsers from '../reducers/allUsers';
 import allOrders from '../reducers/orderHistory';
 import cart from '../reducers/cart';
-import singleOrder from '../reducers/singleOrder';
+import userOrders from '../reducers/userOrders';
 import checkout from '../reducers/checkout';
 
 const reducer = combineReducers({
@@ -20,7 +20,7 @@ const reducer = combineReducers({
   selectedCategory,
   allInstruments,
   allCategories,
-  singleOrder,
+  userOrders,
   checkout,
   cart,
   allOrders
@@ -41,3 +41,4 @@ export * from '../reducers/allCategories';
 export * from '../reducers/orderHistory';
 export * from '../reducers/cart';
 export * from '../reducers/checkout';
+export * from '../reducers/userOrders';
