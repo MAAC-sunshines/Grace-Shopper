@@ -17,7 +17,14 @@ export default class OrderList extends Component {
       orderList && orderList.map(order => {
         return (
           <div key={order.id} >
-            <p>Status: {order.status}</p>
+            <p>Order Id: {order.id} </p>
+            <p>Status: </p>
+            <select type="text" name="status" defaultValue={order.status} onChange={(event) => this.props.handleChangeStatus(event.target.value, order)}>
+              <option value="created">Created</option>
+              <option value="processing">Processing</option>
+              <option value="cancelled">Cancelled</option>
+              <option value="completed">Completed</option>
+            </select>
             <p>Date Created: {order.createdAt}</p>
             <p>Ordered By: {order.user.firstName} {order.user.lastName} | userId:{order.userId}</p>
           </div>

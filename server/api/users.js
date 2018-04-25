@@ -34,6 +34,15 @@ router.get('/orderList', isLoggedIn, isAdmin, (req, res, next) => {
     .then(orders => res.json(orders))
     .catch(next)
 })
+//Admin can change the status of an order on the order list
+router.put('/orderList', isLoggedIn, isAdmin, (req, res, next) => {
+  console.log('REQ.BODY', req.body)
+  console.log('REQ.BODY.ORDER', req.body.order)
+  Order.findById(req.body.order.id)
+  .then(order => order.update(req.body.order))
+  .then(updatedOrder => res.status(201).json(updatedOrder))
+  .catch(next)
+})
 
 router.get('/:id', (req, res, next) => {
   User.findById(req.params.id)
