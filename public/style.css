@@ -55,7 +55,9 @@ form div {
 .all-categories-box {
   padding-top: 3em;
 }
-
+.center-box {
+  margin: auto;
+}
 .category-box {
   margin: 4px;
   padding-top: 1em;

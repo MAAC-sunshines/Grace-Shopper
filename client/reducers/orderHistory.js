@@ -12,7 +12,7 @@ export function getAllOrders(allOrders) {
 //THUNKS
 export function fetchAllOrders() {
   return function thunk(dispatch) {
-    axios.get(`/api/order-history`)
+    axios.get('/api/order-history')
       .then(res => res.data)
       .then(allOrders => {
         const action = getAllOrders(allOrders);
@@ -20,7 +20,6 @@ export function fetchAllOrders() {
     });
   };
 }
-
 
 //REDUCER
 export default function reducer(state = [], action) {
