@@ -32,7 +32,7 @@ export function changeStatus(body) {
     return function (dispatch) {
         console.log('hit thunk', body)
         axios.put('/api/users/orderList', body)
-            .then(res => res.data)
+            //.then(res => res.data)
             .then((updatedBody) => {
                 dispatch(changeStatus(updatedBody));
             })
