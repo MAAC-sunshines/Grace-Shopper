@@ -11,10 +11,11 @@ class NavbarComp extends Component {
   }
   render() {
     const { handleClick, isLoggedIn, isAdmin, cart } = this.props
-    const totalItems = cart.reduce(((sum, item) => {
+    let totalItems = 0;
+    totalItems = cart && cart.reduce(((sum, item) => {
       sum += item.quantity;
       return sum
-    }), 0)
+    }), 0) || 0
     return (
       <Navbar className="nav-bar" fixedTop>
         <Navbar.Header>
